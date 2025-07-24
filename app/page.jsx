@@ -24,7 +24,6 @@ export default function Home() {
       <Locations />
       <Services />
       <Benefit />
-      <Properties2 />
       <Testimonials />
       <Agents />
       <Brands />

@@ -25,7 +25,6 @@ export default function page() {
       <Properties />
       <Benefit />
       <Locations />
-      <Properties2 />
       <Agents />
       <Testimonials />
       <Blogs />
