@@ -10,7 +10,6 @@ import Hero from "@/components/homes/home-2/Hero";
 import Locations from "@/components/homes/home-2/Locations";
 import Properties from "@/components/homes/home-2/Properties";
 import React from "react";
-import Properties2 from "@/components/homes/home-2/Properties2";
 
 export const metadata = {
   title: "Home 02 || Homelengo - Real Estate React Nextjs Template",

@@ -1,14 +1,7 @@
 export const menuItems = [
   {
     title: "Home",
-    links: [
-      { href: "/", label: "Homepage 01", isCurrent: true },
-      { href: "/home-02", label: "Homepage 02" },
-      { href: "/home-03", label: "Homepage 03" },
-      { href: "/home-04", label: "Homepage 04" },
-      { href: "/home-05", label: "Homepage 05" },
-      { href: "/home-06", label: "Homepage 06" },
-    ],
+    links: [{ href: "/", label: "Homepage 01", isCurrent: true }],
     isCurrent: true,
   },
   {
