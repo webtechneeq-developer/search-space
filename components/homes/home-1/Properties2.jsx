@@ -4,7 +4,6 @@ import Link from "next/link";
 import { properties } from "@/data/properties";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-const allPropertiesArray = Object.values(properties.pune).flat();
 
 export default function Properties2() {
   return (
