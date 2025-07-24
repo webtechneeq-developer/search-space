@@ -3,15 +3,18 @@ import { filterOptions, properties } from "@/data/properties";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
+const allPropertiesArray = Object.values(properties.mumbai).flat();
+
 export default function Properties() {
   const [selectedOption, setSelectedOption] = useState(filterOptions[0]);
-  const [filtered, setFiltered] = useState(properties);
+  const [filtered, setFiltered] = useState(allPropertiesArray);
   useEffect(() => {
     if (selectedOption == "View All") {
-      setFiltered(properties);
+      setFiltered(allPropertiesArray);
     } else {
       setFiltered(
-        properties.filter((el) => el.filterOptions.includes(selectedOption))
+        allPropertiesArray.filter((el) => el.filterOptions.includes(selectedOption))
       );
     }
   }, [selectedOption]);

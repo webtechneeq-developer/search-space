@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { properties2 } from "@/data/properties";
+import { properties } from "@/data/properties";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+const allPropertiesArray = Object.values(properties.pune).flat();
+
 export default function Properties2() {
   return (
     <section className="flat-section">
@@ -16,7 +18,7 @@ export default function Properties2() {
         </div>
         <div className="swiper tf-sw-mobile non-swiper-on-767">
           <div className="tf-layout-mobile-md xl-col-3 md-col-2 swiper-wrapper">
-            {properties2.map((property, index) => (
+            {allPropertiesArray.map((property, index) => (
               <div key={index} className="swiper-slide">
                 <div className="homelengo-box">
                   <div className="archive-top">
@@ -122,7 +124,7 @@ export default function Properties2() {
           modules={[Pagination]}
           pagination={{ clickable: true, el: ".spb31" }}
         >
-          {properties2.map((property, index) => (
+          {allPropertiesArray.map((property, index) => (
             <SwiperSlide key={index} className="swiper-slide">
               <div className="homelengo-box">
                 <div className="archive-top">

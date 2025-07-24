@@ -14,62 +14,40 @@ import { initialState, reducer } from "@/context/propertyFilterReducer";
 import RandomBanner from "../common/RamdomBanner";
 
 export default function Properties3() {
-   const searchParams = useSearchParams();
-  //const type = searchParams.get("type");
+  const searchParams = useSearchParams();
+    const type = searchParams.get("type");
   const location = searchParams.get("location");
   const ddContainer = useRef();
   const advanceBtnRef = useRef();
 
-  // console.log("search params", location, type);
-  // console.log("all properties", properties);
+
+
+
+   console.log("search params", city, type);
+  console.log("all properties", properties);
 
   // Get the Mumbai properties
-  const locationProperties = properties[location];
+  const dynamicProperties = allProperties[city];
 
-  console.log("location properties", locationProperties);
+  console.log("mumbai properties", dynamicProperties);
 
-  // // Filter Mumbai properties by checking if any keyword matches the property `type`
-  // const filteredMumbaiProperties = locationProperties?.filter((property) =>
-  //   property.type?.some((t) =>
-  //     t.toLowerCase() === type.toLowerCase()
-  //   )
-  // ) || [];
+  // Simulated search param (replace with real search param logic if using useSearchParams or URLSearchParams)
+  const searchType = "Co-Working Office";
 
-  // console.log("Filtered Mumbai Properties with type:", filteredMumbaiProperties);
+  // Normalize search string to match property `type` values
+  const keywords = searchType.split(" ").map((word) => word.toLowerCase()); // ["co-working", "office"]
 
-  //const searchParams = useSearchParams();
-  const [filteredProperties, setFilteredProperties] = useState([]);
+  // Filter Mumbai properties by checking if any keyword matches the property `type`
+  const filteredMumbaiProperties = dynamicProperties.filter((property) =>
+    property.type.some((t) =>
+      keywords.some((kw) => t.toLowerCase().includes(kw))
+    )
+  );
 
-  useEffect(() => {
-    const type = searchParams.get("type") || "";
-    const location = searchParams.get("location") || "";
+  console.log("Filtered Mumbai Properties:", filteredMumbaiProperties);
 
-    console.log("search params", type, location);
-
-    console.log("Properties in useeffect", properties);
-
-    const locationProperties = properties[location] || [];
-
-    console.log("locationProperties in useeffect", locationProperties);
-
-    const filtered = locationProperties.filter((property) => {
-      if (Array.isArray(property.type)) {
-        return property.type.some((t) => t.toLowerCase() === type.toLowerCase());
-      }
-      return property.type?.toLowerCase() === type.toLowerCase();
-    });
-
-    console.log("filtered", filtered)
-
-    setFilteredProperties(filtered);
-  }, [searchParams, properties]);
-
-  const formatIndianCurrency = (value) => {
-  return new Intl.NumberFormat('en-IN').format(value);
-};
-
-console.log("Properties", properties);
-console.log("FilteredProperties", filteredProperties);
+  console.log("search params", city, type);
+  console.log("all properties", allProperties);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -100,7 +78,6 @@ console.log("FilteredProperties", filteredProperties);
     rooms,
     bedrooms,
     bathrooms,
-    type,
     features,
     filtered,
     sortingOption,
@@ -140,12 +117,12 @@ console.log("FilteredProperties", filteredProperties);
       );
       filteredArrays = [...filteredArrays, filteredByBathrooms];
     }
-    // if (type !== "All") {
-    //   const filteredByType = [...allProperties].filter((elm) =>
-    //     elm.type.includes(type)
-    //   );
-    //   filteredArrays = [...filteredArrays, filteredByType];
-    // }
+    if (type !== "All") {
+      const filteredByType = [...allProperties].filter((elm) =>
+        elm.type.includes(type)
+      );
+      filteredArrays = [...filteredArrays, filteredByType];
+    }
     const filteredByPrice = [...allProperties].filter(
       (elm) => elm.price >= price[0] && elm.price <= price[1]
     );
@@ -211,6 +188,51 @@ console.log("FilteredProperties", filteredProperties);
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="wd-find-select shadow-3">
                   <div className="inner-group">
+                    <div className="form-group-1 search-form form-style">
+                      <label>Type</label>
+                      <div className="group-select">
+                        <DropdownSelect
+                          selected={type}
+                          setSelected={allProps.setType}
+                          options={[
+                            "All",
+                            "Villa",
+                            "Studio",
+                            "Office",
+                            "House",
+                          ]}
+                        />
+                      </div>
+                    </div>
+                    <div className="form-group-2 form-style">
+                      <label>Location</label>
+                      <div className="group-ip">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Search Location"
+                          defaultValue=""
+                          name="s"
+                          title="Search for"
+                          required
+                        />
+                        <a href="#" className="icon icon-location">
+                          {" "}
+                        </a>
+                      </div>
+                    </div>
+                    <div className="form-group-3 form-style">
+                      <label>Keyword</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Search Keyword."
+                        defaultValue=""
+                        name="s"
+                        title="Search for"
+                        required
+                      />
+                    </div>
                   </div>
                   <div className="box-btn-advanced">
                     <div className="form-group-4 box-filter">
@@ -266,7 +288,7 @@ console.log("FilteredProperties", filteredProperties);
             <div className="box-left">
               <h3 className="fw-8">Property Listing</h3>
               <p className="text">
-                There are currently {locationProperties.length} properties.
+                There are currently {sorted.length} properties.
               </p>
             </div>
             <div className="box-filter-tab">
@@ -405,7 +427,7 @@ console.log("FilteredProperties", filteredProperties);
                 role="tabpanel"
               >
                 <div className="row">
-                  {filteredProperties
+                  {sorted
                     .slice(
                       (currentPage - 1) * itemPerPage,
                       currentPage * itemPerPage
@@ -505,7 +527,7 @@ console.log("FilteredProperties", filteredProperties);
                                 <span>{elm.agent}</span>
                               </div>
                               <h6 className="price">
-                                ₹{formatIndianCurrency(elm.price)}
+                                ${elm.price.toLocaleString()}
                               </h6>
                             </div>
                           </div>
@@ -526,7 +548,7 @@ console.log("FilteredProperties", filteredProperties);
               </div>
               <div className="tab-pane" id="listLayout" role="tabpanel">
                 <div className="row">
-                  {filteredProperties
+                  {sorted
                     .slice(
                       (currentPage - 1) * itemPerPage,
                       currentPage * itemPerPage
@@ -624,7 +646,7 @@ console.log("FilteredProperties", filteredProperties);
                                 <span>{elm.agent}</span>
                               </div>
                               <h6 className="price">
-                                ₹{formatIndianCurrency(elm.price)}
+                                ${elm.price.toLocaleString()}
                               </h6>
                             </div>
                           </div>

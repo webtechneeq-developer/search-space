@@ -1,22 +1,14 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useRef } from "react";
 import DropdownSelect from "./DropdownSelect";
+import AdvanceSearch from "./AdvanceSearch";
 
-export default function FilterTab({
+export default function DefaultFilterTab({
   tabClass = "nav-tab-form style-1 justify-content-center",
   styleClass = "",
 }) {
   const ddContainer = useRef();
   const advanceBtnRef = useRef();
-  const router = useRouter();
-
-
-  // State for form inputs
-  const [selectedType, setSelectedType] = useState("");
-  const [location, setLocation] = useState("");
-
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       // Check if the click is outside the dropdown and the button
@@ -37,21 +29,6 @@ export default function FilterTab({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-  // 🔁 Handle form submit with redirect
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (location && selectedType) {
-      const query = new URLSearchParams({
-        location,
-        type: selectedType,
-      }).toString();
-      router.push(`/properties?${query}`);
-    } else {
-      alert("Please select both location and type.");
-    }
-  };
-
   return (
     <div className="flat-tab flat-tab-form">
       {/* <ul className={tabClass} role="tablist">
@@ -73,15 +50,14 @@ export default function FilterTab({
       <div className="tab-content">
         <div className="tab-pane fade active show" role="tabpanel">
           <div className="form-sl">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => e.preventDefault()}>
               <div className={`wd-find-select ${styleClass}`}>
                 <div className="inner-group">
                   <div className="form-group-1 search-form form-style">
                     <label>Type</label>
                     <div className="group-select">
                       <DropdownSelect
-                      onChange={(value) => setSelectedType(value)}
-                        options={["Select Type", "Co-Working Office", "Co-Working Dedicated Desk", "Co-Working Flexi Desk", "Co-Working Meeting Room", "Co-Working Conference Room", "Co-Working Day Pass", "Virtual Office"]}
+                        options={["Co-Working Office", "Co-Working Dedicated Desk", "Co-Working Flexi Desk", "Co-Working Meeting Room", "Co-Working Conference Room", "Co-Working Day Pass", "Virtual Office"]}
                       />
                     </div>
                   </div>
@@ -95,7 +71,6 @@ export default function FilterTab({
                         defaultValue=""
                         name="s"
                         title="Search for"
-                        onChange={(e) => setLocation(e.target.value)}
                         required
                       />
                       <a href="#" className="icon icon-location">
@@ -117,7 +92,7 @@ export default function FilterTab({
                   </div> */}
                 </div>
                 <div className="box-btn-advanced">
-                  {/* <div className="form-group-4 box-filter">
+                  <div className="form-group-4 box-filter">
                     <a
                       onClick={() =>
                         ddContainer.current.classList.toggle("show")
@@ -142,18 +117,19 @@ export default function FilterTab({
                         />
                       </svg>
                     </a>
-                  </div> */}
+                  </div>
                   <button
                     type="submit"
                     className="tf-btn btn-search primary"
+                    href="#"
                   >
                     Search <i className="icon icon-search" />
                   </button>
                 </div>
               </div>
-              {/* <div ref={ddContainer} className="wd-search-form">
+              <div ref={ddContainer} className="wd-search-form">
                 <AdvanceSearch />
-              </div> */}
+              </div>
             </form>
           </div>
         </div>

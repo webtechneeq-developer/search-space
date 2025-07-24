@@ -9,7 +9,7 @@ export default function DropdownSelect({
   addtionalParentClass = "",
 }) {
   const selectRef = useRef();
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState(defaultOption || options[0]);
   const toggleDropdown = () => {
     selectRef.current.classList.toggle("open");
   };
