@@ -12,8 +12,8 @@ import Services from "@/components/homes/home-1/Services";
 import Testimonials from "@/components/common/Testimonials";
 
 export const metadata = {
-  title: "Search Space",
-  description: "Search Space - Real Estate",
+  title: "Search Spaces",
+  description: "Search Spaces",
 };
 export default function Home() {
   return (
