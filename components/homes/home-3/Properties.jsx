@@ -2,16 +2,16 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { filterOptions, properties5 } from "@/data/properties";
+import { filterOptions, properties } from "@/data/properties";
 export default function Properties() {
   const [selectedOption, setSelectedOption] = useState(filterOptions[0]);
-  const [filtered, setFiltered] = useState(properties5);
+  const [filtered, setFiltered] = useState(properties);
   useEffect(() => {
     if (selectedOption == "View All") {
-      setFiltered(properties5);
+      setFiltered(properties);
     } else {
       setFiltered(
-        properties5.filter((el) => el.filterOptions.includes(selectedOption))
+        properties.filter((el) => el.filterOptions.includes(selectedOption))
       );
     }
   }, [selectedOption]);

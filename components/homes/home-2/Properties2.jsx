@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { properties4 } from "@/data/properties";
+import { properties } from "@/data/properties";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 export default function Properties2() {
@@ -14,7 +14,7 @@ export default function Properties2() {
         </div>
         <div className="swiper tf-sw-mobile non-swiper-on-991">
           <div className="tf-layout-mobile-lg lg-col-2 swiper-wrapper">
-            {properties4.map((property) => (
+            {properties.map((property) => (
               <div className="swiper-slide" key={property.id}>
                 <div
                   className="homelengo-box list-style-1 wow fadeInUp"

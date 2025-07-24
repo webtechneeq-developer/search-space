@@ -2,7 +2,7 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 import PropertyMap from "../common/PropertyMap";
 import { useSearchParams } from "next/navigation";
-import { properties } from "@/data/properties";
+import { properties } from "@/data/demoProporties";
 import DropdownSelect from "../common/DropdownSelect";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,7 +14,7 @@ import { initialState, reducer } from "@/context/propertyFilterReducer";
 import RandomBanner from "../common/RamdomBanner";
 
 export default function Properties3() {
-   const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
   //const type = searchParams.get("type");
   const location = searchParams.get("location");
   const ddContainer = useRef();
@@ -54,22 +54,24 @@ export default function Properties3() {
 
     const filtered = locationProperties.filter((property) => {
       if (Array.isArray(property.type)) {
-        return property.type.some((t) => t.toLowerCase() === type.toLowerCase());
+        return property.type.some(
+          (t) => t.toLowerCase() === type.toLowerCase()
+        );
       }
       return property.type?.toLowerCase() === type.toLowerCase();
     });
 
-    console.log("filtered", filtered)
+    console.log("filtered", filtered);
 
     setFilteredProperties(filtered);
   }, [searchParams, properties]);
 
   const formatIndianCurrency = (value) => {
-  return new Intl.NumberFormat('en-IN').format(value);
-};
+    return new Intl.NumberFormat("en-IN").format(value);
+  };
 
-console.log("Properties", properties);
-console.log("FilteredProperties", filteredProperties);
+  console.log("Properties", properties);
+  console.log("FilteredProperties", filteredProperties);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -203,15 +205,14 @@ console.log("FilteredProperties", filteredProperties);
       {/* Map */}
       <section className="flat-map">
         <div id="map" className="top-map">
-          <RandomBanner />  
+          <RandomBanner />
         </div>
         <div className="container">
           <div className="wrap-filter-search">
             <div className="form-sl">
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="wd-find-select shadow-3">
-                  <div className="inner-group">
-                  </div>
+                  <div className="inner-group"></div>
                   <div className="box-btn-advanced">
                     <div className="form-group-4 box-filter">
                       <a
@@ -472,7 +473,7 @@ console.log("FilteredProperties", filteredProperties);
                                   className="link"
                                 >
                                   {elm.title}
-                                </Link> 
+                                </Link>
                               </h6>
                               <ul className="meta-list">
                                 <li className="item">
