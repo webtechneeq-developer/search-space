@@ -12,8 +12,8 @@ import Services from "@/components/homes/home-1/Services";
 import Testimonials from "@/components/common/Testimonials";
 
 export const metadata = {
-  title: "Home || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "Search Space",
+  description: "Search Space - Real Estate",
 };
 export default function Home() {
   return (
