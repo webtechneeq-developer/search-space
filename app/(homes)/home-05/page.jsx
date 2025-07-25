@@ -26,7 +26,6 @@ export default function page() {
       <Filter />
       <Services />
       <Properties />
-      <Locations />
       <TopProperty />
       <Testimonials2 parentClass="flat-section pt-0" />
       <Brands />

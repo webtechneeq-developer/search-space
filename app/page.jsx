@@ -17,8 +17,6 @@ export const metadata = {
   description: "Search Spaces",
 };
 export default function Home() {
-
-  console.log("DATA on Homepage", properties);
   
   return (
     <>

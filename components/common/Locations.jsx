@@ -6,7 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 export default function Locations({ parentClass = "flat-location px-10", properties }) {
 
-console.log("DATA on Location page", properties);
 
   return (
     <section className={parentClass}>
