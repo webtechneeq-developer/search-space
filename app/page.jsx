@@ -10,18 +10,22 @@ import Properties from "@/components/homes/home-1/Properties";
 import Properties2 from "@/components/homes/home-1/Properties2";
 import Services from "@/components/homes/home-1/Services";
 import Testimonials from "@/components/common/Testimonials";
+import { properties } from "@/data/demoProporties";
 
 export const metadata = {
   title: "Search Spaces",
   description: "Search Spaces",
 };
 export default function Home() {
+
+  console.log("DATA on Homepage", properties);
+  
   return (
     <>
       <Header1 />
       <Hero />
       <Properties />
-      <Locations />
+      <Locations properties={properties}/>
       <Services />
       <Benefit />
       <Testimonials />

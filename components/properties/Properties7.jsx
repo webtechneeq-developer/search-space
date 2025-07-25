@@ -13,10 +13,10 @@ import DropdownSelect2 from "../common/DropdownSelect2";
 import { initialState, reducer } from "@/context/propertyFilterReducer";
 import RandomBanner from "../common/RamdomBanner";
 
-export default function Properties3() {
+export default function Properties7({ location }) {
   const searchParams = useSearchParams();
   //const type = searchParams.get("type");
-  const location = searchParams.get("location");
+    //  const location = searchParams.get("location");
   const ddContainer = useRef();
   const advanceBtnRef = useRef();
 
@@ -25,6 +25,7 @@ export default function Properties3() {
 
   // Get the Mumbai properties
   const locationProperties = properties[location];
+  console.log("location", location);
 
   console.log("location properties", locationProperties);
 
@@ -267,7 +268,7 @@ export default function Properties3() {
             <div className="box-left">
               <h3 className="fw-8">Property Listing</h3>
               <p className="text">
-                There are currently {filteredProperties.length} properties.
+                There are currently {locationProperties.length} properties.
               </p>
             </div>
             <div className="box-filter-tab">
@@ -406,7 +407,7 @@ export default function Properties3() {
                 role="tabpanel"
               >
                 <div className="row">
-                  {filteredProperties
+                  {locationProperties
                     .slice(
                       (currentPage - 1) * itemPerPage,
                       currentPage * itemPerPage
@@ -527,7 +528,7 @@ export default function Properties3() {
               </div>
               <div className="tab-pane" id="listLayout" role="tabpanel">
                 <div className="row">
-                  {filteredProperties
+                  {locationProperties
                     .slice(
                       (currentPage - 1) * itemPerPage,
                       currentPage * itemPerPage

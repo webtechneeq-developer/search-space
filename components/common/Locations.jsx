@@ -4,7 +4,10 @@ import { locations } from "@/data/locations";
 import { Pagination } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
-export default function Locations({ parentClass = "flat-location px-10" }) {
+export default function Locations({ parentClass = "flat-location px-10", properties }) {
+
+console.log("DATA on Location page", properties);
+
   return (
     <section className={parentClass}>
       <div className="box-title text-center wow fadeInUp">
@@ -28,33 +31,39 @@ export default function Locations({ parentClass = "flat-location px-10" }) {
           modules={[Pagination]}
           pagination={{ clickable: true, el: ".spd4" }}
         >
-          {locations.map((location, index) => (
-            <SwiperSlide className="swiper-slide" key={index}>
-              <Link href={`/topmap-grid`} className="box-location">
-                <div className="image img-style">
-                  <Image
-                    className="lazyload"
-                    data-src={location.imgSrc}
-                    alt={location.alt}
-                    src={location.imgSrc}
-                    width={465}
-                    height={578}
-                  />
-                </div>
-                <div className="content">
-                  <div className="inner-left">
-                    <span className="sub-title fw-6">321 Property</span>
-                    <h6 className="title text-line-clamp-1 link">
-                      {location.title}
-                    </h6>
+          {Object.entries(properties).map(([slug, listings], index) => {
+            const locationTitle = slug
+              .replace(/-/g, " ")
+              .replace(/\b\w/g, (char) => char.toUpperCase());
+
+            const coverImage = locations[0]?.imgSrc || "/images/location/location-1.jpg";
+
+            return (
+              <SwiperSlide className="swiper-slide" key={index}>
+                <Link href={`/${slug}`} className="box-location">
+                  <div className="image img-style">
+                    <Image
+                      className="lazyload"
+                      data-src={coverImage}
+                      alt={locationTitle}
+                      src={coverImage}
+                      width={465}
+                      height={578}
+                    />
                   </div>
-                  <button className="box-icon line w-44 round">
-                    <i className="icon icon-arrow-right2" />
-                  </button>
-                </div>
-              </Link>
-            </SwiperSlide>
-          ))}
+                  <div className="content">
+                    <div className="inner-left">
+                      <span className="sub-title fw-6">{listings.length} properties</span>
+                      <h6 className="title text-line-clamp-1 link">{locationTitle}</h6>
+                    </div>
+                    <button className="box-icon line w-44 round">
+                      <i className="icon icon-arrow-right2" />
+                    </button>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            );
+          })}
           <div className="sw-pagination spd4 spd1 sw-pagination-location text-center" />
         </Swiper>
       </div>
