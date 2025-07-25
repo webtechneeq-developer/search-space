@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-const stringsDemo = ["Dream Home", "Perfect Home"];
+const stringsDemo = ["Coworking Space", "Coworking Office"];
 export default function WordEffect1({ strings = stringsDemo }) {
   const [activeSctingIndex, setActiveSctingIndex] = useState(0);
   useEffect(() => {

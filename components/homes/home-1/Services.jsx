@@ -28,9 +28,9 @@ export default function Services() {
               <div className="content">
                 <h5 className="title">{elm.title}</h5>
                 <p className="description">{elm.description}</p>
-                <Link href={`/sidebar-grid`} className="tf-btn btn-line">
+                {/* <Link href={`/sidebar-grid`} className="tf-btn btn-line">
                   Learn More <span className="icon icon-arrow-right2" />
-                </Link>
+                </Link> */}
               </div>
             </div>
           ))}

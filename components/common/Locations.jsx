@@ -10,8 +10,8 @@ export default function Locations({ parentClass = "flat-location px-10", propert
   return (
     <section className={parentClass}>
       <div className="box-title text-center wow fadeInUp">
-        <div className="text-subtitle text-primary">Explore Cities</div>
-        <h3 className="mt-4 title">Our Location For You</h3>
+        <div className="text-subtitle text-primary">Choose from thousands of locations to position your business</div>
+        <h3 className="mt-4 title">Find A Workspace In Your City</h3>
       </div>
       <div className="wow fadeInUp" data-wow-delay=".2s">
         <Swiper

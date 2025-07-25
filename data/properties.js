@@ -1246,12 +1246,13 @@ export const allProperties = [
 ];
 
 export const filterOptions = [
-  "View All",
-  "Apartment",
-  "Villa",
-  "Studio",
-  "House",
-  "Office",
+  "Coworking Space",
+  "Coworking Dedicated Desk",
+  "Coworking Flexi Desk",
+  "Meeting Room",
+  "Conference Room",
+  "Coworking Day Pass",
+  "Virtual Office",
 ];
 
 export const featureOptions = [

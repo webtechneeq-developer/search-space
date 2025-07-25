@@ -1,20 +1,20 @@
 export const services = [
   {
     imageSrc: "/images/service/home-1.png",
-    title: "Buy A New Home",
+    title: "Extraordinarily Easy",
     description:
-      "Discover your dream home effortlessly. Explore diverse properties and expert guidance for a seamless buying experience.",
+      "Choose from a number of different filters to get suitable results as per your preference.",
   },
   {
     imageSrc: "/images/service/home-2.png",
-    title: "Sell a home",
+    title: "Truly Transparent",
     description:
-      "Sell confidently with expert guidance and effective strategies, showcasing your property's best features for a successful sale.",
+      "We deal with only trusted partners and verified spaces thus providing unbiased property listings.",
   },
   {
     imageSrc: "/images/service/home-3.png",
-    title: "Rent a home",
+    title: "Fantastically Efficient",
     description:
-      "Discover your perfect rental effortlessly. Explore a diverse variety of listings tailored precisely to suit your unique lifestyle needs.",
+      "Our experts will take care of all your office needs so that you can focus on your business.",
   },
 ];

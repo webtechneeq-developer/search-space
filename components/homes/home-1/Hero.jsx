@@ -10,15 +10,14 @@ export default function Hero() {
             <div className="slider-content">
               <div className="heading text-center">
                 <div className="title-large text-white animationtext slide">
-                  Find Your{" "}
-                  <WordEffect1 string={["Dream Home", "Perfect Home"]} />
+                  Find Your Ideal{" "}
+                  <WordEffect1 string={["Coworking Space", "Coworking Office"]} />
                 </div>
                 <p
                   className="subtitle text-white body-2 wow fadeInUp"
                   data-wow-delay=".2s"
                 >
-                  We are a real estate agency that will help you find the best
-                  residence you dream of, let’s discuss for your dream house?
+                  Affordable Co-working spaces in the Location of your choice
                 </p>
               </div>
               <FilterTab />

@@ -21,8 +21,8 @@ export default function Properties() {
     <section className="flat-section flat-recommended">
       <div className="container">
         <div className="box-title text-center wow fadeInUp">
-          <div className="text-subtitle text-primary">Featured Properties</div>
-          <h3 className="mt-4 title">Recommended For You</h3>
+          <div className="text-subtitle text-primary">Discover unique way to grow</div>
+          <h3 className="mt-4 title">Newest Flexible Office Spaces</h3>
         </div>
         <div
           className="flat-tab-recommended flat-animate-tab wow fadeInUp"
