@@ -21,7 +21,6 @@ export default function page() {
     <>
       <Header1 />
       <Hero />
-      <Locations />
       <Properties />
       <Categories />
       <Services />

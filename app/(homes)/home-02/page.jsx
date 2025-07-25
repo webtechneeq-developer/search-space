@@ -23,7 +23,6 @@ export default function page() {
       <Categories />
       <Properties />
       <Benefit />
-      <Locations />
       <Agents />
       <Testimonials />
       <Blogs />

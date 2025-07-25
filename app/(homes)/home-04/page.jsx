@@ -24,7 +24,7 @@ export default function page() {
       <Hero />
       <Properties />
       <Services />
-      <Locations parentClass="flat-section flat-location px-10  mb-0 pb-0" />
+      
       <Agents />
       <Brands />
       <TopProperty />
