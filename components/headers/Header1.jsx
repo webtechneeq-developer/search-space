@@ -37,14 +37,14 @@ export default function Header1({
                         width={166}
                         className="logo-1"
                         height={48}
-                        src="/images/logo/logo@2x.png"
+                        src="/images/logo/Search-Spaces-Logo.png"
                       />
                       <Image
                         alt="logo"
                         width={166}
                         className="logo-2"
                         height={48}
-                        src="/images/logo/logo@2x-white.png"
+                        src="/images/logo/Search-Spaces-Logo.png"
                       />
                     </Link>
                   </div>
@@ -64,7 +64,7 @@ export default function Header1({
                   {/* Main Menu End*/}
                 </div>
               </div>
-              <div className="inner-header-right header-account">
+              {/* <div className="inner-header-right header-account">
                 <a
                   href="#modalLogin"
                   data-bs-toggle="modal"
@@ -107,7 +107,7 @@ export default function Header1({
                     Submit Property
                   </Link>
                 </div>
-              </div>
+              </div> */}
               <div
                 className="mobile-nav-toggler mobile-button"
                 onClick={() => {
@@ -144,7 +144,7 @@ export default function Header1({
             </Link>
           </div>
           <div className="bottom-canvas">
-            <div className="login-box flex align-center">
+            {/* <div className="login-box flex align-center">
               <a href="#modalLogin" data-bs-toggle="modal">
                 Login
               </a>
@@ -152,16 +152,16 @@ export default function Header1({
               <a href="#modalRegister" data-bs-toggle="modal">
                 Register
               </a>
-            </div>
+            </div> */}
             <div className="menu-outer">
               <MobileNav />
             </div>
-            <div className="button-mobi-sell">
+            {/* <div className="button-mobi-sell">
               <Link className="tf-btn primary" href={`/add-property`}>
                 Submit Property
               </Link>
-            </div>
-            <div className="mobi-icon-box">
+            </div> */}
+            {/* <div className="mobi-icon-box">
               <div className="box d-flex align-items-center">
                 <span className="icon icon-phone2" />
                 <div>1-333-345-6868</div>
@@ -170,7 +170,7 @@ export default function Header1({
                 <span className="icon icon-mail" />
                 <div>themesflat@gmail.com</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </nav>
       </div>

@@ -76,7 +76,7 @@ export default function Footer1() {
                   alt="logo"
                   width={166}
                   height={48}
-                  src="/images/logo/logo-footer@2x.png"
+                  src="/images/logo/Search-Spaces-Logo.png"
                 />
               </Link>
             </div>
@@ -191,14 +191,19 @@ export default function Footer1() {
             <div className="col-lg-4 col-md-6">
               <div className="footer-cl-1">
                 <p className="text-variant-2">
-                  Specializes in providing high-class tours for those in need.
-                  Contact Us
+                  India’s fastest growing real estate tech enabled office space 
+                  search platform. We are an office space aggregator for searching 
+                  and comparing office spaces.
                 </p>
                 <ul className="mt-12">
                   <li className="mt-12 d-flex align-items-center gap-8">
                     <i className="icon icon-mapPinLine fs-20 text-variant-2" />
                     <p className="text-white">
-                      101 E 129th St, East Chicago, IN 46312, US
+                    Estatex Ventures Pvt. Ltd.
+                    B-405, Rustomjee Central 
+                    Park, Andheri – Kurla 
+                    Road, Chakala, Andheri 
+                    (E), Mumbai 400 059.    
                     </p>
                   </li>
                   <li className="mt-12 d-flex align-items-center gap-8">
@@ -207,12 +212,12 @@ export default function Footer1() {
                       href="tel:1-333-345-6868"
                       className="text-white caption-1"
                     >
-                      1-333-345-6868
+                      +91 98202 79750
                     </a>
                   </li>
                   <li className="mt-12 d-flex align-items-center gap-8">
                     <i className="icon icon-mail fs-20 text-variant-2" />
-                    <p className="text-white">themesflat@gmail.com</p>
+                    <p className="text-white">info@searchspaces.in</p>
                   </li>
                 </ul>
               </div>
@@ -305,7 +310,7 @@ export default function Footer1() {
         <div className="container">
           <div className="content-footer-bottom">
             <div className="copyright">
-              ©{new Date().getFullYear()} Homelengo. All Rights Reserved.
+              ©{new Date().getFullYear()} Search Space. All Rights Reserved. Crafted By Web Techneeq.
             </div>
             <ul className="menu-bottom">
               <li>
