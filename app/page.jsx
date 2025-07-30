@@ -26,8 +26,8 @@ export default function Home() {
       <Locations properties={properties}/>
       <Services />
       <Benefit />
-      <Testimonials />
-      <Agents />
+{/*       <Testimonials /> */}
+{/*       <Agents /> */}
 {/*       <Brands /> */}
       <Blogs />
       <Footer1 />
