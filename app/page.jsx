@@ -25,7 +25,7 @@ export default function Home() {
       <Properties />
       <Locations properties={properties}/>
       <Services />
-      <Benefit />
+{/*       <Benefit /> */}
 {/*       <Testimonials /> */}
 {/*       <Agents /> */}
 {/*       <Brands /> */}
