@@ -28,7 +28,7 @@ export default function Home() {
       <Benefit />
       <Testimonials />
       <Agents />
-      <Brands />
+{/*       <Brands /> */}
       <Blogs />
       <Footer1 />
     </>
