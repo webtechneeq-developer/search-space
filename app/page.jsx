@@ -11,6 +11,7 @@ import Properties2 from "@/components/homes/home-1/Properties2";
 import Services from "@/components/homes/home-1/Services";
 import Testimonials from "@/components/common/Testimonials";
 import { properties } from "@/data/demoProporties";
+import AllProperties from "@/components/homes/home-1/AllProperties";
 
 export const metadata = {
   title: "Search Spaces",
@@ -21,7 +22,7 @@ export default function Home() {
     <>
       <Header1 />
       <Hero />
-      <Properties />
+      <AllProperties />
       <Locations properties={properties} />
       <Services />
       {/*       <Benefit /> */}

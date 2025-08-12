@@ -1,18 +1,19 @@
 "use client";
-import { filterOptions, properties } from "@/data/properties";
+import { allProperties } from "@/data/demoProporties";
+import { filterOptions } from "@/data/properties";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Properties() {
+export default function AllProperties() {
   const [selectedOption, setSelectedOption] = useState(filterOptions[0]);
-  const [filtered, setFiltered] = useState(properties);
+  const [filtered, setFiltered] = useState(allProperties);
   useEffect(() => {
-    if (selectedOption == "View All") {
-      setFiltered(properties);
+    if (selectedOption == "Coworking Space") {
+      setFiltered(allProperties);
     } else {
       setFiltered(
-        properties.filter((el) => el.filterOptions.includes(selectedOption))
+        allProperties.filter((el) => el.filterOptions.includes(selectedOption))
       );
     }
   }, [selectedOption]);
