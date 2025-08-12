@@ -13,7 +13,6 @@ export default function page() {
   return (
     <>
       <Header1 />
-      <DetailsTitle1 />
       <Slider3 />
       <PropertyDetails />
       <Footer1 />

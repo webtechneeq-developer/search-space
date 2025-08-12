@@ -1,15 +1,15 @@
 import { allProperties } from "@/data/properties";
 import React from "react";
 
-export default function DetailsTitle1({ propertyItem }) {
+export default function DetailsTitle1() {
   return (
     <div className="flat-section-v4">
       <div className="container">
         <div className="header-property-detail">
           <div className="content-top d-flex justify-content-between align-items-center">
-            <h3 className="title link fw-8">{propertyItem.title}</h3>
+            <h3 className="title link fw-8">River Lake Apartment</h3>
             <div className="box-price d-flex align-items-end">
-              <h3 className="fw-8">₹{propertyItem.price}</h3>
+              <h3 className="fw-8">₹2000</h3>
               <span className="body-1 text-variant-1">/month</span>
             </div>
           </div>
