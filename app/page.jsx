@@ -17,18 +17,17 @@ export const metadata = {
   description: "Search Spaces",
 };
 export default function Home() {
-  
   return (
     <>
       <Header1 />
       <Hero />
       <Properties />
-      <Locations properties={properties}/>
+      <Locations properties={properties} />
       <Services />
-{/*       <Benefit /> */}
-{/*       <Testimonials /> */}
-{/*       <Agents /> */}
-{/*       <Brands /> */}
+      {/*       <Benefit /> */}
+      {/*       <Testimonials /> */}
+      {/*       <Agents /> */}
+      {/*       <Brands /> */}
       <Blogs />
       <Footer1 />
     </>

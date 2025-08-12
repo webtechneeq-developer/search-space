@@ -1,7 +1,7 @@
 export const properties = {
   mumbai: [
     {
-      id: 1,
+      id: 101,
       imgSrc: "/images/home/house-19.jpg",
       alt: "img",
       address: "Mithi River Road, Kurla West, Mumbai",
@@ -34,7 +34,7 @@ export const properties = {
       price: 9800000,
     },
     {
-      id: 2,
+      id: 102,
       imgSrc: "/images/home/house-20.jpg",
       alt: "img",
       address: "Veera Desai Road, Andheri West, Mumbai",
@@ -69,7 +69,7 @@ export const properties = {
       long: 72.8331,
     },
     {
-      id: 3,
+      id: 103,
       imgSrc: "/images/home/house-21.jpg",
       alt: "img",
       address: "Link Road, Malad West, Mumbai",
@@ -105,7 +105,7 @@ export const properties = {
       long: 72.8429,
     },
     {
-      id: 4,
+      id: 104,
       imgSrc: "/images/home/house-22.jpg",
       alt: "img",
       address: "Senapati Bapat Marg, Lower Parel, Mumbai",
@@ -140,7 +140,7 @@ export const properties = {
   ],
   "navi-mumbai": [
     {
-      id: 1,
+      id: 105,
       imgSrc: "/images/home/house-23.jpg",
       alt: "img",
       address: "Sector 5, Airoli, Navi Mumbai",
@@ -172,7 +172,7 @@ export const properties = {
       price: 8500000,
     },
     {
-      id: 2,
+      id: 106,
       imgSrc: "/images/home/house-2.jpg",
       alt: "img",
       address: "Sector 10, Airoli, Navi Mumbai",
@@ -205,7 +205,7 @@ export const properties = {
       long: 72.9999,
     },
     {
-      id: 3,
+      id: 107,
       imgSrc: "/images/home/house-24.jpg",
       alt: "img",
       address: "Airoli Railway Station Road, Navi Mumbai",
@@ -236,7 +236,7 @@ export const properties = {
       long: 72.9968,
     },
     {
-      id: 4,
+      id: 108,
       imgSrc: "/images/home/house-25.jpg",
       alt: "img",
       address: "Mindspace Road, Airoli, Navi Mumbai",
@@ -270,7 +270,7 @@ export const properties = {
   ],
   pune: [
     {
-      id: 1,
+      id: 109,
       imgSrc: "/images/home/house-25.jpg",
       alt: "img",
       address: "501 Marvel Edge, Magarpatta Road, Pune, Maharashtra",
@@ -290,7 +290,7 @@ export const properties = {
       price: 28000,
     },
     {
-      id: 2,
+      id: 110,
       imgSrc: "/images/home/house-27.jpg",
       alt: "img",
       address: "Ganga Constella, Magarpatta City, Pune, Maharashtra",
@@ -317,7 +317,7 @@ export const properties = {
       price: 35000,
     },
     {
-      id: 3,
+      id: 111,
       imgSrc: "/images/home/house-27.jpg",
       alt: "img",
       address: "EON Free Zone, Kharadi, Pune, Maharashtra",
@@ -337,7 +337,7 @@ export const properties = {
       price: 18500,
     },
     {
-      id: 4,
+      id: 112,
       imgSrc: "/images/home/house-28.jpg",
       alt: "img",
       address: "Nyati Elysia, Kharadi, Pune, Maharashtra",
@@ -357,7 +357,7 @@ export const properties = {
       price: 30000,
     },
     {
-      id: 5,
+      id: 113,
       imgSrc: "/images/home/house-29.jpg",
       alt: "img",
       address: "Amanora Neo Towers, Magarpatta Road, Pune",
@@ -383,7 +383,7 @@ export const properties = {
       price: 8800000,
     },
     {
-      id: 6,
+      id: 114,
       imgSrc: "/images/home/house-19.jpg  ",
       alt: "img",
       address: "VTP Pegasus, Kharadi Bypass, Pune",

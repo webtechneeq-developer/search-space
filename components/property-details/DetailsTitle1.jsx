@@ -1,7 +1,7 @@
 import { allProperties } from "@/data/properties";
 import React from "react";
 
-export default function DetailsTitle1({ propertyItem = allProperties[0] }) {
+export default function DetailsTitle1({ propertyItem }) {
   return (
     <div className="flat-section-v4">
       <div className="container">
@@ -9,7 +9,7 @@ export default function DetailsTitle1({ propertyItem = allProperties[0] }) {
           <div className="content-top d-flex justify-content-between align-items-center">
             <h3 className="title link fw-8">{propertyItem.title}</h3>
             <div className="box-price d-flex align-items-end">
-              <h3 className="fw-8">$250,00</h3>
+              <h3 className="fw-8">₹{propertyItem.price}</h3>
               <span className="body-1 text-variant-1">/month</span>
             </div>
           </div>
@@ -39,9 +39,7 @@ export default function DetailsTitle1({ propertyItem = allProperties[0] }) {
                 <div className="label">Location</div>
                 <p className="meta-item">
                   <span className="icon icon-mapPin" />
-                  <span className="text-variant-1">
-                    145 Brooklyn Ave, Califonia, New York
-                  </span>
+                  <span className="text-variant-1">{propertyItem.address}</span>
                 </p>
               </div>
             </div>

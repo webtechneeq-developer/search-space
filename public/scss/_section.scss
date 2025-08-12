@@ -22,6 +22,17 @@
   padding-bottom: 100px;
 }
 
+.slide-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.slide-container.open {
+  max-height: 500px; /* big enough to fit content */
+}
+
+
 .flat-title-page {
   margin-top: 50px;
   margin-right: 15px;

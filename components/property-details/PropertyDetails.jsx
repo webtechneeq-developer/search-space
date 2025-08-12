@@ -14,7 +14,8 @@ import ContactSeller from "./ContactSeller";
 import WidgetBox from "./WidgetBox";
 import WhyChoose from "./WhyChoose";
 import LeatestProperties from "./LeatestProperties";
-export default function PropertyDetails() {
+export default function PropertyDetails({ propertyItem }) {
+  console.log("Get me Property data on component ", propertyItem);
   return (
     <>
       <section className="flat-section-v3 flat-property-detail">
@@ -22,7 +23,7 @@ export default function PropertyDetails() {
           <div className="row">
             <div className="col-xl-8 col-lg-7">
               <div className="single-property-element single-property-desc">
-                <Description />
+                <Description propertyItem={propertyItem} />
               </div>
               <div className="single-property-element single-property-overview">
                 <Overview />
@@ -34,7 +35,7 @@ export default function PropertyDetails() {
                 <Details />
               </div>
               <div className="single-property-element single-property-feature">
-                <Features />
+                <Features propertyItem={propertyItem} />
               </div>
               <div className="single-property-element single-property-map">
                 <MapLocation />
