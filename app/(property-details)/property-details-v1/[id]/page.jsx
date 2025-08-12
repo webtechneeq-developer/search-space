@@ -1,8 +1,8 @@
 import Footer1 from "@/components/footer/Footer1";
 import Header1 from "@/components/headers/Header1";
-import DetailsTitle1 from "@/components/property-details/DetailsTitle1";
-import PropertyDetails from "@/components/property-details/PropertyDetails";
-import Slider1 from "@/components/property-details/Slider1";
+import PropertyContentDetails from "@/components/property-details/PropertyContentDetails";
+import PropertyDetailsTitle from "@/components/property-details/PropertyDeatilsTitle";
+import PropertySlider from "@/components/property-details/PropertySlider";
 import { allProperties } from "@/data/demoProporties";
 import React from "react";
 
@@ -17,9 +17,9 @@ export default function page({ params }) {
   return (
     <>
       <Header1 />
-      <DetailsTitle1 propertyItem={propertyItem} />
-      <Slider1 propertyImg={propertyItem.imgSrc} />
-      <PropertyDetails propertyItem={propertyItem} />
+      <PropertyDetailsTitle propertyItem={propertyItem} />
+      <PropertySlider propertyImg={propertyItem.imgSrc} />
+      <PropertyContentDetails propertyItem={propertyItem} />
       <Footer1 />
     </>
   );

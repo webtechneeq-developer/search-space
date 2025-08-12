@@ -4,21 +4,18 @@ import DetailsTitle1 from "@/components/property-details/DetailsTitle1";
 import Gallery from "@/components/property-details/Gallery";
 import PropertyDetails from "@/components/property-details/PropertyDetails";
 import React from "react";
-import { allProperties } from "@/data/demoProporties";
 
 export const metadata = {
   title: "Property Details 03 || Homelengo - Real Estate React Nextjs Template",
   description: "Homelengo - Real Estate React Nextjs Template",
 };
-export default function page({ params }) {
-  const propertyItem =
-    allProperties.filter((elm) => elm.id == params.id)[0] || allProperties[0];
+export default function page() {
   return (
     <>
       <Header1 />
-      <DetailsTitle1 propertyItem={propertyItem} />
+      <DetailsTitle1 />
       <Gallery />
-      <PropertyDetails propertyItem={propertyItem} />
+      <PropertyDetails />
       <Footer1 />
     </>
   );
