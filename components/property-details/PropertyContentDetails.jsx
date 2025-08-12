@@ -28,9 +28,6 @@ export default function PropertyContentDetails({ propertyItem }) {
               <div className="single-property-element single-property-overview">
                 <Overview />
               </div>
-              <div className="single-property-element single-property-video">
-                <Video />
-              </div>
               <div className="single-property-element single-property-info">
                 <Details />
               </div>
@@ -39,24 +36,6 @@ export default function PropertyContentDetails({ propertyItem }) {
               </div>
               <div className="single-property-element single-property-map">
                 <MapLocation />
-              </div>
-              <div className="single-property-element single-property-floor">
-                <FloorPlan />
-              </div>
-              <div className="single-property-element single-property-attachments">
-                <AttachMents />
-              </div>
-              <div className="single-property-element single-property-explore">
-                <Explore />
-              </div>
-              <div className="single-property-element single-property-loan">
-                <LoanCalculator />
-              </div>
-              <div className="single-property-element single-property-nearby">
-                <Nearby />
-              </div>
-              <div className="single-property-element single-wrapper-review">
-                <GuestReview />
               </div>
             </div>
             <div className="col-xl-4 col-lg-5">
