@@ -17,8 +17,6 @@ const featureGroups = [
 ];
 
 export default function Features({ propertyItem }) {
-  console.log("Get me Feature", propertyItem);
-
   const PropertyFeatures = propertyItem?.features;
   return (
     <>

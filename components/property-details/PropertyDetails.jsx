@@ -15,7 +15,6 @@ import WidgetBox from "./WidgetBox";
 import WhyChoose from "./WhyChoose";
 import LeatestProperties from "./LeatestProperties";
 export default function PropertyDetails({ propertyItem }) {
-  console.log("Get me Property data on component ", propertyItem);
   return (
     <>
       <section className="flat-section-v3 flat-property-detail">

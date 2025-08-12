@@ -14,7 +14,6 @@ export default function page({ params }) {
   const propertyItem =
     allProperties.filter((elm) => elm.id == params.id)[0] || allProperties[0];
 
-  console.log("get Properties Deatinl in Property Detail Page", propertyItem);
   return (
     <>
       <Header1 />
