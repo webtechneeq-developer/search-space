@@ -1,4 +1,3 @@
-import { allProperties } from "@/data/properties";
 import React from "react";
 
 export default function DetailsTitle1() {
