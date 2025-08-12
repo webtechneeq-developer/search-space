@@ -13,9 +13,7 @@ export default function page() {
   return (
     <>
       <Header1 />
-      <DetailsTitle1 />
       <Gallery />
-      <PropertyDetails />
       <Footer1 />
     </>
   );
