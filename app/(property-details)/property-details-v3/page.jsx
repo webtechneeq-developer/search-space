@@ -4,6 +4,7 @@ import DetailsTitle1 from "@/components/property-details/DetailsTitle1";
 import Gallery from "@/components/property-details/Gallery";
 import PropertyDetails from "@/components/property-details/PropertyDetails";
 import React from "react";
+import { allProperties } from "@/data/demoProporties";
 
 export const metadata = {
   title: "Property Details 03 || Homelengo - Real Estate React Nextjs Template",
