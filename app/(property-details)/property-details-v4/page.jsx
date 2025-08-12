@@ -9,13 +9,15 @@ export const metadata = {
   title: "Property Details 04 || Homelengo - Real Estate React Nextjs Template",
   description: "Homelengo - Real Estate React Nextjs Template",
 };
-export default function page() {
+export default function page({ params }) {
+  const propertyItem =
+    allProperties.filter((elm) => elm.id == params.id)[0] || allProperties[0];
   return (
     <>
       <Header1 />
-      <DetailsTitle1 />
+      <DetailsTitle1 propertyItem={propertyItem} />
       <Slider3 />
-      <PropertyDetails />
+      <PropertyDetails propertyItem={propertyItem} />
       <Footer1 />
     </>
   );
