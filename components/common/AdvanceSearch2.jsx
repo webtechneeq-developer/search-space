@@ -104,7 +104,7 @@ export default function AdvanceSearch2({ allProps, clearFilter = () => {} }) {
           </div>
         </div>
       </div>
-      <div className="group-checkbox">
+      {/* <div className="group-checkbox">
         <div className="text-1 text-black-2">Amenities:</div>
         <div className="group-amenities grid-6">
           {featureOptions.map((feature, index) => (
@@ -123,7 +123,7 @@ export default function AdvanceSearch2({ allProps, clearFilter = () => {} }) {
             </fieldset>
           ))}
         </div>
-      </div>
+      </div> */}
       <a
         className="tf-btn btn-linemt-5 clear-filter mt-3"
         onClick={clearFilter}

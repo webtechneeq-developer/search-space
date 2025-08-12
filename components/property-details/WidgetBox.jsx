@@ -9,22 +9,7 @@ export default function WidgetBox() {
   return (
     <>
       {" "}
-      <ul className="nav-tab-form" role="tablist">
-        <li className="nav-tab-item" role="presentation">
-          <a
-            href="#forRent"
-            className="nav-link-item active"
-            data-bs-toggle="tab"
-          >
-            For Rent
-          </a>
-        </li>
-        <li className="nav-tab-item" role="presentation">
-          <a href="#forSale" className="nav-link-item" data-bs-toggle="tab">
-            For Sale
-          </a>
-        </li>
-      </ul>
+      <h6>Search Properties...</h6>
       <div className="tab-content">
         <div className="tab-pane fade active show" role="tabpanel">
           <div className="form-sl">
@@ -132,7 +117,7 @@ export default function WidgetBox() {
                       />
                     </div>
                   </div>
-                  <div className="box">
+                  {/* <div className="box">
                     <div className="form-style wd-amenities">
                       <div className="group-checkbox">
                         <h6 className="title text-black-2">Amenities:</h6>
@@ -384,7 +369,7 @@ export default function WidgetBox() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="form-style">
                     <button
                       type="submit"

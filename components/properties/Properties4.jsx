@@ -412,7 +412,7 @@ export default function Properties4() {
                                 />
                               </div>
                             </div>
-                            <div className="box">
+                            {/* <div className="box">
                               <div className="form-style wd-amenities">
                                 <div className="group-checkbox">
                                   <h6 className="title text-black-2">
@@ -441,7 +441,7 @@ export default function Properties4() {
                                   </div>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                             <a
                               className="tf-btn btn-linemt-5 clear-filter"
                               onClick={clearFilter}

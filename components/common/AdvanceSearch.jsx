@@ -77,7 +77,7 @@ export default function AdvanceSearch() {
           </div>
         </div>
       </div>
-      <div className="group-checkbox">
+      {/* <div className="group-checkbox">
         <div className="text-1 text-black-2">Amenities:</div>
         <div className="group-amenities grid-6">
           <div className="box-amenities">
@@ -293,7 +293,7 @@ export default function AdvanceSearch() {
             </fieldset>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
