@@ -3,6 +3,11 @@ export const properties = {
     {
       id: 101,
       imgSrc: "/images/home/house-19.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Mithi River Road, Kurla West, Mumbai",
       title: "Modern Kurla Studio Apartment",
@@ -36,6 +41,11 @@ export const properties = {
     {
       id: 102,
       imgSrc: "/images/home/house-20.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Veera Desai Road, Andheri West, Mumbai",
       title: "Spacious Andheri Villa with Balcony",
@@ -71,6 +81,11 @@ export const properties = {
     {
       id: 103,
       imgSrc: "/images/home/house-21.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Link Road, Malad West, Mumbai",
       title: "3BHK Malad Sea View Apartment",
@@ -107,6 +122,11 @@ export const properties = {
     {
       id: 104,
       imgSrc: "/images/home/house-22.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Senapati Bapat Marg, Lower Parel, Mumbai",
       title: "Luxury Lower Parel Sky Villa",
@@ -142,6 +162,11 @@ export const properties = {
     {
       id: 105,
       imgSrc: "/images/home/house-23.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Sector 5, Airoli, Navi Mumbai",
       title: "Compact Studio in Airoli Sector 5",
@@ -174,6 +199,11 @@ export const properties = {
     {
       id: 106,
       imgSrc: "/images/home/house-2.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Sector 10, Airoli, Navi Mumbai",
       title: "Spacious Airoli Villa with Garden",
@@ -207,6 +237,11 @@ export const properties = {
     {
       id: 107,
       imgSrc: "/images/home/house-24.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Airoli Railway Station Road, Navi Mumbai",
       title: "2BHK with Lake View in Airoli",
@@ -238,6 +273,11 @@ export const properties = {
     {
       id: 108,
       imgSrc: "/images/home/house-25.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Mindspace Road, Airoli, Navi Mumbai",
       title: "Luxury Smart Home in Airoli Mindspace",
@@ -272,6 +312,11 @@ export const properties = {
     {
       id: 109,
       imgSrc: "/images/home/house-25.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "501 Marvel Edge, Magarpatta Road, Pune, Maharashtra",
       title: "Stylish 2BHK in Magarpatta Marvel",
@@ -292,6 +337,11 @@ export const properties = {
     {
       id: 110,
       imgSrc: "/images/home/house-27.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Ganga Constella, Magarpatta City, Pune, Maharashtra",
       title: "Furnished Flat near Seasons Mall",
@@ -319,6 +369,11 @@ export const properties = {
     {
       id: 111,
       imgSrc: "/images/home/house-27.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "EON Free Zone, Kharadi, Pune, Maharashtra",
       title: "1BHK Executive Suite in Kharadi",
@@ -339,6 +394,11 @@ export const properties = {
     {
       id: 112,
       imgSrc: "/images/home/house-28.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Nyati Elysia, Kharadi, Pune, Maharashtra",
       title: "Luxury 2BHK with River View",
@@ -359,6 +419,11 @@ export const properties = {
     {
       id: 113,
       imgSrc: "/images/home/house-29.jpg",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "Amanora Neo Towers, Magarpatta Road, Pune",
       title: "High-Rise 3BHK in Amanora Park",
@@ -385,6 +450,11 @@ export const properties = {
     {
       id: 114,
       imgSrc: "/images/home/house-19.jpg  ",
+      singlePageImgSrc: [
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+        "/images/home/house-19.jpg",
+      ],
       alt: "img",
       address: "VTP Pegasus, Kharadi Bypass, Pune",
       title: "Modern Studio for Young Professionals",

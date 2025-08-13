@@ -18,7 +18,7 @@ export default function page({ params }) {
     <>
       <Header1 />
       <PropertyDetailsTitle propertyItem={propertyItem} />
-      <PropertySlider propertyImg={propertyItem.imgSrc} />
+      <PropertySlider propertyImg={propertyItem.singlePageImgSrc} />
       <PropertyContentDetails propertyItem={propertyItem} />
       <Footer1 />
     </>
