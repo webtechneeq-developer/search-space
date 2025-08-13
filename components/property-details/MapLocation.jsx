@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function MapLocation() {
+export default function MapLocation({ propertyItem }) {
   return (
     <>
       <h5 className="title fw-6">Map location</h5>
       <iframe
         className="map"
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d135905.11693909427!2d-73.95165795400088!3d41.17584829642291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1727094281524!5m2!1sen!2s"
+        src={propertyItem.map}
         width="100%"
         height={478}
         style={{ border: 0 }}
@@ -18,11 +18,11 @@ export default function MapLocation() {
         <ul className="box-left">
           <li>
             <span className="label fw-6">Address</span>
-            <div className="text text-variant-1">150 sqft</div>
+            <div className="text text-variant-1">{propertyItem.address}</div>
           </li>
           <li>
             <span className="label fw-6">City</span>
-            <div className="text text-variant-1">#1234</div>
+            <div className="text text-variant-1">{propertyItem.city}</div>
           </li>
           <li>
             <span className="label fw-6">State/county</span>

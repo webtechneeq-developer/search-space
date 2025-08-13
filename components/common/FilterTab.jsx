@@ -11,11 +11,9 @@ export default function FilterTab({
   const advanceBtnRef = useRef();
   const router = useRouter();
 
-
   // State for form inputs
   const [selectedType, setSelectedType] = useState("");
   const [location, setLocation] = useState("");
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -80,8 +78,18 @@ export default function FilterTab({
                     <label>Type</label>
                     <div className="group-select">
                       <DropdownSelect
-                      onChange={(value) => setSelectedType(value)}
-                        options={["Select Type", "Co-Working Office", "Co-Working Dedicated Desk", "Co-Working Flexi Desk", "Co-Working Meeting Room", "Co-Working Conference Room", "Co-Working Day Pass", "Virtual Office"]}
+                        onChange={(value) => setSelectedType(value)}
+                        options={[
+                          "Select Type",
+                          "Private Office",
+                          "Co-Working Office",
+                          "Co-Working Dedicated Desk",
+                          "Co-Working Flexi Desk",
+                          "Co-Working Meeting Room",
+                          "Co-Working Conference Room",
+                          "Co-Working Day Pass",
+                          "Virtual Office",
+                        ]}
                       />
                     </div>
                   </div>
@@ -143,10 +151,7 @@ export default function FilterTab({
                       </svg>
                     </a>
                   </div> */}
-                  <button
-                    type="submit"
-                    className="tf-btn btn-search primary"
-                  >
+                  <button type="submit" className="tf-btn btn-search primary">
                     Search <i className="icon icon-search" />
                   </button>
                 </div>

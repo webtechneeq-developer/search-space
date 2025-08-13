@@ -1,4 +1,5 @@
 import { properties2 } from "@/data/properties";
+import { mumbai, navimumbai, pune } from "@/data/propertiesData";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -9,7 +10,7 @@ export default function LeatestProperties() {
       {" "}
       <h5 className="fw-6 title">Latest Propeties</h5>
       <ul>
-        {properties2.slice(1, 6).map((elm, i) => (
+        {pune.slice(1, 6).map((elm, i) => (
           <li key={i} className="latest-property-item">
             <Link
               href={`/property-details-v1/${elm.id}`}

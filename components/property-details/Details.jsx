@@ -1,17 +1,17 @@
-const items = [
-  { label: "ID:", content: "#1234" },
-  { label: "Beds", content: "7.328" },
-  { label: "Price", content: "$7,500" },
-  { label: "Year built", content: "2024" },
-  { label: "Size", content: "150 sqft" },
-  { label: "Type", content: "Villa" },
-  { label: "Rooms", content: "9" },
-  { label: "Status", content: "For sale" },
-  { label: "Baths", content: "3" },
-  { label: "Garage", content: "1" },
-];
+export default function Details({ propertyItem }) {
+  const items = [
+    { label: "ID:", content: propertyItem.id },
+    { label: "Beds", content: "7.328" },
+    { label: "Price", content: propertyItem.price },
+    { label: "Year built", content: "2024" },
+    { label: "Size", content: "150 sqft" },
+    { label: "Type", content: propertyItem.type },
+    { label: "Rooms", content: "9" },
+    { label: "Status", content: "For sale" },
+    { label: "Baths", content: "3" },
+    { label: "Garage", content: "1" },
+  ];
 
-export default function Details() {
   return (
     <>
       {" "}

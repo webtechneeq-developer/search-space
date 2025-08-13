@@ -8,15 +8,26 @@ import Image from "next/image";
 export default function AllProperties() {
   const [selectedOption, setSelectedOption] = useState(filterOptions[0]);
   const [filtered, setFiltered] = useState(allProperties);
+  // useEffect(() => {
+  //   if (selectedOption == "Coworking Space") {
+  //     setFiltered(allProperties);
+  //   } else {
+  //     setFiltered(
+  //       allProperties.filter((el) => el.filterOptions.includes(selectedOption))
+  //     );
+  //   }
+  // }, [selectedOption]);
+
   useEffect(() => {
-    if (selectedOption == "Coworking Space") {
-      setFiltered(allProperties);
-    } else {
-      setFiltered(
-        allProperties.filter((el) => el.filterOptions.includes(selectedOption))
-      );
-    }
+    const filteredData = allProperties.filter(
+      (property) => property.type === selectedOption
+    );
+
+    setFiltered(filteredData.slice(0, 3)); // limit to first 3 for all
   }, [selectedOption]);
+
+  console.log("All Data on Homepage", allProperties);
+  console.log("selected option", selectedOption);
 
   return (
     <section className="flat-section flat-recommended">

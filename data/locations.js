@@ -143,3 +143,21 @@ export const locations3 = [
     isActive: false,
   },
 ];
+
+export const locationProperty = [
+  {
+    name: "Mumbai",
+    imgSrc: "/images/andheri/mumbai.webp",
+    isActive: false,
+  },
+  {
+    name: "Navi Mumbai",
+    imgSrc: "/images/airoli/airoli.webp",
+    isActive: false,
+  },
+  {
+    name: "Pune",
+    imgSrc: "/images/kharadi/pune.webp",
+    isActive: false,
+  },
+];

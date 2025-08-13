@@ -26,16 +26,19 @@ export default function PropertyContentDetails({ propertyItem }) {
                 <PropertyDescription propertyItem={propertyItem} />
               </div>
               <div className="single-property-element single-property-overview">
-                <Overview />
+                <Overview propertyItem={propertyItem} />
               </div>
               <div className="single-property-element single-property-info">
-                <Details />
+                <Details propertyItem={propertyItem} />
               </div>
               <div className="single-property-element single-property-feature">
                 <PropertyFeatures propertyItem={propertyItem} />
               </div>
+              <div className="single-property-element single-property-nearby">
+                <Nearby />
+              </div>
               <div className="single-property-element single-property-map">
-                <MapLocation />
+                <MapLocation propertyItem={propertyItem} />
               </div>
             </div>
             <div className="col-xl-4 col-lg-5">

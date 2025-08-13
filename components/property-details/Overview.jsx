@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Overview() {
+export default function Overview({ propertyItem }) {
   return (
     <>
       <h6 className="title fw-6">Overview</h6>
@@ -11,7 +11,7 @@ export default function Overview() {
           </a>
           <div className="content">
             <span className="label">ID:</span>
-            <span>2297</span>
+            <span>{propertyItem.id}</span>
           </div>
         </li>
         <li className="item">
@@ -20,7 +20,7 @@ export default function Overview() {
           </a>
           <div className="content">
             <span className="label">Type:</span>
-            <span>House</span>
+            <span>{propertyItem.type}</span>
           </div>
         </li>
         <li className="item">

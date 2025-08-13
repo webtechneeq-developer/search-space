@@ -1246,12 +1246,11 @@ export const allProperties = [
 ];
 
 export const filterOptions = [
-  "Coworking Space",
-  "Coworking Dedicated Desk",
-  "Coworking Flexi Desk",
+  "Private Office",
+  "Dedicated Desk",
+  "Flexi Desk",
   "Meeting Room",
-  "Conference Room",
-  "Coworking Day Pass",
+  "Day Pass",
   "Virtual Office",
 ];
 

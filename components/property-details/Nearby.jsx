@@ -1,8 +1,8 @@
 const nearbyLeft = [
-  { label: "School:", distance: "0.7 km" },
-  { label: "University:", distance: "1.3 km" },
-  { label: "Grocery center:", distance: "0.6 km" },
-  { label: "Market:", distance: "1.1 km" },
+  { label: "From Ram Mandir:", distance: "5 min walk" },
+  { label: "From Highway:", distance: "2 min walk" },
+  { label: "From Jogeshwari Station:", distance: "10 min walk" },
+  { label: "From Jogeshwari Metro Station:", distance: "2 min walk" },
 ];
 
 const nearbyRight = [
@@ -22,7 +22,7 @@ export default function Nearby() {
         living environment and the property's convenience.
       </p>
       <div className="row box-nearby">
-        <div className="col-md-5">
+        <div className="col-md-12">
           <ul className="box-left">
             {nearbyLeft.map((item, index) => (
               <li key={index} className="item-nearby">
@@ -32,7 +32,7 @@ export default function Nearby() {
             ))}
           </ul>
         </div>
-        <div className="col-md-5">
+        {/* <div className="col-md-5">
           <ul className="box-right">
             {nearbyRight.map((item, index) => (
               <li key={index} className="item-nearby">
@@ -41,7 +41,7 @@ export default function Nearby() {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
       </div>
     </>
   );
