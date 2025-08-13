@@ -13,7 +13,6 @@ export default function page() {
     <>
       <Header1 />
       <Slider2 />
-      <PropertyDetails2 />
       <Footer1 />
     </>
   );

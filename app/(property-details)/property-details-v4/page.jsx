@@ -14,7 +14,6 @@ export default function page() {
     <>
       <Header1 />
       <Slider3 />
-      <PropertyDetails />
       <Footer1 />
     </>
   );
