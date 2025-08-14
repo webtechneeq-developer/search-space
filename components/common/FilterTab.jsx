@@ -41,7 +41,7 @@ export default function FilterTab({
     e.preventDefault();
     if (location && selectedType) {
       const query = new URLSearchParams({
-        location,
+        location: location.toLocaleLowerCase(),
         type: selectedType,
       }).toString();
       router.push(`/properties?${query}`);
