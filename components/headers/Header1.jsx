@@ -27,7 +27,7 @@ export default function Header1({
       <div className="header-lower">
         <div className="row">
           <div className="col-lg-12">
-            <div className="inner-header">
+            <div className="inner-header justify-content-around">
               <div className="inner-header-left">
                 <div className="logo-box flex">
                   <div className="logo">
