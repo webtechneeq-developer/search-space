@@ -19,8 +19,7 @@ export default function page({ params }) {
     <>
       <Suspense fallback={<div>Loading properties...</div>}>
         <Header1 />
-        {/* <Properties7 location={location} /> */}
-        <SubLocation />
+        <Properties7 location={location} />
         <Footer1 />
       </Suspense>
     </>

@@ -723,7 +723,7 @@ export const properties = {
       price: 13000,
     },
   ],
-  "navi-mumbai": [
+  navimumbai: [
     {
       id: 118,
       imgSrc: "/images/home/house-19.jpg",
@@ -1247,7 +1247,7 @@ export const properties = {
 
 export const allProperties = [
   ...properties.mumbai,
-  ...properties["navi-mumbai"],
+  ...properties["navimumbai"],
   ...properties.pune,
 ];
 
