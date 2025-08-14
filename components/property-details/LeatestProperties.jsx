@@ -10,7 +10,7 @@ export default function LeatestProperties() {
       {" "}
       <h5 className="fw-6 title">Latest Propeties</h5>
       <ul>
-        {pune.slice(1, 6).map((elm, i) => (
+        {pune?.kharadi.slice(1, 6).map((elm, i) => (
           <li key={i} className="latest-property-item">
             <Link
               href={`/property-details-v1/${elm.id}`}

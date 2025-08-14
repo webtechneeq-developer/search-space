@@ -12,8 +12,10 @@ import { allProperties } from "@/data/properties";
 import DropdownSelect2 from "../common/DropdownSelect2";
 import { initialState, reducer } from "@/context/propertyFilterReducer";
 import RandomBanner from "../common/RamdomBanner";
+import { useParams } from "next/navigation";
 
-export default function Properties7({ location }) {
+export default function Properties9() {
+  const { location, sublocation, subLocation } = useParams(); // "mumbai", "pune", etc.
   const searchParams = useSearchParams();
   //const type = searchParams.get("type");
   //  const location = searchParams.get("location");
@@ -25,7 +27,7 @@ export default function Properties7({ location }) {
 
   // Get the Mumbai properties
   const locationProperties = properties[location];
-  console.log("location", location);
+  console.log("location", location, sublocation, subLocation);
 
   console.log("location properties", locationProperties);
 
@@ -421,7 +423,7 @@ export default function Properties7({ location }) {
                         <div className="homelengo-box">
                           <div className="archive-top">
                             <Link
-                              href={`/property-details-v1/${elm.id}`}
+                              href={`/${location}/${subLocation}/${elm.id}`}
                               className="images-group"
                             >
                               <div className="images-style">
@@ -470,7 +472,7 @@ export default function Properties7({ location }) {
                             <div className="content-top">
                               <h6 className="text-capitalize">
                                 <Link
-                                  href={`/property-details-v1/${elm.id}`}
+                                  href={`/${location}/${subLocation}/${elm.id}`}
                                   className="link"
                                 >
                                   {elm.title}
@@ -538,7 +540,7 @@ export default function Properties7({ location }) {
                         <div className="homelengo-box list-style-1 line">
                           <div className="archive-top">
                             <Link
-                              href={`/property-details-v1/${elm.id}`}
+                              href={`/${location}/${subLocation}/${elm.id}`}
                               className="images-group"
                             >
                               <div className="images-style">
@@ -562,7 +564,7 @@ export default function Properties7({ location }) {
                             <div className="content-top">
                               <h6 className="text-capitalize">
                                 <Link
-                                  href={`/property-details-v1/${elm.id}`}
+                                  href={`/${location}/${subLocation}/${elm.id}`}
                                   className="link text-line-clamp-1"
                                 >
                                   {elm.title}

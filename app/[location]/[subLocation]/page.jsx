@@ -4,6 +4,7 @@ import Properties3 from "@/components/properties/Properties3";
 import Properties7 from "@/components/properties/Properties7";
 import SubLocation from "@/components/properties/Properties8";
 import Properties8 from "@/components/properties/Properties8";
+import Properties9 from "@/components/properties/Properties9";
 import React from "react";
 import { Suspense } from "react";
 
@@ -13,13 +14,13 @@ export const metadata = {
   description: "Homelengo - Real Estate React Nextjs Template",
 };
 export default function page({ params }) {
-  const { location } = params;
+  const { SubLocation } = params;
 
   return (
     <>
       <Suspense fallback={<div>Loading properties...</div>}>
         <Header1 />
-        <Properties7 location={location} />
+        <Properties9 />
         <Footer1 />
       </Suspense>
     </>
