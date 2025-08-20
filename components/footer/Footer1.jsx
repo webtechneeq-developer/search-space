@@ -191,19 +191,17 @@ export default function Footer1() {
             <div className="col-lg-4 col-md-6">
               <div className="footer-cl-1">
                 <p className="text-variant-2">
-                  India’s fastest growing real estate tech enabled office space 
-                  search platform. We are an office space aggregator for searching 
-                  and comparing office spaces.
+                  India’s fastest growing real estate tech enabled office space
+                  search platform. We are an office space aggregator for
+                  searching and comparing office spaces.
                 </p>
                 <ul className="mt-12">
                   <li className="mt-12 d-flex align-items-center gap-8">
                     <i className="icon icon-mapPinLine fs-20 text-variant-2" />
                     <p className="text-white">
-                    Estatex Ventures Pvt. Ltd.
-                    B-405, Rustomjee Central 
-                    Park, Andheri – Kurla 
-                    Road, Chakala, Andheri 
-                    (E), Mumbai 400 059.    
+                      Estatex Ventures Pvt. Ltd. B-405, Rustomjee Central Park,
+                      Andheri – Kurla Road, Chakala, Andheri (E), Mumbai 400
+                      059.
                     </p>
                   </li>
                   <li className="mt-12 d-flex align-items-center gap-8">
@@ -310,7 +308,16 @@ export default function Footer1() {
         <div className="container">
           <div className="content-footer-bottom">
             <div className="copyright">
-              ©{new Date().getFullYear()} Search Space. All Rights Reserved. Crafted By Web Techneeq.
+              ©{new Date().getFullYear()} Search Space. All Rights Reserved.
+              Crafted By{" "}
+              <Link
+                target="_blank"
+                className="copyright"
+                href={`https://webtechneeq.com/`}
+              >
+                Web Techneeq
+              </Link>
+              .
             </div>
             <ul className="menu-bottom">
               <li>
