@@ -20,10 +20,15 @@ export default function Nav() {
               : ""
           }`}
         >
-          {item.links.map((link, linkIndex) => (
+          {/* {item.links.map((link, linkIndex) => (
             <a key={linkIndex}>
               <Link href={link.href}>{link.label}</Link>
             </a>
+          ))} */}
+          {item.links.map((link, linkIndex) => (
+            <Link key={linkIndex} href={link.href}>
+              {link.label}
+            </Link>
           ))}
           {/* <ul>
              {item.links.map((link, linkIndex) => (
