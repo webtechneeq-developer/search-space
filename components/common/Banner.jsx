@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 export default function Banner() {
   return (
-    <section className="flat-section pt-0 flat-banner">
+    <section className="flat-section pt-20 flat-banner">
       <div className="container">
         <div className="wrap-banner bg-primary-new">
           <div className="box-left">

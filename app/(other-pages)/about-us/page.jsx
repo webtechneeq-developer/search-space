@@ -20,10 +20,10 @@ export default function page() {
     <>
       <Header1 />
       <About />
-      <Agents />
-      <Brands />
+      {/* <Agents /> */}
+      {/* <Brands /> */}
       <Benefit />
-      <Testimonials2 />
+      {/* <Testimonials2 /> */}
       <Banner />
       <SeoLinks />
       <Footer1 />
