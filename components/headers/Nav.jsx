@@ -20,9 +20,13 @@ export default function Nav() {
               : ""
           }`}
         >
-          <a>{item.title}</a>
-          <ul>
-            {item.links.map((link, linkIndex) => (
+          {item.links.map((link, linkIndex) => (
+            <a key={linkIndex}>
+              <Link href={link.href}>{link.label}</Link>
+            </a>
+          ))}
+          {/* <ul>
+             {item.links.map((link, linkIndex) => (
               <li
                 key={linkIndex}
                 className={
@@ -33,8 +37,8 @@ export default function Nav() {
               >
                 <Link href={link.href}>{link.label}</Link>
               </li>
-            ))}
-          </ul>
+           ))}
+          </ul> */}
           <div className="dropdown2-btn"></div>
         </li>
       ))}

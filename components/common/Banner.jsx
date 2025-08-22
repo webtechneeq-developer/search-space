@@ -8,16 +8,19 @@ export default function Banner() {
         <div className="wrap-banner bg-primary-new">
           <div className="box-left">
             <div className="box-title">
-              <div className="text-subtitle text-primary">Become Partners</div>
-              <h3 className="mt-4 fw-8">
-                List your Properties on Homelengo, join Us Now!
-              </h3>
+              <div className="text-subtitle text-primary">
+                Wish to be part of our team?
+              </div>
+              <h6 className="mt-4 fw-8">
+                We are always looking for talented individuals and people who
+                are hungry to do great work.
+              </h6>
             </div>
             <Link
               href={`/contact`}
               className="tf-btn btn-view primary size-1 hover-btn-view"
             >
-              Become A Hosting <span className="icon icon-arrow-right2" />
+              Join Us Today <span className="icon icon-arrow-right2" />
             </Link>
           </div>
           <div className="box-right">

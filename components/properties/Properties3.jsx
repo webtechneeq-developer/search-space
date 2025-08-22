@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Pagination from "../common/Pagination";
 import AdvanceSearch2 from "../common/AdvanceSearch2";
-import { allProperties } from "@/data/properties";
+import { allProperties } from "@/data/demoProporties";
 import DropdownSelect2 from "../common/DropdownSelect2";
 import { initialState, reducer } from "@/context/propertyFilterReducer";
 import RandomBanner from "../common/RamdomBanner";
@@ -17,6 +17,7 @@ export default function Properties3() {
   const searchParams = useSearchParams();
   //const type = searchParams.get("type");
   const location = searchParams.get("location");
+  const [locationProperties, setLocationProperties] = useState([]);
   const ddContainer = useRef();
   const advanceBtnRef = useRef();
 
@@ -24,7 +25,35 @@ export default function Properties3() {
   // console.log("all properties", properties);
 
   // Get the Mumbai properties
-  const locationProperties = properties[location];
+
+  console.log("Location in Properties3", location);
+
+  console.log("Properties3 in Properties3", allProperties);
+
+  useEffect(() => {
+    const filteredLocation = () => {
+      if (!location || location.trim() === "") {
+        setLocationProperties(allProperties);
+        return;
+      }
+
+      const search = location.toLowerCase();
+
+      const getFilterProperties = allProperties.filter((p) => {
+        return (
+          (p.subLocation && p.subLocation.toLowerCase().includes(search)) ||
+          (p.city && p.city.toLowerCase().includes(search)) ||
+          (p.type && p.type.toLowerCase().includes(search)) ||
+          (p.address && p.address.toLowerCase().includes(search))
+        );
+      });
+
+      setLocationProperties(getFilterProperties);
+      console.log("Location Properties", getFilterProperties);
+    };
+
+    filteredLocation();
+  }, [location, allProperties]);
 
   console.log("location properties", locationProperties);
 
@@ -46,9 +75,53 @@ export default function Properties3() {
 
     console.log("search params", type, location);
 
-    console.log("Properties in useeffect", properties);
+    // const filteredLocation = () => {
+    //   if (locationProperties.length === 0) {
+    //     const getFilterProperties = properties[location] || [];
 
-    const locationProperties = properties[location] || [];
+    //     setLocationProperties(getFilterProperties || []);
+    //     console.log("Location Properties", getFilterProperties);
+    //   } else {
+    //     const getFilterProperties = allProperties.filter(
+    //       (p) => p.subLocation === location
+    //     );
+    //     setLocationProperties(getFilterProperties || []);
+    //     console.log("Location Properties", getFilterProperties);
+    //   }
+    // };
+
+    // filteredLocation();
+
+    //const locationProperties = properties[location] || [];
+
+    // if (locationProperties.length === 0) {
+    //   const getFilterProperties = properties[location] || [];
+
+    //   setLocationProperties(getFilterProperties || []);
+    //   console.log("Location Properties", getFilterProperties);
+    // } else {
+    //   const getFilterProperties = allProperties.filter(
+    //     (p) => p.subLocation === location
+    //   );
+    //   setLocationProperties(getFilterProperties || []);
+    //   console.log("Location Properties", getFilterProperties);
+    // }
+
+    // const filteredLocation = () => {
+    //   if (locationProperties === 0) {
+    //     const getFilterProperties = allProperties.filter(
+    //       (p) => p.subLocation.toLowerCase() === location.toLowerCase()
+    //     );
+    //     setLocationProperties(getFilterProperties || []);
+    //     console.log("Location Properties", getFilterProperties);
+    //   } else {
+    //     const getFilterProperties = properties[location] || [];
+    //     setLocationProperties(getFilterProperties || []);
+    //     console.log("Location Properties", properties[location]);
+    //   }
+    // };
+
+    // filteredLocation();
 
     console.log("locationProperties in useeffect", locationProperties);
 
@@ -64,13 +137,11 @@ export default function Properties3() {
     console.log("filtered", filtered);
 
     setFilteredProperties(filtered);
-  }, [searchParams, properties]);
+  }, [searchParams, locationProperties]);
 
   const formatIndianCurrency = (value) => {
     return new Intl.NumberFormat("en-IN").format(value);
   };
-
-  console.log("Properties", properties);
   console.log("FilteredProperties", filteredProperties);
 
   useEffect(() => {

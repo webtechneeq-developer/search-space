@@ -8,6 +8,8 @@ import Banner from "@/components/common/Banner";
 import About from "@/components/otherPages/About";
 import Slider1 from "@/components/property-details/Slider1";
 import React from "react";
+import { allProperties } from "@/data/demoProporties";
+import SeoLinks from "@/components/common/SeoLinks";
 
 export const metadata = {
   title: "About Us || Homelengo - Real Estate React Nextjs Template",
@@ -24,6 +26,7 @@ export default function page() {
       <Benefit />
       <Testimonials2 />
       <Banner />
+      <SeoLinks />
       <Footer1 />
     </>
   );

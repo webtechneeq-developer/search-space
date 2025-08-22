@@ -5,7 +5,7 @@ export default function Benefit() {
     <section className="flat-section bg-primary-new">
       <div className="container3">
         <div className="flat-img-with-text-v2">
-          <div className="content-left tf-image-box">
+          <div className="content-left tf-image-box flex-item">
             <div className="grid-img-group">
               <div className="tf-image-wrap item-1">
                 <div className="img-style hover-img-wrap">
@@ -63,14 +63,24 @@ export default function Benefit() {
           </div>
           <div className="content-right">
             <div className="box-title wow fadeInUp">
-              <div className="text-subtitle text-primary">Our Benifit</div>
-              <h3 className="title mt-4">
-                Discover what sets our Real Estate expertise apart
-              </h3>
+              <div className="text-subtitle text-primary">
+                Coworking Spaces in Mumbai - Search Spaces
+              </div>
+              <h3 className="title mt-4">Search Spaces</h3>
               <p className="desc text-variant-1">
-                Our seasoned professionals, armed with extensive market
-                knowledge, walk alongside you through every phase of your
-                property endeavor.
+                We are India’s fastest growing real estate tech enabled
+                coworking office space search platform. We are a coworking
+                office space aggregator for searching and comparing coworking
+                office spaces.
+              </p>
+
+              <p className="desc text-variant-1">
+                We assist in co-working spaces in Mumbai, traditional offices,
+                private offices, training rooms and meeting rooms for lease,
+                shared office spaces, dedicated desk and rent across PAN India
+                level without charging any brokerage. We provide access to
+                choose from more than 2000+ coworking office spaces across India
+                to get you the best of the solution.
               </p>
             </div>
             <div className="flat-service wow fadeInUp" data-wow-delay=".2s">
@@ -113,10 +123,11 @@ export default function Benefit() {
                   </span>
                 </div>
                 <div className="content">
-                  <h5 className="title">Buy A New Home</h5>
+                  <h5 className="title">PAN INDIA PRESENCE</h5>
                   <p className="description">
-                    Explore diverse properties and expert guidance for a
-                    seamless buying experience.
+                    We facilitate you to register a coworking space and office
+                    spaces amongst numerous choices in major cities across the
+                    nation.
                   </p>
                   <span className="btn-view style-1">
                     <span className="text">Explore Now</span>
@@ -177,10 +188,12 @@ export default function Benefit() {
                   </span>
                 </div>
                 <div className="content">
-                  <h5 className="title">Rent a home</h5>
+                  <h5 className="title">BESPOKE</h5>
                   <p className="description">
-                    Explore a diverse variety of listings tailored precisely to
-                    suit your unique lifestyle needs.
+                    You can get the most affordable coworking spaces near you
+                    that suits your team’s needs and something that fulfils your
+                    requirement by just a click or a small chat with our real
+                    estate consultant.
                   </p>
                   <span className="btn-view style-1">
                     <span className="text">Explore Now</span>
@@ -245,10 +258,75 @@ export default function Benefit() {
                   </span>
                 </div>
                 <div className="content">
-                  <h5 className="title">Sell a home</h5>
+                  <h5 className="title">VERIFIED SPACES</h5>
                   <p className="description">
-                    Showcasing your property's best features for a successful
-                    sale.
+                    For your seamless company operations, we promise co-working
+                    spaces that are fully managed workspaces, that ensure
+                    productive work in a collaborative environment.
+                  </p>
+                  <span className="btn-view style-1">
+                    <span className="text">Explore Now</span>
+                    <span className="icon icon-arrow-right2" />
+                  </span>
+                </div>
+              </a>
+              <a href="#" className="box-benefit hover-btn-view">
+                <div className="icon-box">
+                  <span className="icon">
+                    <svg
+                      width={60}
+                      height={60}
+                      viewBox="0 0 60 60"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clipPath="url(#clip0_13434_4244)">
+                        <path
+                          d="M36.5625 5.53125C34.0312 5.25 31.4062 5.71875 28.9687 7.03125C24.375 9.65625 22.125 14.7187 22.875 19.5937L3.09374 30.8437C2.90624 30.9375 2.71874 31.2187 2.62499 31.4062C2.15624 33.1875 1.78124 34.4062 1.31249 36.0937C1.12499 36.5625 1.49999 37.125 1.96874 37.2187C3.65624 37.6875 4.87499 38.0625 6.65624 38.5312C6.93749 38.625 7.21874 38.5312 7.40624 38.4375L8.62499 37.6875C8.90624 37.5937 8.99999 37.3125 9.09374 37.0312L9.56249 34.2187C9.65624 33.6562 10.3125 33.2812 10.7812 33.4687L12.8437 34.2187C13.4062 34.4062 13.9687 34.125 14.0625 33.4687L14.4375 31.3125C14.5312 30.75 15.1875 30.375 15.6562 30.5625L17.7187 31.3125C18.2812 31.5 18.8437 31.2187 18.9375 30.5625L19.3125 28.4062C19.4062 27.8437 20.0625 27.4687 20.5312 27.6562L23.25 28.6875C23.5312 28.7812 23.8125 28.7812 24 28.5937L26.25 27.375"
+                          stroke="#1563DF"
+                          strokeWidth="1.5"
+                          strokeMiterlimit={10}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M53.1563 23.4375C52.125 28.5937 48 32.3438 43.125 33.1875L42.4688 36.6562C42.375 36.9375 42.2813 37.125 42 37.3125L39.375 38.7187C38.9063 39 38.7188 39.6562 39.0938 40.125L40.5 41.8125C40.875 42.2812 40.6875 42.9375 40.2188 43.2187L38.3438 44.25C37.7813 44.5312 37.6875 45.1875 38.0625 45.6562L39.4688 47.3437C39.8438 47.8125 39.75 48.4687 39.1875 48.75L37.3125 49.7812C36.8438 50.0625 36.6563 50.7187 37.0313 51.1875L38.9063 53.4375C39.0938 53.625 39.1875 53.9062 39.0938 54.1875L38.8125 55.5937C38.7188 55.875 38.625 56.0625 38.4375 56.25C36.8438 57.2812 35.8125 58.0313 34.4063 58.9688C33.9375 59.25 33.375 59.1562 33.0938 58.6875C32.0625 57.1875 31.4063 56.1562 30.375 54.6562C30 54.375 30 54.0938 30 53.8125L34.4063 31.5C30.1875 28.875 27.8438 23.8125 28.875 18.6562C30.1875 12 36.6563 7.59375 43.4063 8.90625C50.1563 10.2187 54.4688 16.7812 53.1563 23.4375Z"
+                          stroke="#1563DF"
+                          strokeWidth="1.5"
+                          strokeMiterlimit={10}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M41.8125 20.4375C43.8318 20.4375 45.4687 18.8005 45.4687 16.7812C45.4687 14.762 43.8318 13.125 41.8125 13.125C39.7932 13.125 38.1562 14.762 38.1562 16.7812C38.1562 18.8005 39.7932 20.4375 41.8125 20.4375Z"
+                          stroke="#1563DF"
+                          strokeWidth="1.5"
+                          strokeMiterlimit={10}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M53.25 19.3125C55.875 18 57.9375 15.5625 58.5 12.4687C59.5312 7.21875 56.1562 2.15625 50.9062 1.125C45.6562 0.0937479 40.5937 3.46875 39.5625 8.71875V8.8125C39 11.7187 39.8437 14.625 41.5312 16.7812"
+                          stroke="#1563DF"
+                          strokeWidth="1.5"
+                          strokeMiterlimit={10}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_13434_4244">
+                          <rect width={60} height={60} fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                </div>
+                <div className="content">
+                  <h5 className="title">ZERO BROKERAGE</h5>
+                  <p className="description">
+                    We take care of all your requirements with no extra cost
+                    i.e., professional service at zero brokerage.
                   </p>
                   <span className="btn-view style-1">
                     <span className="text">Explore Now</span>

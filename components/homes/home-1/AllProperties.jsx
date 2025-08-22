@@ -23,7 +23,7 @@ export default function AllProperties() {
       (property) => property.type === selectedOption
     );
 
-    setFiltered(filteredData.slice(0, 3)); // limit to first 3 for all
+    setFiltered(filteredData.slice(2, 6)); // limit to first 3 for all
   }, [selectedOption]);
 
   console.log("All Data on Homepage", allProperties);

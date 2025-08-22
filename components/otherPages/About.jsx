@@ -7,12 +7,9 @@ export default function About() {
       <div className="container flat-header-wrapper-about">
         <div className="row justify-content-center">
           <div className="col-lg-8 text-center">
-            <h1 className="title">Welcome to the Hom Lengo</h1>
+            <h1 className="title">About Us</h1>
             <p className="text-variant-1 desc">
-              Welcome to Home Lengo, where we turn houses into homes and dreams
-              into reality. At Home, we understand that a home is more than just
-              a physical space, it's a place where memories are created,
-              families grow, and life unfolds.
+              Unleash Productivity: Best Coworking Spaces in Mumbai
             </p>
             <div className="signature-box">
               <div className="top">
