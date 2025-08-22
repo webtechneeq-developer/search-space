@@ -20,7 +20,6 @@ export default function page() {
     <>
       <Header1 />
       <About />
-      <Slider1 />
       <Agents />
       <Brands />
       <Benefit />
