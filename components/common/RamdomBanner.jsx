@@ -3,10 +3,10 @@ import { useMemo } from "react";
 import Image from "next/image";
 
 const bannerImages = [
-  "/images/banner/coworking-image-1.webp",
-  "/images/banner/coworking-image-1.webp",
-  "/images/banner/coworking-image-1.webp",
-  "/images/banner/coworking-image-1.webp",
+  "/images/banner/coworking-image.webp",
+  "/images/banner/coworking-image.webp",
+  "/images/banner/coworking-image.webp",
+  "/images/banner/coworking-image.webp",
 ];
 
 export default function RandomBanner() {
