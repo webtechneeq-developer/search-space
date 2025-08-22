@@ -33,7 +33,9 @@ export default function SubLocation({
     <>
       {/* Map */}
       <section className="flat-map">
-        <div id="map" className="top-map">
+        <div id="map">
+          {" "}
+          {/* className="top-map" */}
           <RandomBanner />
         </div>
       </section>
@@ -157,13 +159,13 @@ export default function SubLocation({
               <Swiper
                 className="swiper tf-sw-location"
                 spaceBetween={8}
-                slidesPerView={1}
+                slidesPerView={3}
                 breakpoints={{
-                  1600: { slidesPerView: 1, spaceBetween: 8 },
-                  1224: { slidesPerView: 1, spaceBetween: 8 },
-                  1100: { slidesPerView: 1, spaceBetween: 8 },
-                  768: { slidesPerView: 1, spaceBetween: 8 },
-                  500: { slidesPerView: 1, spaceBetween: 8 },
+                  1600: { slidesPerView: 3, spaceBetween: 8 },
+                  1224: { slidesPerView: 3, spaceBetween: 8 },
+                  1100: { slidesPerView: 3, spaceBetween: 8 },
+                  768: { slidesPerView: 3, spaceBetween: 8 },
+                  500: { slidesPerView: 3, spaceBetween: 8 },
 
                   320: { slidesPerView: 1, spaceBetween: 8 },
                 }}

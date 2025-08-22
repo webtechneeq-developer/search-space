@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-export default function PageTitle() {
+export default function PageTitleAbout() {
   return (
     <section
       className="flat-title-page"
@@ -8,7 +8,7 @@ export default function PageTitle() {
     >
       <div className="container">
         <div className="breadcrumb-content">
-          <h1 className="text-center text-white title">Our Services</h1>
+          <h1 className="text-center text-white title">About Us</h1>
           <ul className="breadcrumb">
             <li>
               <Link href={`/`} className="text-white">
@@ -16,7 +16,7 @@ export default function PageTitle() {
               </Link>
             </li>
             <li className="text-white">/ Pages</li>
-            <li className="text-white">/ Our Services</li>
+            <li className="text-white">/ About Us</li>
           </ul>
         </div>
       </div>

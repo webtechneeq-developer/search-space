@@ -207,7 +207,9 @@ export default function Properties9() {
     <>
       {/* Map */}
       <section className="flat-map">
-        <div id="map" className="top-map">
+        <div id="map">
+          {" "}
+          {/* className="top-map" */}
           <RandomBanner />
         </div>
         <div className="container">
