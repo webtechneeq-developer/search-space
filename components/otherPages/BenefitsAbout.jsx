@@ -7,7 +7,7 @@ import { Pagination } from "swiper/modules";
 export default function BenefitsAbout() {
   return (
     <section className="flat-section bg-primary-new flat-testimonial flex-item">
-      <div>
+      <div className="container">
         {" "}
         {/*className="box-title px-15 wow fadeInUp" */}
         <div
