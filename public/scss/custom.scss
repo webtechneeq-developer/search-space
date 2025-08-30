@@ -78,6 +78,14 @@
 .swiper-on-575 {
   display: none;
 }
+.about-box-benefit {
+    display: flex;
+    column-gap: 20px;
+}
+.box-benefit {
+    display: flex;
+    flex-direction: column;
+}
 @media (max-width: 575px) {
   .non-swiper-on-575 {
     display: none;
