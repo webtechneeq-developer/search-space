@@ -16,7 +16,7 @@ export default function BenefitsAbout() {
           data-wow-duration="2000ms"
         >
           <div className="row">
-            <div className=" " data-wow-delay=".2s">
+            <div className="about-box-benefit " data-wow-delay=".2s">
               <div className="col-lg-3">
                 <a href="#" className="box-benefit hover-btn-view">
                   <div className="icon-box">
