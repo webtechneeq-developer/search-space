@@ -70,7 +70,7 @@ export default function BenefitsAbout() {
                   </div>
                 </a>
               </div>
-
+              <div className="col-lg-3">
                <a href="#" className="box-benefit hover-btn-view">
                 <div className="icon-box">
                   <span className="icon">
@@ -137,6 +137,8 @@ export default function BenefitsAbout() {
                   </span>
                 </div>
               </a>
+            </div>
+            <div className="col-lg-3">
               <a href="#" className="box-benefit hover-btn-view">
                 <div className="icon-box">
                   <span className="icon">
@@ -206,6 +208,8 @@ export default function BenefitsAbout() {
                   </span>
                 </div>
               </a>
+            </div>
+            <div className="col-lg-3">
               <a href="#" className="box-benefit hover-btn-view">
                 <div className="icon-box">
                   <span className="icon">
@@ -270,6 +274,7 @@ export default function BenefitsAbout() {
                   </span>
                 </div>
               </a>
+            </div>
             </div>
           </div>
         </div>
