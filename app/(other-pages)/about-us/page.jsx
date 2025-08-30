@@ -26,7 +26,7 @@ export default function page() {
       {/* <Agents /> */}
       {/* <Brands /> */}
       <Benefit />
-      {/* <BenefitsAbout /> */}
+       <BenefitsAbout />
       {/* <Testimonials2 /> */}
       <Banner />
       <SeoLinks />
