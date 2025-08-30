@@ -71,7 +71,7 @@ export default function BenefitsAbout() {
                 </a>
               </div>
 
-              {/* <a href="#" className="box-benefit hover-btn-view">
+               <a href="#" className="box-benefit hover-btn-view">
                 <div className="icon-box">
                   <span className="icon">
                     <svg
@@ -269,7 +269,7 @@ export default function BenefitsAbout() {
                     <span className="icon icon-arrow-right2" />
                   </span>
                 </div>
-              </a> */}
+              </a>
             </div>
           </div>
         </div>
