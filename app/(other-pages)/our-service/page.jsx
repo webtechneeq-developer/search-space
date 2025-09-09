@@ -5,7 +5,7 @@ import Footer1 from "@/components/footer/Footer1";
 import Header1 from "@/components/headers/Header1";
 import Faqs from "@/components/common/Faqs";
 import PageTitle from "@/components/otherPages/services/PageTitle";
-import Services from "@/components/otherPages/services/Services";
+// import Services from "@/components/otherPages/services/Services";
 import React from "react";
 import { Services_We_Offer } from "@/components/otherPages/services/Services_We_Offer";
 
