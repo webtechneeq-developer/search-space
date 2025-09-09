@@ -20,7 +20,7 @@ export default function Benefit() {
                 </div>
                 <div className="tag-item ani5">
                   <i className="icon icon-check-circle" />
-                  <span>Proven Expertise</span>
+                  <span>Pan India Presence</span>
                 </div>
               </div>
               <div className="tf-image-wrap item-2">
@@ -36,11 +36,11 @@ export default function Benefit() {
                 </div>
                 <div className="tag-item tag-item-1 ani4">
                   <i className="icon icon-check-circle" />
-                  <span>Customized Solutions</span>
+                  <span>Bespoke</span>
                 </div>
                 <div className="tag-item tag-item-2 ani5">
                   <i className="icon icon-check-circle" />
-                  <span>Transparent Partnerships</span>
+                  <span>Verified Spaces</span>
                 </div>
               </div>
               <div className="tf-image-wrap item-3">
@@ -56,7 +56,7 @@ export default function Benefit() {
                 </div>
                 <div className="tag-item ani4">
                   <i className="icon icon-check-circle" />
-                  <span>Local Area Knowledge</span>
+                  <span>Zero Brokeage </span>
                 </div>
               </div>
             </div>
@@ -83,7 +83,16 @@ export default function Benefit() {
                 to get you the best of the solution.
               </p>
             </div>
-            {/* <div className="flat-service wow fadeInUp" data-wow-delay=".2s">
+            <div
+              className="flat-service wow fadeInUp"
+              data-wow-delay=".2s"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                gap: "20px", // adjust as needed
+                alignItems: "stretch",
+              }}
+            >
               <a href="#" className="box-benefit hover-btn-view">
                 <div className="icon-box">
                   <span className="icon">
@@ -334,7 +343,7 @@ export default function Benefit() {
                   </span>
                 </div>
               </a>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
