@@ -7,6 +7,7 @@ import Faqs from "@/components/common/Faqs";
 import PageTitle from "@/components/otherPages/services/PageTitle";
 import Services from "@/components/otherPages/services/Services";
 import React from "react";
+import { Services_We_Offer } from "@/components/otherPages/services/Services_We_Offer";
 
 export const metadata = {
   title: "Our Services || Homelengo - Real Estate React Nextjs Template",
@@ -17,10 +18,12 @@ export default function page() {
     <>
       <Header1 />
       <PageTitle />
+
+      <Services_We_Offer />
       <Services />
-      <Brands />
-      <Testimonials />
-      <Faqs />
+      {/* <Brands /> */}
+      {/* <Testimonials />
+      <Faqs /> */}
       <Banner />
       <Footer1 />
     </>
