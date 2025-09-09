@@ -20,7 +20,7 @@ export default function page() {
       <PageTitle />
 
       <Services_We_Offer />
-      <Services />
+      
      
       <Banner />
       <Footer1 />
