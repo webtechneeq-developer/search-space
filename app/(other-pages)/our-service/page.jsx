@@ -19,7 +19,7 @@ export default function page() {
       <Header1 />
       <PageTitle />
 
-      <Services_We_Offer />
+{/*       <Services_We_Offer /> */}
       
      
       <Banner />
