@@ -21,9 +21,7 @@ export default function page() {
 
       <Services_We_Offer />
       <Services />
-      {/* <Brands /> */}
-      {/* <Testimonials />
-      <Faqs /> */}
+     
       <Banner />
       <Footer1 />
     </>
