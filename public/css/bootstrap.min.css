@@ -13912,3 +13912,27 @@ fieldset:disabled .btn {
 }
 
 /*# sourceMappingURL=bootstrap.min.css.map */
+
+
+
+.grid-content{
+    margin-bottom: 20px;
+    align-content: center;
+    align-items: center;
+    display: flex;
+     
+}
+
+
+.grid-content p{
+    align-content: center;
+     margin-bottom: "20px";
+     align-items: center;
+    display: flex;
+    line-height: 1.6;
+     /* background: #fff; */
+    padding: 24px;
+    font-size: 18px;
+    font-family: "Jost, Sans-serif";
+
+}
