@@ -6,6 +6,7 @@ import Header1 from "@/components/headers/Header1";
 import Faqs from "@/components/common/Faqs";
 import PageTitle from "@/components/otherPages/services/PageTitle";
 import Services from "@/components/otherPages/services/Services";
+import Grid_Services from "@/components/otherPages/services/Grid_Services";
 import React from "react";
 import { Services_We_Offer } from "@/components/otherPages/services/Services_We_Offer";
 
@@ -20,6 +21,8 @@ export default function page() {
       <PageTitle />
 
       <Services_We_Offer />
+      <Grid_Services />
+
       {/* <Services /> */}
       {/* <Brands /> */}
       {/* <Testimonials />
