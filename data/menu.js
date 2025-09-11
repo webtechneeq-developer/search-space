@@ -25,20 +25,18 @@ export const menuItems = [
     isCurrent: true,
   },
   
+
   {
     title: "Co-Working",
     links: [
-      { href: "/coworking-space-2", label: "Co-Working Space" },
+      { href: "/coworking-space", label: "Co-Working Space" },
       { href: "/coworking-office", label: "Co-Working Office" },
       { href: "/coworking-dedicated-desk", label: "Co-Working Dedicated Desk" },
       { href: "/coworking-flexi-desk", label: "Co-Working Flexi Desk" },
       { href: "/coworking-meeting-room", label: "Co-Working Meeting Room" },
-      {
-        href: "/coworking-conference-room",
-        label: "Co-Working Conference Room",
-      },
+      { href: "/coworking-conference-room",label: "Co-Working Conference Room"},
       { href: "/coworking-day-pass", label: "Co-Working Day Pass" },
-      { href: "/coworking-virtual-office", label: "Virtual Office" },
+      { href: "/coworking-virtual-office", label: "Co-Working Virtual Office" },
     ],
   },
   // {
