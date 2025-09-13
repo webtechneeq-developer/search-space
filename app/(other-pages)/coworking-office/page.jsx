@@ -13,7 +13,7 @@ import SeoLinks from "@/components/common/SeoLinks";
 import PageTitleAbout from "@/components/otherPages/PageTitleAbout";
 import BenefitsAbout from "@/components/otherPages/BenefitsAbout";
 
-import Coworking_Office from "@/components/otherPages/coworking_pages/coworking_office";
+// import Coworking_Office from "@/components/otherPages/coworking_pages/coworking_office";
 
 export const metadata = {
   title: "CoWorking Spaces || Homelengo - Real Estate React Nextjs Template",
