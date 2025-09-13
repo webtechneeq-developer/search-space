@@ -12,7 +12,7 @@ import { allProperties } from "@/data/demoProporties";
 import SeoLinks from "@/components/common/SeoLinks";
 import PageTitleAbout from "@/components/otherPages/PageTitleAbout";
 import BenefitsAbout from "@/components/otherPages/BenefitsAbout";
-// import Coworking_Space from "@/components/otherPages/coworking_pages/Coworking_Space";
+import Coworking_Space from "@/components/otherPages/coworking_pages/Coworking_Space";
 import CoworkingSpacesTitle from "@/components/otherPages/coworking_pages/CoworkingSpacesTitle";
 
 export const metadata = {
@@ -24,7 +24,7 @@ export default function page() {
     <>
       <Header1 />
       {/* <About /> */}
-      {/* <CoworkingSpacesTitle /> */}
+      <CoworkingSpacesTitle />
       {/* <Agents /> */}
       {/* <Brands /> */}
       <Coworking_Space />
