@@ -1,4 +1,5 @@
 import Header1 from "@/components/headers/Header1";
+import PropertyTypes from "@/components/homes/home-1/PropertyTypes";
 import Properties1 from "@/components/properties/Properties1";
 import React from "react";
 
@@ -12,6 +13,7 @@ export default function page() {
     <>
       <Header1 />
       <Properties1 />
+      <PropertyTypes />
     </>
   );
 }

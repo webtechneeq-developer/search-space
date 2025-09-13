@@ -337,7 +337,7 @@ export const properties = {
       price: 18500,
     },
     {
-      id: 112,
+      id: kurla,
       imgSrc: "/images/home/house-28.jpg",
       alt: "img",
       address: "Nyati Elysia, Kharadi, Pune, Maharashtra",

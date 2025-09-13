@@ -24,7 +24,7 @@ export default function page() {
     <>
       <Header1 />
       {/* <About /> */}
-      <CoworkingSpacesTitle />
+      {/* <CoworkingSpacesTitle /> */}
       {/* <Agents /> */}
       {/* <Brands /> */}
       <Coworking_Space />
