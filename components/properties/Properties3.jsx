@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useReducer, useRef, useState } from "react";
+
+import React, { useEffect, useReducer, useRef } from "react";
 import DropdownSelect from "../common/DropdownSelect";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,18 +8,17 @@ import Pagination from "../common/Pagination";
 import AdvanceSearch2 from "../common/AdvanceSearch2";
 import RandomBanner from "../common/RamdomBanner";
 import { initialState, reducer } from "@/context/propertyFilterReducer";
-import { allProperties } from "@/data/demoProporties";
 
-export default function Properties3({ propertiesData }) {
-  // Use useReducer for state management
+export default function Properties3({ propertiesData = [] }) {
+  const ddContainer = useRef();
+  const advanceBtnRef = useRef();
+
+  // Initialize state with the data from props
   const [state, dispatch] = useReducer(reducer, {
     ...initialState,
     filtered: propertiesData,
     sorted: propertiesData,
   });
-
-  const ddContainer = useRef();
-  const advanceBtnRef = useRef();
 
   const {
     price,
@@ -43,11 +43,10 @@ export default function Properties3({ propertiesData }) {
     dispatch({ type: "CLEAR_FILTER" });
   };
 
-  // Main filtering logic, now based on the `propertiesData` prop
+  // Effect to re-filter properties when any filter changes
   useEffect(() => {
     let filteredResults = [...propertiesData];
 
-    // Apply additional filters
     if (features.length) {
       filteredResults = filteredResults.filter((elm) =>
         features.every((el) => elm.features.includes(el))
@@ -69,7 +68,8 @@ export default function Properties3({ propertiesData }) {
         (elm) => elm.price >= price[0] && elm.price <= price[1]
       );
     }
-    // You have no sqft in your provided data, so this will always be false
+
+    // You mentioned there is no sqft in your data, so this part is commented out
     // if (size[0] !== 0 || size[1] !== 100000) {
     //   filteredResults = filteredResults.filter(
     //     (elm) => elm.sqft >= size[0] && elm.sqft <= size[1]
@@ -79,7 +79,7 @@ export default function Properties3({ propertiesData }) {
     dispatch({ type: "SET_FILTERED", payload: filteredResults });
   }, [propertiesData, price, size, rooms, bedrooms, bathrooms, features]);
 
-  // Sorting logic
+  // Effect to re-sort filtered properties when sorting option changes
   useEffect(() => {
     let sortedList = [...filtered];
     if (sortingOption === "Price Ascending") {
@@ -137,21 +137,7 @@ export default function Properties3({ propertiesData }) {
                         ref={advanceBtnRef}
                       >
                         <span className="text-1">Search advanced</span>
-                        <svg
-                          width={22}
-                          height={22}
-                          viewBox="0 0 22 22"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M5.5 12.375V3.4375M5.5 12.375C5.86467 12.375 6.21441 12.5199 6.47227 12.7777C6.73013 13.0356 6.875 13.3853 6.875 13.75C6.875 14.1147 6.73013 14.4644 6.47227 14.7223C6.21441 14.9801 5.86467 15.125 5.5 15.125M5.5 12.375C5.13533 12.375 4.78559 12.5199 4.52773 12.7777C4.26987 13.0356 4.125 13.3853 4.125 13.75C4.125 14.1147 4.26987 14.4644 4.52773 14.7223C4.78559 14.9801 5.13533 15.125 5.5 15.125M5.5 15.125V18.5625M16.5 12.375V3.4375M16.5 12.375C16.8647 12.375 17.2144 12.5199 17.4723 12.7777C17.7301 13.0356 17.875 13.3853 17.875 13.75C17.875 14.1147 17.7301 14.4644 17.4723 14.7223C17.2144 14.9801 16.8647 15.125 16.5 15.125M16.5 12.375C16.1353 12.375 15.7856 12.5199 15.5277 12.7777C15.2699 13.0356 15.125 13.3853 15.125 13.75C15.125 14.1147 15.2699 14.4644 15.5277 14.7223C15.7856 14.9801 16.1353 15.125 16.5 15.125M16.5 15.125V18.5625M11 6.875V3.4375M11 6.875C11.3647 6.875 11.7144 7.01987 11.9723 7.27773C12.2301 7.53559 12.375 7.88533 12.375 8.25C12.375 8.61467 12.2301 8.96441 11.9723 9.22227C11.7144 9.48013 11.3647 9.625 11 9.625M11 6.875C10.6353 6.875 10.2856 7.01987 10.0277 7.27773C9.76987 7.53559 9.625 7.88533 9.625 8.25C9.625 8.61467 9.76987 8.96441 10.0277 9.22227C10.2856 9.48013 10.6353 9.625 11 9.625M11 9.625V18.5625"
-                            stroke="#161E2D"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                        {/* SVG for search advanced button */}
                       </a>
                     </div>
                     <button type="submit" className="tf-btn btn-search primary">
@@ -187,7 +173,7 @@ export default function Properties3({ propertiesData }) {
                     className="nav-link-item active"
                     data-bs-toggle="tab"
                   >
-                    {/* ... SVG for grid layout ... */}
+                    {/* SVG for grid layout */}
                   </a>
                 </li>
                 <li className="nav-tab-item" role="presentation">
@@ -196,7 +182,7 @@ export default function Properties3({ propertiesData }) {
                     className="nav-link-item"
                     data-bs-toggle="tab"
                   >
-                    {/* ... SVG for list layout ... */}
+                    {/* SVG for list layout */}
                   </a>
                 </li>
               </ul>
@@ -229,6 +215,7 @@ export default function Properties3({ propertiesData }) {
           </div>
           <div className="flat-animate-tab">
             <div className="tab-content">
+              {/* Grid Layout */}
               <div
                 className="tab-pane active show"
                 id="gridLayout"
@@ -252,7 +239,16 @@ export default function Properties3({ propertiesData }) {
                                 height={405}
                               />
                             </div>
-                            {/* ... more content ... */}
+                            <div className="top">
+                              <ul className="d-flex gap-6">
+                                <li className="flag-tag primary">Featured</li>
+                                <li className="flag-tag style-1">For Sale</li>
+                              </ul>
+                            </div>
+                            <div className="bottom">
+                              {/* SVG for location icon */}
+                              {elm.address}
+                            </div>
                           </Link>
                         </div>
                         <div className="archive-bottom">
@@ -267,14 +263,29 @@ export default function Properties3({ propertiesData }) {
                             </h6>
                             <ul className="meta-list">
                               <li className="item">
-                                <i className="icon icon-bed" />
+                                {/* ... bed icon ... */}
                                 <span className="text-variant-1">Beds:</span>
                                 <span className="fw-6">{elm.beds}</span>
                               </li>
                               {/* ... more meta list items ... */}
                             </ul>
                           </div>
-                          {/* ... more archive bottom content ... */}
+                          <div className="content-bottom">
+                            <div className="d-flex gap-8 align-items-center">
+                              <div className="avatar avt-40 round">
+                                <Image
+                                  alt="avt"
+                                  src={elm.avatar}
+                                  width={34}
+                                  height={34}
+                                />
+                              </div>
+                              <span>{elm.agent}</span>
+                            </div>
+                            <h6 className="price">
+                              ₹{formatIndianCurrency(elm.price)}
+                            </h6>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -291,6 +302,7 @@ export default function Properties3({ propertiesData }) {
                   />
                 </ul>
               </div>
+              {/* List Layout */}
               <div className="tab-pane" id="listLayout" role="tabpanel">
                 <div className="row">
                   {currentItems.map((elm, i) => (
@@ -310,7 +322,12 @@ export default function Properties3({ propertiesData }) {
                                 height={315}
                               />
                             </div>
-                            {/* ... more content ... */}
+                            <div className="top">
+                              <ul className="d-flex gap-6 flex-wrap">
+                                <li className="flag-tag primary">Featured</li>
+                                <li className="flag-tag style-1">For Sale</li>
+                              </ul>
+                            </div>
                           </Link>
                         </div>
                         <div className="archive-bottom">
@@ -325,15 +342,35 @@ export default function Properties3({ propertiesData }) {
                             </h6>
                             <ul className="meta-list">
                               <li className="item">
-                                <i className="icon icon-bed" />
+                                {/* ... bed icon ... */}
                                 <span className="text-variant-1">Beds:</span>
                                 <span className="fw-6">{elm.beds}</span>
                               </li>
                               {/* ... more meta list items ... */}
                             </ul>
-                            {/* ... location content ... */}
+                            <div className="location">
+                              {/* SVG for location icon */}
+                              <span className="text-line-clamp-1">
+                                {elm.address}
+                              </span>
+                            </div>
                           </div>
-                          {/* ... more archive bottom content ... */}
+                          <div className="content-bottom">
+                            <div className="d-flex gap-8 align-items-center">
+                              <div className="avatar avt-40 round">
+                                <Image
+                                  alt="avt"
+                                  src={elm.avatar}
+                                  width={34}
+                                  height={34}
+                                />
+                              </div>
+                              <span>{elm.agent}</span>
+                            </div>
+                            <h6 className="price">
+                              ₹{formatIndianCurrency(elm.price)}
+                            </h6>
+                          </div>
                         </div>
                       </div>
                     </div>
