@@ -5,8 +5,8 @@ import Header1 from "@/components/headers/Header1";
 import Banner from "@/components/common/Banner";
 import React from "react";
 import SeoLinks from "@/components/common/SeoLinks";
-import SubLocationGrid from "@/components/common/SubLocationGrid";
-import { cities } from "@/data/cities"; // Updated import statement
+import Properties3 from "@/components/properties/Properties3"; // Use Properties3 component
+import { properties } from "@/data/demoProporties"; // Use the main properties dataset
 
 export const metadata = {
   title:
@@ -16,30 +16,19 @@ export const metadata = {
 
 export default function MumbaiCoworkingPage() {
   const city = "mumbai";
-  const cityProperties = cities[city]; // Updated variable name to `cities`
+  // Get all properties related to Mumbai
+  const mumbaiProperties = properties[city];
 
-  if (!cityProperties) {
+  if (!mumbaiProperties) {
     return <div>No coworking spaces found for {city}.</div>;
   }
-
-  const subLocations = cityProperties.reduce((acc, property) => {
-    const subLocationSlug = property.subLocation
-      .replace(" ", "-")
-      .toLowerCase();
-    if (!acc[subLocationSlug]) {
-      acc[subLocationSlug] = {
-        listings: [],
-      };
-    }
-    acc[subLocationSlug].listings.push(property);
-    return acc;
-  }, {});
 
   return (
     <>
       <Header1 />
       <Banner />
-      <SubLocationGrid locations={subLocations} city={city} />
+      {/* Pass the Mumbai properties to Properties3 */}
+      <Properties3 propertiesData={mumbaiProperties} />
       <SeoLinks />
       <Footer1 />
     </>
