@@ -30,7 +30,9 @@ export default function PropertyTypes() {
                       className="img-fluid rounded"
                     />
                   </div>
-                  <h6 className="mt-3 text-capitalize">{type.name}</h6>
+                  <h6 className="mt-3 mb-3 text-capitalize hover-scale">
+                    {type.name}
+                  </h6>
                 </div>
               </Link>
             </div>
