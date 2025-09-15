@@ -6,9 +6,10 @@ import { Suspense } from "react";
 
 export const metadata = {
   title:
-    "Topmap Grid Property || Homelengo - Real Estate React Nextjs Template",
+    "Topmap111 Grid Property || Homelengo - Real Estate React Nextjs Template",
   description: "Homelengo - Real Estate React Nextjs Template",
 };
+
 export default function page() {
   return (
     <>

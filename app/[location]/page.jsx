@@ -1,26 +1,29 @@
+// app/[location]/page.jsx
 import Footer1 from "@/components/footer/Footer1";
 import Header1 from "@/components/headers/Header1";
 import Properties3 from "@/components/properties/Properties3";
-import Properties7 from "@/components/properties/Properties7";
-import SubLocation from "@/components/properties/Properties8";
-import Properties8 from "@/components/properties/Properties8";
-import React from "react";
-import { Suspense } from "react";
+import React, { Suspense } from "react";
+import { properties } from "@/data/demoProporties";
 
-export const metadata = {
-  title:
-    "Topmap Grid Property || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
-};
-export default function page({ params }) {
+export async function generateMetadata({ params }) {
   const { location } = params;
+  const cityTitle = location.charAt(0).toUpperCase() + location.slice(1);
+  return {
+    title: `${cityTitle} Properties || Homelengo - Real Estate Nextjs Template`,
+    description: `Browse all properties in ${cityTitle}.`,
+  };
+}
+
+export default function LocationPage({ params }) {
+  const { location } = params;
+  const cityProperties = properties[location] || [];
 
   return (
     <>
       <Suspense fallback={<div>Loading properties...</div>}>
         <Header1 />
-        {/* <Properties7 location={location} /> */}
-        <SubLocation />
+        {/* Pass all properties for the city to Properties3 */}
+        <Properties3 propertiesData={cityProperties} />
         <Footer1 />
       </Suspense>
     </>

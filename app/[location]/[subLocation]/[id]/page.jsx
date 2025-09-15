@@ -1,18 +1,29 @@
+// app/[location]/[sublocation]/[id]/page.jsx
 import Footer1 from "@/components/footer/Footer1";
 import Header1 from "@/components/headers/Header1";
 import PropertyContentDetails from "@/components/property-details/PropertyContentDetails";
 import PropertyDetailsTitle from "@/components/property-details/PropertyDeatilsTitle";
 import PropertySlider from "@/components/property-details/PropertySlider";
-import { allProperties } from "@/data/demoProporties";
 import React from "react";
+import { allProperties } from "@/data/demoProporties";
 
-export const metadata = {
-  title: "Property Details 01 || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
-};
-export default function page({ params }) {
-  const propertyItem =
-    allProperties.filter((elm) => elm.id == params.id)[0] || allProperties[0];
+export async function generateMetadata({ params }) {
+  const propertyItem = allProperties.find((elm) => elm.id == params.id);
+  const propertyTitle = propertyItem ? propertyItem.title : "Property Details";
+  return {
+    title: `${propertyTitle} || Homelengo - Real Estate React Nextjs Template`,
+    description: propertyItem
+      ? propertyItem.description
+      : "View property details.",
+  };
+}
+
+export default function PropertyDetailsPage({ params }) {
+  const propertyItem = allProperties.find((elm) => elm.id == params.id);
+
+  if (!propertyItem) {
+    return <div>Property not found.</div>;
+  }
 
   return (
     <>

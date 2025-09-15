@@ -11,7 +11,7 @@ import Properties2 from "@/components/homes/home-1/Properties2";
 import Services from "@/components/homes/home-1/Services";
 import Testimonials from "@/components/common/Testimonials";
 import { properties } from "@/data/demoProporties";
-import AllProperties from "@/components/homes/home-1/AllProperties";
+// import AllProperties from "@/components/homes/home-1/AllProperties";
 import PropertyTypes from "@/components/homes/home-1/PropertyTypes";
 
 export const metadata = {
@@ -24,7 +24,7 @@ export default function Home() {
       <Header1 />
       <Hero />
       <PropertyTypes />
-      <AllProperties />
+      {/* <AllProperties /> */}
       <Locations properties={properties} />
       <Services />
       {/*       <Benefit /> */}

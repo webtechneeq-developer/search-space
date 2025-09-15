@@ -5,13 +5,13 @@ import React from "react";
 
 export const metadata = {
   title:
-    "Topmap List Property || Homelengo - Real Estate React Nextjs Template",
+    "Topmap111 List Property || Homelengo - Real Estate React Nextjs Template",
   description: "Homelengo - Real Estate React Nextjs Template",
 };
 export default function page() {
   return (
     <>
-      <Header1 />
+      {/* <Header1 /> */}
       <Properties5 />
       <Footer1 />
     </>
