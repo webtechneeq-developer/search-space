@@ -47,7 +47,7 @@ const PropertyCard = ({ property }) => {
               </table>
               <Link
                 // UPDATE THIS LINK
-                href={`/${property.typeSlug}/in-${property.citySlug}/at-${property.localitySlug}/${property.slug}`}
+                href={`/${property.typeSlug}/${property.citySlug}/${property.localitySlug}/${property.slug}`}
                 className="btn btn-primary"
               >
                 View Details
