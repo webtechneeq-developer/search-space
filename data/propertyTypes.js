@@ -1,12 +1,12 @@
 // /data/propertyTypes.js
 
 export const propertyTypes = [
-  {
-    id: 1,
-    name: "Co-Working Space",
-    slug: "coworking-space",
-    img: "/images/kharadi/kharadi-001-day-pass.webp",
-  },
+  // {
+  //   id: 1,
+  //   name: "Co-Working Space",
+  //   slug: "coworking-space",
+  //   img: "/images/kharadi/kharadi-001-day-pass.webp",
+  // },
   {
     id: 2,
     name: "Co-Working Office",
