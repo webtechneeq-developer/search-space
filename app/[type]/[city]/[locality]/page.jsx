@@ -2,7 +2,7 @@
 import React, { Suspense } from "react";
 import Header1 from "@/components/headers/Header1";
 import Footer1 from "@/components/footer/Footer1";
-import Banner from "@/components/common/Banner";
+// import Banner from "@/components/common/Banner";
 import PropertyCard from "@/components/common/PropertyCard";
 import { allProperties } from "@/data/properties";
 import { spaceData } from "@/data/spaces";
@@ -15,8 +15,8 @@ export async function generateStaticParams() {
       space.cities[city].forEach((locality) => {
         params.push({
           type: space.type,
-          city: `in-${city}`,
-          locality: `at-${locality}`,
+          city: `${city}`,
+          locality: `${locality}`,
         });
       });
     }
@@ -37,7 +37,7 @@ export default function LocalityPage({ params }) {
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <Header1 />
-        <Banner />
+        {/* <Banner /> */}
         <div className="container mt-5">
           <div className="row">
             {filteredProperties.length > 0 ? (

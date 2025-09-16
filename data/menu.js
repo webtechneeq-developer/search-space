@@ -28,7 +28,7 @@ export const menuItems = [
   {
     title: "Co-Working",
     links: [
-      { href: "/coworking-space", label: "Co-Working Space" },
+      // { href: "/coworking-space", label: "Co-Working Space" },
       { href: "/coworking-office", label: "Co-Working Office" },
       { href: "/coworking-dedicated-desk", label: "Co-Working Dedicated Desk" },
       { href: "/coworking-flexi-desk", label: "Co-Working Flexi Desk" },

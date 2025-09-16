@@ -2,7 +2,7 @@
 import React from "react";
 import Header1 from "@/components/headers/Header1";
 import Footer1 from "@/components/footer/Footer1";
-import Banner from "@/components/common/Banner";
+// import Banner from "@/components/common/Banner";
 import LocationGrid from "@/components/common/LocationGrid";
 import { spaceData } from "@/data/spaces";
 
@@ -29,7 +29,7 @@ export default function SpaceTypePage({ params }) {
   return (
     <>
       <Header1 />
-      <Banner />
+      {/* <Banner /> */}
       <LocationGrid
         title={`Available Cities for ${type.replace(/-/g, " ")}`}
         locations={locations}

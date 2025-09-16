@@ -9,8 +9,8 @@ import { allProperties } from "@/data/properties";
 export async function generateStaticParams() {
   return allProperties.map((property) => ({
     type: property.typeSlug,
-    city: `in-${property.citySlug}`,
-    locality: `at-${property.localitySlug}`,
+    city: `${property.citySlug}`,
+    locality: `${property.localitySlug}`,
     slug: property.slug,
   }));
 }
