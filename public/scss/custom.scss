@@ -79,30 +79,30 @@
   display: none;
 }
 .about-box-benefit {
-    display: flex;
-    column-gap: 20px;
+  display: flex;
+  column-gap: 20px;
 }
 .box-benefit {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 a.box-benefit.hover-btn-view {
-    height: 358px;
+  height: 358px;
 }
-.flat-img-with-text-v2{
-   align-items: center;
+.flat-img-with-text-v2 {
+  align-items: center;
 }
 .text-subtitle {
-    font-size: 16px;
-    line-height: 45px;
+  font-size: 16px;
+  line-height: 45px;
 }
 h3.title.mt-4 {
-    font-size: 50px;
-    line-height: 65px;
+  font-size: 50px;
+  line-height: 65px;
 }
 p.desc.text-variant-1 {
-    font-size: 18px;
-    line-height: 30px;
+  font-size: 18px;
+  line-height: 30px;
 }
 @media (max-width: 575px) {
   .non-swiper-on-575 {
@@ -184,4 +184,75 @@ p.desc.text-variant-1 {
   .text-cb-amenities {
     cursor: pointer;
   }
+}
+/* Add this inside your main.scss or globals.css */
+
+.info-box {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  gap: 1.5rem; /* Space between items */
+}
+
+.info-box .item {
+  display: flex;
+  align-items: center;
+  flex: 1 1 200px; /* Allows items to wrap nicely */
+}
+
+.info-box .box-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background-color: #f8f9fa; /* Light grey background */
+  border: 1px solid #e9ecef; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  margin-right: 1rem;
+}
+
+.info-box .box-icon .icon {
+  font-size: 24px; /* Adjust icon size */
+  color: #495057; /* Icon color */
+}
+
+.info-box .content .label {
+  display: block;
+  color: #6c757d; /* Lighter color for the label */
+  font-size: 14px;
+}
+
+.info-box .content span:not(.label) {
+  font-weight: 600; /* Bolder text for the value */
+}
+/* --- Overview Hover Effect --- */
+
+/* Add a smooth transition and pointer cursor to each item */
+.info-box .item {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* Define the styles for when you hover over an item */
+.info-box .item:hover {
+  background-color: #f0f7ff; /* A very light blue background */
+  border-color: #0d6efd; /* Your theme's primary blue for the border */
+  transform: translateY(-5px); /* Optional: lifts the box slightly */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); /* Optional: adds a subtle shadow */
+}
+
+/* Change the icon color on hover */
+.info-box .item:hover .box-icon .icon {
+  color: #0d6efd; /* Primary blue color */
+}
+
+/* Change the main value text color on hover */
+.info-box .item:hover .content span:not(.label) {
+  color: #0d6efd; /* Primary blue color */
+}
+
+.feature-item {
+  list-style-type: disc !important;
 }

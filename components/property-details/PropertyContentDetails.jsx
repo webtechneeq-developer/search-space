@@ -1,65 +1,46 @@
 import Overview from "./Overview";
-import Video from "./Video";
 import Details from "./Details";
-import Features from "./Features";
 import MapLocation from "./MapLocation";
-import FloorPlan from "./FloorPlan";
-import AttachMents from "./AttachMents";
-import Explore from "./Explore";
-import LoanCalculator from "./LoanCalculator";
-import Nearby from "./Nearby";
-import GuestReview from "./GuestReview";
 import ContactSeller from "./ContactSeller";
-import WidgetBox from "./WidgetBox";
-import WhyChoose from "./WhyChoose";
-import LeatestProperties from "./LeatestProperties";
 import PropertyDescription from "./PropertyDescription";
 import PropertyFeatures from "./PropertyFeatures";
+
 export default function PropertyContentDetails({ propertyItem }) {
   return (
-    <>
-      <section className="flat-section-v3 flat-property-detail">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-8 col-lg-7">
-              <div className="single-property-element single-property-desc">
-                <PropertyDescription propertyItem={propertyItem} />
-              </div>
-              <div className="single-property-element single-property-overview">
-                <Overview propertyItem={propertyItem} />
-              </div>
-              <div className="single-property-element single-property-info">
-                <Details propertyItem={propertyItem} />
-              </div>
-              <div className="single-property-element single-property-feature">
-                <PropertyFeatures propertyItem={propertyItem} />
-              </div>
-              <div className="single-property-element single-property-nearby">
-                <Nearby />
-              </div>
-              <div className="single-property-element single-property-map">
-                <MapLocation propertyItem={propertyItem} />
-              </div>
+    <section className="flat-section-v3 flat-property-detail">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-8">
+            <div className="single-property-element">
+              <PropertyDescription propertyItem={propertyItem} />
             </div>
-            <div className="col-xl-4 col-lg-5">
-              <div className="single-sidebar fixed-sidebar">
-                <div className="widget-box single-property-contact">
-                  <ContactSeller />
-                </div>
-                <div className="flat-tab flat-tab-form widget-filter-search widget-box">
-                  <WidgetBox />
-                </div>
-                <div className="widget-box single-property-whychoose">
-                  <WhyChoose />
-                </div>
-                <div className="box-latest-property">
-                  <LeatestProperties />
-                </div>
+            <div className="single-property-element">
+              <h4 className="title-mb">Overview</h4>
+              <Overview propertyItem={propertyItem} />
+            </div>
+            <div className="single-property-element">
+              <h4 className="title-mb">Details</h4>
+              <Details propertyItem={propertyItem} />
+            </div>
+            <div className="single-property-element">
+              <h4 className="title-mb">Amenities</h4>
+              <PropertyFeatures propertyItem={propertyItem} />
+            </div>
+            <div className="single-property-element">
+              <h4 className="title-mb">Map Location</h4>
+              <MapLocation propertyItem={propertyItem} />
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="single-sidebar fixed-sidebar">
+              <div className="widget-box single-property-contact">
+                <h4 className="title-mb">Contact Agent</h4>
+                <ContactSeller />
               </div>
             </div>
           </div>
         </div>
-      </section>{" "}
-    </>
+      </div>
+    </section>
   );
 }

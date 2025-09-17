@@ -1,31 +1,78 @@
+// components/property-details/Details.jsx
+import React from "react";
+import Image from "next/image";
+
 export default function Details({ propertyItem }) {
-  const items = [
-    { label: "ID:", content: propertyItem.id },
-    { label: "Beds", content: "7.328" },
-    { label: "Price", content: propertyItem.price },
-    { label: "Year built", content: "2024" },
-    { label: "Size", content: "150 sqft" },
-    { label: "Type", content: propertyItem.type },
-    { label: "Rooms", content: "9" },
-    { label: "Status", content: "For sale" },
-    { label: "Baths", content: "3" },
-    { label: "Garage", content: "1" },
+  // Array of details to display, making it easy to add or remove items
+  const detailItems = [
+    {
+      label: "City",
+      value: propertyItem.city,
+      icon: "/images/icons/city.svg",
+    },
+    {
+      label: "Location",
+      value: propertyItem.subLocation,
+      icon: "/images/icons/map-pin.svg",
+    },
+    {
+      label: "Working Hours",
+      value: propertyItem.workingHours,
+      icon: "/images/icons/clock.svg",
+    },
+    {
+      label: "Lock-in Period",
+      value: propertyItem.lockInPeriod,
+      icon: "/images/icons/lock.svg",
+    },
+    {
+      label: "Security Deposit",
+      value: propertyItem.securityDeposit,
+      icon: "/images/icons/shield.svg",
+    },
+    {
+      label: "Advance Payment",
+      value: propertyItem.advancePayment,
+      icon: "/images/icons/cash.svg",
+    },
+    {
+      label: "Notice Period",
+      value: propertyItem.noticePeriod,
+      icon: "/images/icons/calendar.svg",
+    },
   ];
 
   return (
-    <>
-      {" "}
-      <h5 className="title fw-6">Property Details</h5>
-      <div className="row">
-        {items.map((item, index) => (
-          <div className="col-md-6" key={index}>
-            <div className="inner-box">
-              <span className="label text-black-3">{item.label}</span>
-              <div className="content text-black-3">{item.content}</div>
+    <div className="row">
+      {detailItems.map((item) => (
+        // Render each detail item in a 2-column grid
+        <div key={item.label} className="col-md-6 mb-4">
+          <div className="d-flex align-items-center">
+            <div
+              className="flex-shrink-0 d-flex justify-content-center align-items-center me-3"
+              style={{
+                width: "40px",
+                height: "40px",
+                backgroundColor: "#f8f9fa",
+                borderRadius: "50%",
+              }}
+            >
+              <Image src={item.icon} alt={item.label} width={22} height={22} />
+            </div>
+            <div className="flex-grow-1">
+              <span
+                className="d-block text-secondary"
+                style={{ fontSize: "14px" }}
+              >
+                {item.label}
+              </span>
+              <span className="fw-6 text-capitalize">
+                {item.value || "N/A"}
+              </span>
             </div>
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 }

@@ -1,49 +1,22 @@
 import React from "react";
 
 export default function MapLocation({ propertyItem }) {
+  // Use the map link from your data, or a static default map
+  const mapUrl =
+    propertyItem.map ||
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119064.42879551428!2d72.79093341951556!3d19.08252232493351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1689168194481!5m2!1sen!2sin";
+
   return (
-    <>
-      <h5 className="title fw-6">Map location</h5>
+    <div className="flat-map-v2">
       <iframe
-        className="map"
-        src={propertyItem.map}
+        className="map-content"
+        src={mapUrl}
         width="100%"
-        height={478}
-        style={{ border: 0 }}
+        height="450"
         allowFullScreen=""
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-      />
-      <div className="info-map">
-        <ul className="box-left">
-          <li>
-            <span className="label fw-6">Address</span>
-            <div className="text text-variant-1">{propertyItem.address}</div>
-          </li>
-          <li>
-            <span className="label fw-6">City</span>
-            <div className="text text-variant-1">{propertyItem.city}</div>
-          </li>
-          <li>
-            <span className="label fw-6">State/county</span>
-            <div className="text text-variant-1">$7,500</div>
-          </li>
-        </ul>
-        <ul className="box-right">
-          <li>
-            <span className="label fw-6">Postal code</span>
-            <div className="text text-variant-1">7.328</div>
-          </li>
-          <li>
-            <span className="label fw-6">Area</span>
-            <div className="text text-variant-1">7.328</div>
-          </li>
-          <li>
-            <span className="label fw-6">Country</span>
-            <div className="text text-variant-1">2024</div>
-          </li>
-        </ul>
-      </div>
-    </>
+      ></iframe>
+    </div>
   );
 }

@@ -17,7 +17,7 @@ export default function ContactSeller() {
           />
         </div>
         <div className="info">
-          <h6 className="name">Shara Conner</h6>
+          <h6 className="name">Agent Name</h6>
           <ul className="list">
             <li className="d-flex align-items-center gap-4 text-variant-1">
               <i className="icon icon-phone" />
@@ -25,14 +25,14 @@ export default function ContactSeller() {
             </li>
             <li className="d-flex align-items-center gap-4 text-variant-1">
               <i className="icon icon-mail" />
-              themesflat@gmail.com
+              demo@gmail.com
             </li>
           </ul>
         </div>
       </div>
       <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
         <div className="ip-group">
-          <input type="text" placeholder="Jony Dane" className="form-control" />
+          <input type="text" placeholder="Your Name" className="form-control" />
         </div>
         <div className="ip-group">
           <input
@@ -44,7 +44,7 @@ export default function ContactSeller() {
         <div className="ip-group">
           <input
             type="text"
-            placeholder="themesflat@gmail.com"
+            placeholder="xyz@abc.com"
             className="form-control"
           />
         </div>

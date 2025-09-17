@@ -1,7 +1,7 @@
 import Footer1 from "@/components/footer/Footer1";
 import Header1 from "@/components/headers/Header1";
 import PropertyContentDetails from "@/components/property-details/PropertyContentDetails";
-import PropertyDetailsTitle from "@/components/property-details/PropertyDeatilsTitle";
+import PropertyDetailsTitle from "@/components/property-details/PropertyDetailsTitle";
 import PropertySlider from "@/components/property-details/PropertySlider";
 import { allProperties } from "@/data/demoProporties";
 import React from "react";
@@ -18,8 +18,8 @@ export default function page({ params }) {
     <>
       <Header1 />
       <PropertyDetailsTitle propertyItem={propertyItem} />
-      <PropertySlider propertyImg={propertyItem.singlePageImgSrc} />
       <PropertyContentDetails propertyItem={propertyItem} />
+      <PropertySlider propertyImg={propertyItem.singlePageImgSrc} />
       <Footer1 />
     </>
   );

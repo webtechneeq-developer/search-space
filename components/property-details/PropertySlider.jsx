@@ -1,41 +1,12 @@
 "use client";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Pagination } from "swiper/modules";
 import { Gallery, Item } from "react-photoswipe-gallery";
-const propertyImages = [
-  {
-    src: "/images/banner/banner-property-1.jpg",
-    alt: "img-property",
-    width: 627,
-    height: 694,
-  },
-  {
-    src: "/images/banner/banner-property-3.jpg",
-    alt: "img-property",
-    width: 627,
-    height: 694,
-  },
-  {
-    src: "/images/banner/banner-property-2.jpg",
-    alt: "img-property",
-    width: 628,
-    height: 694,
-  },
-  {
-    src: "/images/banner/banner-property-1.jpg",
-    alt: "img-property",
-    width: 627,
-    height: 694,
-  },
-];
+import "photoswipe/dist/photoswipe.css"; // Import gallery CSS
 
 export default function PropertySlider({ propertyImg }) {
-  // Convert prop to array in case you want multiple images later
-  const images = Array.isArray(propertyImg) ? propertyImg : [propertyImg];
-
-  console.log("Get Image in Propeerty detail page", images);
+  const images = propertyImg || [];
 
   return (
     <Gallery>
@@ -45,45 +16,42 @@ export default function PropertySlider({ propertyImg }) {
           slidesPerView={3}
           spaceBetween={10}
           breakpoints={{
-            1200: {
-              slidesPerView: 3, // for tablet
-              spaceBetween: 10, // for space-lg
-            },
-            640: {
-              slidesPerView: 2, // for mobile-sm
-              spaceBetween: 10, // for space-md
-            },
-            0: {
-              slidesPerView: 1, // for mobile
-              spaceBetween: 10, // for space
-            },
+            1200: { slidesPerView: 3, spaceBetween: 10 },
+            768: { slidesPerView: 2, spaceBetween: 10 },
+            0: { slidesPerView: 1, spaceBetween: 10 },
           }}
           modules={[Pagination]}
           pagination={{ clickable: true, el: ".spb18" }}
         >
           {images.map((image, index) => (
             <SwiperSlide key={index}>
-              <Item original={image} thumbnail={image} width={627} height={200}>
+              <Item
+                original={image}
+                thumbnail={image}
+                width={1024}
+                height={768}
+              >
                 {({ ref, open }) => (
-                  <a
-                    onClick={open}
-                    data-fancybox="gallery"
-                    className="box-img-detail d-block"
-                  >
+                  <a onClick={open} className="box-img-detail d-block">
                     <Image
                       ref={ref}
-                      alt={image}
+                      alt={`Gallery image ${index + 1}`}
                       src={image}
                       width={627}
-                      height={200}
+                      height={450}
+                      style={{
+                        objectFit: "cover",
+                        cursor: "pointer",
+                        borderRadius: "8px",
+                      }}
                     />
                   </a>
                 )}
               </Item>
             </SwiperSlide>
           ))}
-          <div className="sw-pagination spb18 sw-pagination-location text-center" />
         </Swiper>
+        <div className="sw-pagination spb18 sw-pagination-location text-center" />
       </section>
     </Gallery>
   );
