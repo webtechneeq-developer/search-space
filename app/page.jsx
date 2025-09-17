@@ -4,7 +4,7 @@ import Blogs from "@/components/homes/home-1/Blogs";
 import Hero from "@/components/homes/home-1/Hero";
 import Locations from "@/components/common/Locations";
 import Services from "@/components/homes/home-1/Services";
-import { properties } from "@/data/demoProporties";
+import { properties } from "@/data/properties";
 import PropertyTypes from "@/components/homes/home-1/PropertyTypes";
 
 export const metadata = {

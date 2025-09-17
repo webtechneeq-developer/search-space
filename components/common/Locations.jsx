@@ -6,15 +6,23 @@ import Image from "next/image";
 
 // Define image paths for cities and sub-locations
 const locationImages = {
-  mumbai: "/images/location/mumbai.jpg",
-  "navi-mumbai": "/images/location/navi-mumbai.jpg",
-  pune: "/images/location/pune.jpg",
-  andheri: "/images/location/andheri.jpg",
-  kurla: "/images/location/kurla.jpg",
-  malad: "/images/location/malad.jpg",
+  mumbai: "/images/cities/airoli-img.webp",
+  "navi-mumbai": "/images/cities/navi-mumbai-img2.webp",
+  pune: "/images/cities/pune-img1.webp",
+  andheri: "/images/cities/andheri-img.webp",
+  kurla: "/images/cities/kurla-img.webp",
+  malad: "/images/cities/malad-img.webp",
   // Add other sub-location images here if needed
-  default: "/images/location/location-1.jpg",
+  default: "/images/cities/navi-mumbai-img2.webp",
 };
+
+function capitalizeWords(str) {
+  return str
+    .replace(/-/g, " ")
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
 export default function Locations({
   parentClass = "flat-location px-10 container",
@@ -84,10 +92,10 @@ export default function Locations({
                   <div className="content">
                     <div className="inner-left">
                       <span className="sub-title fw-6">
-                        {itemCount} properties
+                        {itemCount} Properties
                       </span>
                       <h6 className="title text-line-clamp-1 link">
-                        {locationTitle.replace(/-/g, " ")}
+                        {capitalizeWords(locationTitle)}
                       </h6>
                     </div>
                     <button className="box-icon line w-44 round">

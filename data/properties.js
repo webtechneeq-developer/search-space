@@ -11,7 +11,7 @@ export const properties = {
       typeSlug: "coworking-office",
       citySlug: "mumbai",
       localitySlug: "andheri",
-      imgSrc: "/images/property/andheri/andheri-001.webp",
+      imgSrc: "/images/cities/andheri-img.webp",
       singlePageImgSrc: [
         "/images/property/andheri/andheri-001-day-pass.webp",
         "/images/property/andheri/andheri-001-dedicated-desk.webp",
@@ -60,7 +60,7 @@ export const properties = {
       typeSlug: "coworking-office",
       citySlug: "mumbai",
       localitySlug: "andheri",
-      imgSrc: "/images/property/andheri/andheri-001.webp",
+      imgSrc: "/images/cities/andheri-img.webp",
       singlePageImgSrc: [
         "/images/property/andheri/andheri-001-day-pass.webp",
         "/images/property/andheri/andheri-001-dedicated-desk.webp",
@@ -109,7 +109,7 @@ export const properties = {
       typeSlug: "coworking-office",
       citySlug: "mumbai",
       localitySlug: "kurla",
-      imgSrc: "/images/property/kurla/kurla-001.webp",
+      imgSrc: "/images/cities/kurla-img.webp",
       singlePageImgSrc: [
         "/images/property/kurla/kurla-001-day-pass.webp",
         "/images/property/kurla/kurla-001-dedicated-desk.webp",
@@ -154,7 +154,7 @@ export const properties = {
       typeSlug: "coworking-office",
       citySlug: "mumbai",
       localitySlug: "malad",
-      imgSrc: "/images/property/malad/malad-001.webp",
+      imgSrc: "/images/cities/malad-img.webp",
       singlePageImgSrc: [
         "/images/property/malad/malad-001-day-pass.webp",
         "/images/property/malad/malad-001-dedicated-desk.webp",
@@ -201,7 +201,7 @@ export const properties = {
       typeSlug: "coworking-office",
       citySlug: "navi-mumbai",
       localitySlug: "airoli",
-      imgSrc: "/images/property/airoli/airoli-002.webp",
+      imgSrc: "/images/cities/airoli-img.webp",
       singlePageImgSrc: [
         "/images/property/airoli/airoli-002-day-pass.webp",
         "/images/property/airoli/airoli-002-dedicated-desk.webp",
@@ -248,7 +248,7 @@ export const properties = {
       typeSlug: "coworking-office",
       citySlug: "pune",
       localitySlug: "kharadi",
-      imgSrc: "/images/property/kharadi/kharadi-001.webp",
+      imgSrc: "/images/cities/kharadi-img.webp",
       singlePageImgSrc: [
         "/images/property/kharadi/kharadi-001-day-pass.webp",
         "/images/property/kharadi/kharadi-001-dedicated-desk.webp",

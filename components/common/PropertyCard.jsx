@@ -6,7 +6,8 @@ import { FaMapMarkerAlt, FaRupeeSign } from "react-icons/fa";
 
 const PropertyCard = ({ property }) => {
   // Generates a unique ID for the carousel on each card
-  const carouselId = `carousel-${useId()}`;
+  const rawId = useId();
+  const carouselId = `carousel-${rawId.replace(/[^a-zA-Z0-9-_]/g, "")}`;
 
   // Helper function to capitalize city/location names
   const capitalizeFirstLetter = (str) =>
