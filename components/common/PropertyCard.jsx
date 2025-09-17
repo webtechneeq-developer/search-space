@@ -2,7 +2,12 @@
 
 import React, { useId } from "react";
 import Link from "next/link";
-import { FaMapMarkerAlt, FaRupeeSign } from "react-icons/fa";
+import {
+  FaMapMarkerAlt,
+  FaRupeeSign,
+  FaClock,
+  FaCalendarAlt,
+} from "react-icons/fa";
 
 const PropertyCard = ({ property }) => {
   // Generates a unique ID for the carousel on each card
@@ -31,6 +36,10 @@ const PropertyCard = ({ property }) => {
     property.pricing?.length > 0
       ? Math.min(...property.pricing.map((p) => p.price))
       : null;
+
+  const workingHours = property.workingHours ? property.workingHours : "N/A";
+
+  const lockInPeriod = property.lockInPeriod ? property.lockInPeriod : "N/A";
 
   return (
     <div className="col-12 col-sm-6 col-lg-4 mb-4">
@@ -68,7 +77,7 @@ const PropertyCard = ({ property }) => {
                   className="d-block w-100"
                   alt={`${property.title} image ${index + 1}`}
                   style={{
-                    height: "250px",
+                    height: "200px",
                     objectFit: "cover",
                     borderTopLeftRadius: "15px",
                     borderTopRightRadius: "15px",
@@ -116,6 +125,28 @@ const PropertyCard = ({ property }) => {
           </p>
 
           <div className="mt-auto">
+            {workingHours !== null && (
+              <div className="bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
+                <span className="text-muted small">Working Hours</span>
+                <div className="text-primary fw-bold d-flex align-items-center fs-5">
+                  <FaClock className="me-1" style={{ fontSize: "0.9rem" }} />
+                  {workingHours}
+                </div>
+              </div>
+            )}
+            {lockInPeriod !== null && (
+              <div className="bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
+                <span className="text-muted small">Lock in Period</span>
+                <div className="text-primary fw-bold d-flex align-items-center fs-5">
+                  <FaCalendarAlt
+                    className="me-1"
+                    style={{ fontSize: "0.9rem" }}
+                  />
+                  {lockInPeriod}
+                </div>
+              </div>
+            )}
+
             {startingPrice !== null && (
               <div className="bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
                 <span className="text-muted small">Starting from</span>
