@@ -39,18 +39,23 @@ export default function LocalityPage({ params }) {
         <Header1 />
         {/* <Banner /> */}
         <div className="container mt-5">
+          <h2 className="mb-4 text-center">
+            {localityName.charAt(0).toUpperCase() + localityName.slice(1)}
+          </h2>
+
           <div className="row">
             {filteredProperties.length > 0 ? (
               filteredProperties.map((property) => (
                 <PropertyCard key={property.id} property={property} />
               ))
             ) : (
-              <div className="col-12">
+              <div className="col-12 text-center">
                 <p>No properties found in {localityName}.</p>
               </div>
             )}
           </div>
         </div>
+
         <Footer1 />
       </Suspense>
     </>

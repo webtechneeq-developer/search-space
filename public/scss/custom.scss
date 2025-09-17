@@ -256,3 +256,16 @@ p.desc.text-variant-1 {
 .feature-item {
   list-style-type: disc !important;
 }
+.card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+}
+.card {
+  height: 500px !important;
+}
+.card-body {
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}

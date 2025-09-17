@@ -1,10 +1,9 @@
-// app/[type]/in-[city]/page.jsx
 import React from "react";
 import Header1 from "@/components/headers/Header1";
 import Footer1 from "@/components/footer/Footer1";
-// import Banner from "@/components/common/Banner";
 import LocationGrid from "@/components/common/LocationGrid";
 import { spaceData } from "@/data/spaces";
+import { allProperties } from "@/data/properties"; // Make sure to import this
 
 export async function generateStaticParams() {
   const params = [];
@@ -16,6 +15,13 @@ export async function generateStaticParams() {
   return params;
 }
 
+function capitalizeWords(str) {
+  return str
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 export default function CityPage({ params }) {
   const { type, city } = params;
   const cityName = city.replace("in-", "");
@@ -25,18 +31,31 @@ export default function CityPage({ params }) {
     return <div>Location not found</div>;
   }
 
-  const locations = space.cities[cityName].map((locality) => ({
-    name: locality.replace(/-/g, " "),
-    url: `/${type}/${cityName}/${locality}`,
-    propertyCount: 0, // You can add logic to count properties here
-  }));
+  const localities = space.cities[cityName];
+
+  const locations = localities.map((locality) => {
+    // Count properties matching type and subLocation
+    const propertyCount = allProperties.filter(
+      (property) =>
+        property.typeSlug === type &&
+        property.citySlug === cityName &&
+        property.subLocation.toLowerCase() === locality.toLowerCase()
+    ).length;
+
+    return {
+      name: capitalizeWords(locality),
+      url: `/${type}/${cityName}/${locality}`,
+      propertyCount,
+    };
+  });
 
   return (
     <>
       <Header1 />
-      {/* <Banner /> */}
       <LocationGrid
-        title={`Localities in ${cityName.replace(/-/g, " ")}`}
+        title={`Localities in ${capitalizeWords(
+          cityName
+        )} for ${capitalizeWords(type)}`}
         locations={locations}
       />
       <Footer1 />

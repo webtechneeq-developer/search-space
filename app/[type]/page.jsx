@@ -1,15 +1,15 @@
-// app/[type]/page.jsx
 import React from "react";
 import Header1 from "@/components/headers/Header1";
 import Footer1 from "@/components/footer/Footer1";
-// import Banner from "@/components/common/Banner";
 import LocationGrid from "@/components/common/LocationGrid";
 import { spaceData } from "@/data/spaces";
+import { allProperties } from "@/data/properties";
 
-export async function generateStaticParams() {
-  return spaceData.map((space) => ({
-    type: space.type,
-  }));
+function capitalizeWords(str) {
+  return str
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 
 export default function SpaceTypePage({ params }) {
@@ -20,18 +20,28 @@ export default function SpaceTypePage({ params }) {
     return <div>Type not found</div>;
   }
 
-  const locations = Object.keys(space.cities).map((city) => ({
-    name: city.replace(/-/g, " "),
-    url: `/${type}/${city}`,
-    propertyCount: space.cities[city].length, // Or you can count actual properties
-  }));
+  // Each city - count total properties inside all its sublocations for this type
+  const locations = Object.entries(space.cities).map(
+    ([cityKey, subLocations]) => {
+      const propertyCount = allProperties.filter(
+        (property) =>
+          property.typeSlug === type &&
+          subLocations.includes(property.subLocation.toLowerCase())
+      ).length;
+
+      return {
+        name: capitalizeWords(cityKey),
+        url: `/${type}/${cityKey}`,
+        propertyCount,
+      };
+    }
+  );
 
   return (
     <>
       <Header1 />
-      {/* <Banner /> */}
       <LocationGrid
-        title={`Available Cities for ${type.replace(/-/g, " ")}`}
+        title={`Available Cities for ${capitalizeWords(type)}`}
         locations={locations}
       />
       <Footer1 />
