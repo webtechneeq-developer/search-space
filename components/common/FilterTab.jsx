@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import DropdownSelect from "./DropdownSelect";
 
@@ -7,8 +7,6 @@ export default function FilterTab({
   tabClass = "nav-tab-form style-1 justify-content-center",
   styleClass = "",
 }) {
-  const ddContainer = useRef();
-  const advanceBtnRef = useRef();
   const router = useRouter();
 
   // State for form inputs
@@ -19,9 +17,9 @@ export default function FilterTab({
 
   // Map locations to their respective localities
   const locationToLocalitiesMap = {
-    Mumbai: ["Andheri", "Kurla", "Lower Parel", "Malad"],
-    "Navi Mumbai": ["Airoli"],
-    Pune: ["Kharadi", "Magarpatta Road"],
+    Mumbai: ["andheri", "kurla", "lower-parel", "malad"],
+    "Navi Mumbai": ["airoli"],
+    Pune: ["kharadi", "magarpatta-road"],
   };
 
   // Update locality options whenever location changes
@@ -29,46 +27,46 @@ export default function FilterTab({
     if (locationToLocalitiesMap[location]) {
       setLocalityOptions([
         "Select Localities",
-        ...locationToLocalitiesMap[location],
+        ...locationToLocalitiesMap[location].map(
+          (loc) => loc.charAt(0).toUpperCase() + loc.slice(1)
+        ), // Capitalize options
       ]);
-      setLocality(""); // reset selected locality when location changes
     } else {
       setLocalityOptions(["Select Localities"]);
-      setLocality("");
     }
+    setLocality(""); // Reset selected locality when location changes
   }, [location]);
 
-  // Handle outside click for advanced search dropdown
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        ddContainer.current &&
-        !ddContainer.current.contains(event.target) &&
-        advanceBtnRef.current &&
-        !advanceBtnRef.current.contains(event.target)
-      ) {
-        ddContainer.current?.classList.remove("show");
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  // Helper function to create URL-friendly slugs
+  const createSlug = (text) => {
+    if (!text) return "";
+    return text.toLowerCase().replace(/ /g, "-");
+  };
 
-  // Handle form submission
+  // UPDATED Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (location && selectedType) {
-      const query = new URLSearchParams({
-        location: location.toLowerCase(),
-        type: selectedType,
-        locality: locality.toLowerCase(),
-      }).toString();
-      router.push(`/properties?${query}`);
-    } else {
-      alert("Please select both location and type.");
+
+    if (!selectedType || selectedType === "Select Type") {
+      alert("Please select a space type to begin your search.");
+      return;
     }
+
+    // Start building the path
+    let path = `/${createSlug(selectedType)}`;
+
+    // Add location if it's selected
+    if (location && location !== "Select Location") {
+      path += `/${createSlug(location)}`;
+
+      // Add locality ONLY if location is also selected
+      if (locality && locality !== "Select Localities") {
+        path += `/${createSlug(locality)}`;
+      }
+    }
+
+    // Push to the newly constructed URL
+    router.push(path);
   };
 
   return (
@@ -87,13 +85,12 @@ export default function FilterTab({
                         onChange={(value) => setSelectedType(value)}
                         options={[
                           "Select Type",
-                          "Private Office",
-                          "Co-Working Office",
-                          "Co-Working Dedicated Desk",
-                          "Co-Working Flexi Desk",
-                          "Co-Working Meeting Room",
-                          "Co-Working Conference Room",
-                          "Co-Working Day Pass",
+                          "Coworking Office",
+                          "Coworking Dedicated Desk",
+                          "Coworking Flexi Desk",
+                          "Coworking Meeting Room",
+                          "Coworking Conference Room",
+                          "Coworking Day Pass",
                           "Virtual Office",
                         ]}
                       />

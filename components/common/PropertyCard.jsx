@@ -116,8 +116,10 @@ const PropertyCard = ({ property }) => {
         </div>
 
         {/* Card Body */}
-        <div className="card-body d-flex flex-column">
-          <h5 className="card-title text-truncate fw-bold">{property.title}</h5>
+        <div className="card-body d-flex flex-column text-align-left">
+          <h6 className="card-title text-truncate fw-bold ">
+            {property.title}
+          </h6>
           <p className="card-text text-muted mb-2 d-flex align-items-center small">
             <FaMapMarkerAlt className="me-2 text-danger" />
             {capitalizeFirstLetter(property.subLocation)},{" "}
@@ -126,18 +128,18 @@ const PropertyCard = ({ property }) => {
 
           <div className="mt-auto">
             {workingHours !== null && (
-              <div className="bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
-                <span className="text-muted small">Working Hours</span>
-                <div className="text-primary fw-bold d-flex align-items-center fs-5">
+              <div className="card-details bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
+                <span className="card-hours text-muted">Working Hours</span>
+                <div className="d-flex align-items-center">
                   <FaClock className="me-1" style={{ fontSize: "0.9rem" }} />
                   {workingHours}
                 </div>
               </div>
             )}
             {lockInPeriod !== null && (
-              <div className="bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
-                <span className="text-muted small">Lock in Period</span>
-                <div className="text-primary fw-bold d-flex align-items-center fs-5">
+              <div className="card-details bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
+                <span className="card-hours text-muted">Lock in Period</span>
+                <div className="d-flex align-items-center">
                   <FaCalendarAlt
                     className="me-1"
                     style={{ fontSize: "0.9rem" }}
@@ -148,9 +150,9 @@ const PropertyCard = ({ property }) => {
             )}
 
             {startingPrice !== null && (
-              <div className="bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
-                <span className="text-muted small">Starting from</span>
-                <div className="text-primary fw-bold d-flex align-items-center fs-5">
+              <div className="card-details bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
+                <span className="card-hours text-muted">Starting from</span>
+                <div className="d-flex align-items-center">
                   <FaRupeeSign
                     className="me-1"
                     style={{ fontSize: "0.9rem" }}

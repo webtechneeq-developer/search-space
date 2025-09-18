@@ -73,7 +73,7 @@ export default function Locations({
             const locationTitle = isCityData ? data.title : slug;
             const linkSlug = isCityData
               ? `topmap-grid?location=${slug}&type=coworking-office`
-              : `coworking-space-in-${slug}`;
+              : `coworking-office/${slug}`;
             const itemCount = isCityData ? data.listings.length : data.length;
             const coverImage = locationImages[slug] || locationImages.default;
 
