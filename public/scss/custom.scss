@@ -284,3 +284,131 @@ p.desc.text-variant-1 {
 .card-hours {
   font-weight: 500 !important;
 }
+/* --- Attractive Filter Component Styles --- */
+
+.filter-container {
+  background-color: #ffffff;
+  border-radius: 1.5rem; /* 24px */
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 77, 255, 0.1);
+  border: 1px solid #e9ecef;
+  margin-bottom: 2.5rem;
+}
+
+.filter-pills .btn {
+  border-radius: 50rem;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid transparent;
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.filter-pills .btn.active {
+  background-color: #0d6efd;
+  color: white;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+  transform: translateY(-2px);
+}
+
+.filter-pills .btn:hover:not(.active) {
+  background-color: #e9ecef;
+}
+
+.styled-input-group .input-group-text {
+  background-color: #f8f9fa;
+  border: none;
+  border-radius: 0.75rem 0 0 0.75rem;
+  color: #0d6efd;
+}
+
+.styled-input-group .form-control,
+.styled-input-group .form-select {
+  border: none;
+  background-color: #f8f9fa;
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.styled-input-group .form-control:focus,
+.styled-input-group .form-select:focus {
+  background-color: #f8f9fa;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+}
+
+.filter-range-label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.filter-range-label .price-value {
+  color: #0d6efd;
+  font-size: 1.1rem;
+}
+/* --- Custom Hover Effect for Overview Spaces --- */
+
+/* Base styles for a smooth transition */
+.overview-item-card {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* Styles to apply on hover */
+.overview-item-card:hover {
+  background-color: #0d6efd; /* Primary blue background */
+  border-color: #0d6efd; /* Match border color */
+  color: #ffffff; /* Set default text color to white */
+  transform: translateY(-5px); /* Gentle lift effect */
+  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3); /* Add a soft blue shadow */
+}
+
+/* --- Override child element colors on hover --- */
+
+/* Make the icon white on hover */
+.overview-item-card:hover .icon {
+  color: #ffffff;
+}
+
+/* Make the title (h6) white on hover */
+.overview-item-card:hover .content h6 {
+  color: #ffffff;
+}
+
+/* Make the subtitle (p) and its contents a lighter white for contrast */
+.overview-item-card:hover .content p,
+.overview-item-card:hover .content p span {
+  color: rgba(
+    255,
+    255,
+    255,
+    0.85
+  ) !important; /* Use !important to override Bootstrap's text-muted and text-primary */
+}
+/* --- Custom Hover Effect for Details Section --- */
+
+/* Base styles for a smooth transition */
+.detail-item-card {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border: 1px solid #e9ecef;
+}
+
+/* Styles to apply on hover */
+.detail-item-card:hover {
+  background-color: #0d6efd; /* Primary blue background */
+  border-color: #0d6efd;
+  color: #ffffff;
+  transform: scale(1.03); /* A slight zoom effect */
+  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3);
+}
+
+/* --- Override child element colors on hover --- */
+
+/* Change the icon background to white for contrast */
+.detail-item-card:hover .icon-background {
+  background-color: #ffffff !important;
+}
+
+/* Change all text inside the card to white */
+.detail-item-card:hover span {
+  color: #ffffff !important; /* Use !important to override Bootstrap's text-secondary */
+}

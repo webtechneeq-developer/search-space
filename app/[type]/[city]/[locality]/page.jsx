@@ -1,14 +1,12 @@
-// app/[type]/in-[city]/at-[locality]/page.jsx
 import React, { Suspense } from "react";
 import Header1 from "@/components/headers/Header1";
 import Footer1 from "@/components/footer/Footer1";
-// import Banner from "@/components/common/Banner";
-import PropertyCard from "@/components/common/PropertyCard";
+import LocalityPageContent from "@/components/common/LocalityPageContent"; // Import the new content component
 import { allProperties } from "@/data/properties";
 import { spaceData } from "@/data/spaces";
 
-// generateStaticParams remains the same as before...
 export async function generateStaticParams() {
+  // Your generateStaticParams function remains the same
   const params = [];
   spaceData.forEach((space) => {
     for (const city in space.cities) {
@@ -24,38 +22,24 @@ export async function generateStaticParams() {
   return params;
 }
 
+// This is now a Server Component
 export default function LocalityPage({ params }) {
   const { locality } = params;
-  const localityName = locality.replace("at-", "");
 
-  // Filter properties based only on the subLocation from the URL
-  const filteredProperties = allProperties.filter(
-    (p) => p.subLocation.toLowerCase() === localityName.toLowerCase()
+  // Do the initial data filtering on the server
+  const initialProperties = allProperties.filter(
+    (p) => p.subLocation.toLowerCase() === locality.toLowerCase()
   );
 
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <Header1 />
-        {/* <Banner /> */}
-        <div className="container mt-5">
-          <h2 className="mb-4 text-center">
-            {localityName.charAt(0).toUpperCase() + localityName.slice(1)}
-          </h2>
-
-          <div className="row">
-            {filteredProperties.length > 0 ? (
-              filteredProperties.map((property) => (
-                <PropertyCard key={property.id} property={property} />
-              ))
-            ) : (
-              <div className="col-12 text-center">
-                <p>No properties found in {localityName}.</p>
-              </div>
-            )}
-          </div>
-        </div>
-
+        {/* Pass the server-fetched data as a prop to the client component */}
+        <LocalityPageContent
+          initialProperties={initialProperties}
+          localityName={locality}
+        />
         <Footer1 />
       </Suspense>
     </>

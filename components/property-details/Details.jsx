@@ -1,63 +1,73 @@
-// components/property-details/Details.jsx
 import React from "react";
-import Image from "next/image";
+// 1. Import the necessary icons from react-icons
+import {
+  FaCity,
+  FaMapMarkerAlt,
+  FaClock,
+  FaLock,
+  FaShieldAlt,
+  FaMoneyBillWave,
+  FaCalendarAlt,
+} from "react-icons/fa";
 
 export default function Details({ propertyItem }) {
-  // Array of details to display, making it easy to add or remove items
+  // 2. Update the array to use the imported icon components directly
   const detailItems = [
     {
       label: "City",
       value: propertyItem.city,
-      icon: "/images/icons/city.svg",
+      Icon: FaCity,
     },
     {
       label: "Location",
       value: propertyItem.subLocation,
-      icon: "/images/icons/map-pin.svg",
+      Icon: FaMapMarkerAlt,
     },
     {
       label: "Working Hours",
       value: propertyItem.workingHours,
-      icon: "/images/icons/clock.svg",
+      Icon: FaClock,
     },
     {
       label: "Lock-in Period",
       value: propertyItem.lockInPeriod,
-      icon: "/images/icons/lock.svg",
+      Icon: FaLock,
     },
     {
       label: "Security Deposit",
       value: propertyItem.securityDeposit,
-      icon: "/images/icons/shield.svg",
+      Icon: FaShieldAlt,
     },
     {
       label: "Advance Payment",
       value: propertyItem.advancePayment,
-      icon: "/images/icons/cash.svg",
+      Icon: FaMoneyBillWave,
     },
     {
       label: "Notice Period",
       value: propertyItem.noticePeriod,
-      icon: "/images/icons/calendar.svg",
+      Icon: FaCalendarAlt,
     },
   ];
 
   return (
     <div className="row">
       {detailItems.map((item) => (
-        // Render each detail item in a 2-column grid
-        <div key={item.label} className="col-md-6 mb-4">
-          <div className="d-flex align-items-center">
+        <div key={item.label} className="col-md-6 mb-3">
+          <div className="d-flex align-items-center p-3 rounded-3 h-100 detail-item-card">
             <div
-              className="flex-shrink-0 d-flex justify-content-center align-items-center me-3"
-              style={{
-                width: "40px",
-                height: "40px",
-                backgroundColor: "#f8f9fa",
-                borderRadius: "50%",
-              }}
+              className="flex-shrink-0 d-flex justify-content-center align-items-center me-3 "
+              style={
+                {
+                  // width: "50px", // Increased size for a better look
+                  // height: "50px",
+                  // backgroundColor: "#f8f9fa",
+                  // borderRadius: "50%",
+                }
+              }
             >
-              <Image src={item.icon} alt={item.label} width={22} height={22} />
+              {/* 3. Render the Icon component dynamically */}
+              <item.Icon style={{ width: "25px", height: "25px" }} />
             </div>
             <div className="flex-grow-1">
               <span

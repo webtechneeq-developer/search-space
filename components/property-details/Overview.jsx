@@ -1,44 +1,66 @@
 import React from "react";
+// 1. Import the specific icons you need from react-icons
+import {
+  FaBuilding,
+  FaChair,
+  FaStreetView,
+  FaUsers,
+  FaEnvelope,
+  FaTicketAlt,
+  FaCheckCircle,
+} from "react-icons/fa";
 
-// Map your space types to the icon classes from your template's icon font
+// 2. Map your space types to the imported icon components
 const typeIconMap = {
-  "Private Office": "icon-house-line",
-  "Dedicated Desk": "icon-house-line",
-  "Flexi Desk": "icon-house-line",
-  "Meeting Room": "icon-house-line",
-  "Virtual Office": "icon-house-line",
-  "Day Pass": "icon-house-line",
-  default: "icon-house-line", // A fallback icon
+  "Private Office": FaBuilding,
+  "Dedicated Desk": FaChair,
+  "Flexi Desk": FaStreetView,
+  "Meeting Room": FaUsers,
+  "Virtual Office": FaEnvelope,
+  "Day Pass": FaTicketAlt,
+  default: FaCheckCircle, // A fallback icon
 };
 
 export default function Overview({ propertyItem }) {
-  // Get the list of available spaces from the 'pricing' array in your data
   const availableSpaces = propertyItem?.pricing || [];
+  const formatCurrency = (value) =>
+    new Intl.NumberFormat("en-IN").format(value);
 
   return (
     <>
       <h6 className="title fw-6">Available Spaces</h6>
+      <div className="row mt-3">
+        {availableSpaces.map((space) => {
+          // Get the correct Icon Component from the map
+          const IconComponent = typeIconMap[space.type] || typeIconMap.default; // Corrected a typo here
 
-      {/* Use the ul with the .info-box class your CSS is targeting */}
-      <ul className="info-box mt-3">
-        {availableSpaces.map((space) => (
-          // Each item is an li with the .item class
-          <li className="item" key={space.type}>
-            <div className="box-icon w-52">
-              <i
-                className={`icon ${
-                  typeIconMap[space.type] || typeIconMap.default
-                }`}
-              />
+          return (
+            <div className="col-lg-6 mb-3" key={space.type}>
+              <div className="d-flex align-items-center p-3 border rounded h-100 overview-item-card">
+                <div className="box-icon w-52">
+                  {/* Render the Icon Component with a specific size */}
+                  <IconComponent
+                    className="icon"
+                    style={{ width: "25px", height: "25px" }}
+                  />
+                </div>
+                <div className="content ms-3">
+                  <h6 className="fw-bold mb-1">{space.type}</h6>
+                  <p className="text-muted mb-0 small">
+                    <span className="text-primary fw-semibold">
+                      {" "}
+                      {/* Changed back to text-primary for better visibility */}
+                      ₹{formatCurrency(space.price)}
+                      {space.unit}
+                      {space.seats && ` | ${space.seats} Seats`}
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="content">
-              {/* The CSS styles the label and the value differently */}
-              <span className="label">Available</span>
-              <span>{space.type}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
+          );
+        })}
+      </div>
     </>
   );
 }
