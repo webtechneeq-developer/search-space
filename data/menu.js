@@ -29,7 +29,7 @@ export const menuItems = [
     links: [
       { href: "/mumbai", label: "Mumbai" },
       { href: "/navi-mumbai", label: "Navi Mumbai" },
-      { href: "/Pune", label: "Pune" },
+      { href: "/pune", label: "Pune" },
     ],
   },
 ];
