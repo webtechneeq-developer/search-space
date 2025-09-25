@@ -25,11 +25,23 @@ export const menuItems = [
     isCurrent: true,
   },
   {
-    title: "Coworking Places",
+    title: "Co-Working Places",
     links: [
-      { href: "/mumbai", label: "Mumbai" },
-      { href: "/navi-mumbai", label: "Navi Mumbai" },
-      { href: "/pune", label: "Pune" },
+      {
+        href: "/mumbai",
+        label: "Mumbai",
+        svgPath: "/images/icons/mumbai.svg", // Add this line
+      },
+      {
+        href: "/navi-mumbai",
+        label: "Navi-Mumbai",
+        svgPath: "/images/icons/navi-mumbai.svg", // Add this line
+      },
+      {
+        href: "/pune",
+        label: "Pune",
+        svgPath: "/images/icons/pune.svg", // Add this line
+      },
     ],
   },
 ];

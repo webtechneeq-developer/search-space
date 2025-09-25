@@ -10,10 +10,8 @@ export default function Nav() {
   return (
     <>
       {menuItems.map((item, index) => {
-        // This line checks if the item should be a dropdown
         const hasDropdown = item.links && item.links.length > 1;
 
-        // This logic checks if the current page URL matches any link in the menu item
         const isCurrent = item.links.some(
           (el) =>
             (el.href.split("/")[1] === pathname.split("/")[1] &&
@@ -23,18 +21,15 @@ export default function Nav() {
 
         return (
           <li key={index} className={`dropdown2 ${isCurrent ? "current" : ""}`}>
-            {/* If it's a dropdown, render a non-clickable title with an arrow. */}
             {hasDropdown ? (
               <a>
                 {item.title}
-                {/* <span className="dropdown-arrow"></span> */}
+                <span className="dropdown-arrow"></span>
               </a>
             ) : (
-              // Otherwise, render a direct link with just the title.
               <Link href={item.links[0]?.href || "/"}>{item.title}</Link>
             )}
 
-            {/* Only render the <ul> dropdown list if it's a dropdown */}
             {hasDropdown && (
               <ul>
                 {item.links.map((link, linkIndex) => {
@@ -47,7 +42,33 @@ export default function Nav() {
                       key={linkIndex}
                       className={isSubCurrent ? "current" : ""}
                     >
-                      <Link href={link.href}>{link.label}</Link>
+                      {/* UPDATED LINK WITH ICON */}
+                      <Link
+                        href={link.href}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          // justifyContent: "space-evenly",
+                        }}
+                      >
+                        {link.svgPath && (
+                          <img
+                            className="cityicon"
+                            src={link.svgPath}
+                            alt="City-Icon" // Decorative icon
+                            style={{
+                              width: "40px",
+                              height: "40px",
+                              marginRight: "10px",
+                              borderRadius: "50%",
+                              padding: "10px",
+                              border: "1px solid #ddd",
+                              backgroundColor: "#FFF",
+                            }}
+                          />
+                        )}
+                        {link.label}
+                      </Link>
                     </li>
                   );
                 })}
@@ -57,7 +78,7 @@ export default function Nav() {
         );
       })}
 
-      {/* This <style jsx> block contains all the necessary CSS for the hover effect and dropdown styling */}
+      {/* This <style jsx> block contains all the necessary CSS */}
       <style jsx>{`
         .dropdown2 {
           position: relative;
@@ -117,6 +138,9 @@ export default function Nav() {
         .dropdown2 ul li.current > a {
           font-weight: bold;
           color: #007bff;
+        }
+        .cityicon:hover {
+          border: 1px solid #1563df;
         }
       `}</style>
     </>
