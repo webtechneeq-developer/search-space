@@ -1,0 +1,46 @@
+.scroll-animate-title {
+    span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(50px);
+        color: inherit;
+        animation: scrollTitleAnimation 1s ease forwards;
+    }
+
+    &.animate {
+        .text-subtitle span {
+            @for $i from 1 through 10 {
+
+                // Adjust for max words
+                &:nth-child(#{$i}) {
+                    animation-delay: #{0.2 * $i}s;
+                }
+            }
+        }
+
+        h3 span {
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    animation-delay: #{2 + 0.2 * $i}s; // title starts after subtitle
+                }
+            }
+        }
+    }
+}
+
+@keyframes scrollTitleAnimation {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

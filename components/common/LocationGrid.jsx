@@ -20,13 +20,13 @@ export default function LocationGrid({ title, locations }) {
         p.citySlug?.toLowerCase() === locationName.toLowerCase() ||
         p.subLocation?.toLowerCase() === locationName.toLowerCase()
     );
-    return match?.imgSrc || "/images/location/location-1.jpg"; // fallback image
+    return match?.imgSrc || "/images/location/navi-mumbai-location.webp"; // fallback image
   };
 
   return (
     <section className="flat-location container py-5">
       <div className="box-title text-center wow fadeInUp">
-        <h3 className="mt-4 title">{title}</h3>
+        <h3 className="mt-4 title new-title">{title}</h3>
       </div>
 
       <div className="row mt-4 wow fadeInUp" data-wow-delay=".2s">
@@ -46,7 +46,7 @@ export default function LocationGrid({ title, locations }) {
                     height={578}
                   />
                 </div>
-                <div className="content">
+                <div className="content card-box">
                   <div className="inner-left">
                     <h6 className="title text-capitalize link mb-0">
                       {capitalizeWords(loc.name)}
@@ -55,8 +55,10 @@ export default function LocationGrid({ title, locations }) {
                       {count} {count === 1 ? "property" : "properties"}
                     </small>
                   </div>
-                  <button className="box-icon line w-44 round">
-                    <i className="icon icon-arrow-right2" />
+                  <button className="explore-btn">
+                    <a href="#">
+                      Explore
+                    </a>
                   </button>
                 </div>
               </Link>

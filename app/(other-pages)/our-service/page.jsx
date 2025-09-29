@@ -18,9 +18,9 @@ export default function page() {
       <Header1 />
       <PageTitle />
       <Services />
-      <Brands />
-      <Testimonials />
-      <Faqs />
+      {/* <Brands /> */}
+      {/* <Testimonials /> */}
+      {/* <Faqs /> */}
       <Banner />
       <Footer1 />
     </>

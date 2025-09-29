@@ -1,6 +1,6 @@
 export const locations = [
   {
-    imgSrc: "/images/location/location-1.jpg",
+    imgSrc: "/images/location/navi-mumbai-location.webp",
     alt: "image-location",
     title: "Naperville",
   },
@@ -30,7 +30,7 @@ export const locations = [
     title: "Naperville",
   },
   {
-    imgSrc: "/images/location/location-1.jpg",
+    imgSrc: "/images/location/navi-mumbai-location.webp",
     alt: "image-location",
     title: "Austin",
   },

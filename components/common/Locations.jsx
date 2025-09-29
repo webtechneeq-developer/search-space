@@ -6,7 +6,7 @@ import Image from "next/image";
 
 // Define image paths for cities and sub-locations
 const locationImages = {
-  mumbai: "/images/cities/airoli-img.webp",
+  mumbai: "/images/cities/new-mumbai-location.webp",
   "navi-mumbai": "/images/cities/navi-mumbai-img2.webp",
   pune: "/images/cities/pune-img1.webp",
   andheri: "/images/cities/andheri-img.webp",

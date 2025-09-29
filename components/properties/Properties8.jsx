@@ -180,7 +180,7 @@ export default function SubLocation({
 
                     const coverImage =
                       subLocationMap[0]?.imgSrc ||
-                      "/images/location/location-1.jpg";
+                      "/images/location/navi-mumbai-location.webp";
 
                     return (
                       <SwiperSlide className="swiper-slide" key={index}>

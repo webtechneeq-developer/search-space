@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+
 export default function Benefit() {
   return (
     <section className="flat-section bg-primary-new">

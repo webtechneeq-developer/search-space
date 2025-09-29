@@ -11,7 +11,7 @@ export const properties = {
       typeSlug: "coworking-office",
       citySlug: "mumbai",
       localitySlug: "andheri",
-      imgSrc: "/images/cities/andheri-img.webp",
+      imgSrc: "/images/cities/new-mumbai-location.webp",
       singlePageImgSrc: [
         "/images/property/andheri/andheri-001-day-pass.webp",
         "/images/property/andheri/andheri-001-dedicated-desk.webp",
@@ -196,7 +196,7 @@ export const properties = {
       typeSlug: "coworking-office",
       citySlug: "navi-mumbai",
       localitySlug: "airoli",
-      imgSrc: "/images/cities/airoli-img.webp",
+      imgSrc: "/images/cities/navi-mumbai-location.webp",
       singlePageImgSrc: [
         "/images/property/airoli/airoli-002-day-pass.webp",
         "/images/property/airoli/airoli-002-dedicated-desk.webp",
@@ -243,7 +243,7 @@ export const properties = {
       typeSlug: "coworking-office",
       citySlug: "pune",
       localitySlug: "kharadi",
-      imgSrc: "/images/cities/kharadi-img.webp",
+      imgSrc: "/images/cities/new-pune-location.webp",
       singlePageImgSrc: [
         "/images/property/kharadi/kharadi-001-day-pass.webp",
         "/images/property/kharadi/kharadi-001-dedicated-desk.webp",
