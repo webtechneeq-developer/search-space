@@ -24,7 +24,7 @@ export default function Home() {
       {/*       <Testimonials /> */}
       {/*       <Agents /> */}
       {/*       <Brands /> */}
-      <Blogs />
+      {/* <Blogs /> */}
       <Footer1 />
     </>
   );

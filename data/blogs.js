@@ -253,6 +253,35 @@ export const blogPosts7 = [
   },
 ];
 
+
+
+
+import React from "react";
+
+const coworkingItems = [
+  {
+    id: 1,
+    img: "https://www.searchspaces.in/wp-content/uploads/elementor/thumbs/conversation-q3i4yguz7w8umvlpjhdtokdbdewlk7ggph9awjp204.png",
+    alt: "conversation",
+    desc: "A coworking space is a shared office space where individuals, entrepreneurs, freelancers, and small teams can work alongside each other in a communal setting."
+  },
+  {
+    id: 2,
+    img: "https://www.searchspaces.in/wp-content/uploads/elementor/thumbs/collab-1-q3i4yfx5127kb9n2oyz742lus118cicqdcltf9qg6c.png",
+    alt: "collab-1",
+    desc: "These spaces provide a flexible and affordable alternative to traditional office rentals, and are designed to foster collaboration, networking, and a sense of community among members."
+  },
+  {
+    id: 3,
+    img: "https://www.searchspaces.in/wp-content/uploads/elementor/thumbs/desk-q3i4yhsteqa4yhkcdzsg924rysryrwk71lwsdtnntw.png",
+    alt: "desk",
+    desc: "Coworking spaces are designed to provide a flexible and affordable alternative to traditional office spaces, and they often offer various amenities, such as high-speed internet, meeting rooms, printing and scanning facilities, and kitchen areas."
+  }
+];
+
+
+
+
 export const blogItems = [
   {
     id: 24,

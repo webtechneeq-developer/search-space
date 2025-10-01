@@ -1,4 +1,5 @@
 import Blogs1 from "@/components/blogs/Blogs1";
+import Blogs2 from "@/components/blogs/Blogs2";
 import PageTitle from "@/components/blogs/PageTitle";
 import Footer1 from "@/components/footer/Footer1";
 import Header1 from "@/components/headers/Header1";
@@ -13,7 +14,7 @@ export default function page() {
     <>
       <Header1 />
       <PageTitle />
-      <Blogs1 />
+      <Blogs2 />
       <Footer1 />
     </>
   );

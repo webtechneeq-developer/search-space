@@ -140,15 +140,15 @@ export default function Contact() {
                   <li className="box">
                     <h6 className="title">Address:</h6>
                     <p className="text-variant-1">
-                      101 E 129th St, East Chicago, IN 46312 <br />
-                      United States
+                      Estatex Ventures Pvt. Ltd.B-405, Rustomjee Central Park, Andheri – Kurla Road, Chakala, Andheri (E),  <br />
+                        Mumbai 400 059.
                     </p>
                   </li>
                   <li className="box">
                     <h6 className="title">Infomation:</h6>
                     <p className="text-variant-1">
-                      1-333-345-6868 <br />
-                      hi.themesflat@gmail.com
+                      <a href="tel:+91 9820279750">+91 9820279750</a> <br/>
+                      <a href="mailto:info@searchspaces.in">info@searchspaces.in</a>
                     </p>
                   </li>
                   <li className="box">

@@ -9,8 +9,8 @@ import { useMemo, useState } from "react";
 
 const contactItems = [
   {
-    lat: 32.411201277163975,
-    long: -96.12394824867293,
+    lat: 19.1143195,
+    long: 72.8601757,
     title: "Office address",
     imageSrc: "/images/banner/contact.jpg",
     info: [
@@ -214,10 +214,10 @@ export default function ContactMap() {
   const [getLocation, setLocation] = useState(null);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM",
+    googleMapsApiKey: "AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao",
   });
   const center = useMemo(
-    () => ({ lat: 32.411201277163975, lng: -96.12394824867293 }),
+    () => ({ lat: 19.1143195, lng: 72.8601757 }),
     []
   );
 
@@ -284,15 +284,18 @@ export default function ContactMap() {
                       <ul className="list-info">
                         <li>
                           <span className="icon icon-map-trifold" />
-                          101 E 129th St, East Chicago, IN 46312, US
+                          Estatex Ventures Pvt. Ltd.
+                          B-405, Rustomjee Central Park, 
+                          Andheri – Kurla Road, Chakala, 
+                          Andheri (E), Mumbai 400 059.
                         </li>
                         <li>
                           <span className="icon icon-phone-line" />
-                          1-333-345-6868
+                          <a href="tel:+91 9820279750">+91 9820279750</a>
                         </li>
                         <li>
                           <span className="icon icon-mail-line" />
-                          themesflat@gmail.com
+                          <a href="mailto:info@searchspaces.in">info@searchspaces.in</a>
                         </li>
                       </ul>
                     </div>

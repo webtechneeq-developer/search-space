@@ -562,12 +562,12 @@
 
 .main-header .main-menu .navigation > li > ul > li:hover > a {
   color: $primary;
-  padding-left: 45px;
+  // padding-left: 45px;
 }
 
-.main-header .main-menu .navigation > li > ul > li:hover > a::before {
-  opacity: 1;
-}
+// .main-header .main-menu .navigation > li > ul > li:hover > a::before {
+//   opacity: 1;
+// }
 
 .main-header .main-menu .navigation > li > ul > li.dropdown2 > a:after {
   font-family: $fontIcon;

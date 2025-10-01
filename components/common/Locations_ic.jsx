@@ -82,18 +82,19 @@ export default function Locations({
                       height={578}
                     />
                   </div>
-                  <div className="content">
+                  <div className="content card-box">
                     <div className="inner-left">
-                      <span className="sub-title fw-6">
-                        {data.count} properties
-                      </span>
                       <h6 className="title text-line-clamp-1 link">
                         {locationTitle}
                       </h6>
+                      <span className="text-muted">
+                        {data.count} properties
+                      </span>
                     </div>
-                    <button className="box-icon line w-44 round">
+                    {/* <button className="box-icon line w-44 round">
                       <i className="icon icon-arrow-right2" />
-                    </button>
+                    </button> */}
+                    <button class="explore-btn"><a href="#">Explore</a></button>
                   </div>
                 </Link>
               </SwiperSlide>

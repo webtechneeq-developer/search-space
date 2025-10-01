@@ -3,17 +3,17 @@ export const footerSections = [
     heading: "Our Company",
     links: [
       { href: "/about-us", label: "About Us" },
-      { href: "/our-service", label: "Privacy Policy" },
-      { href: "/about-us", label: "Disclaimer" },
+      { href: "/privacy-policy", label: "Privacy Policy" },
+      { href: "/disclaimer", label: "Disclaimer" },
       { href: "/contact", label: "Contact Us" },
     ],
   },
   {
-    heading: "Support",
+    heading: "Quicklinks",
     links: [
-      { href: "/contact", label: "Get in Touch" },
-      { href: "/topmap-grid", label: "How It Works" },
-      // { href: "/topmap-grid", label: "Property For Buy" },
+      { href: "/mumbai", label: "Coworkspaces in Mumbai" },
+      { href: "/navi-mumbai", label: "Coworkspaces in Navi Mumbai" },
+      { href: "/pune", label: "Coworkspaces in Pune" },
       // { href: "/topmap-grid", label: "Our Agents" },
     ],
   },

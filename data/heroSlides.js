@@ -1,19 +1,25 @@
 export const sliderImages = [
   {
-    src: "/images/slider/slider-2.jpg",
+    src: "/images/slider/slider01.webp",
     alt: "images",
     width: 960,
     height: 730,
     className: "img-animation wow",
   },
   {
-    src: "/images/slider/slider-2-1.jpg",
+    src: "/images/slider/slider02.webp",
     alt: "images",
     width: 960,
     height: 730,
   },
   {
-    src: "/images/slider/slider-2-3.jpg",
+    src: "/images/slider/slider03.webp",
+    alt: "images",
+    width: 960,
+    height: 730,
+  },
+    {
+    src: "/images/slider/slider04.webp",
     alt: "images",
     width: 960,
     height: 730,
