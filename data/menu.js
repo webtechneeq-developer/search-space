@@ -11,7 +11,36 @@ export const menuItems = [
   },
   {
     title: "Services",
-    links: [{ href: "/our-service", label: "Services", isCurrent: true }],
+    links: [
+        {
+        href: "/coworking-office",
+        label: "Coworking Office",
+      },
+      {
+        href: "/coworking-dedicated-desk",
+        label: "Coworking Dedicated Desk",
+      },
+      {
+        href: "/coworking-flexi-desk",
+        label: "Coworking Flexi Desk",
+      },
+      {
+        href: "/coworking-meeting-room",
+        label: "Coworking Meeting Room",
+      },
+      {
+        href: "/coworking-conference-room",
+        label: "Coworking Conference Room",
+      }, 
+      {
+        href: "/coworking-day-pass",
+        label: "Coworking Day Pass",
+      }, 
+      {
+        href: "/coworking-virtual-office",
+        label: "Coworking Virtual Office",
+      },  
+    ],
     isCurrent: true,
   },
   {

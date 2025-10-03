@@ -225,7 +225,7 @@ export default function Footer1() {
                   </li>
                   <li className="mt-12 d-flex align-items-center gap-8">
                     <i className="icon icon-mail fs-20 text-variant-2" />
-                    <p className="text-white">info@searchspaces.in</p>
+                    <p className="text-white"><a href="mailto:info@searchspaces.in" className="caption-1">info@searchspaces.in</a></p>
                   </li>
                 </ul>
               </div>
