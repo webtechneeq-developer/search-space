@@ -10,7 +10,7 @@ import SeoLinks from "@/components/common/SeoLinks";
 
 
 export const metadata = {
-  title: "Search Spaces",
+  title: "Search Spaces11",
   description: "Search Spaces",
 };
 export default function Home() {
