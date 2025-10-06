@@ -85,13 +85,13 @@ export default function FilterTab({
                         onChange={(value) => setSelectedType(value)}
                         options={[
                           "Select Type",
-                          "Coworking Office",
-                          "Coworking Dedicated Desk",
-                          "Coworking Flexi Desk",
-                          "Coworking Meeting Room",
-                          "Coworking Conference Room",
-                          "Coworking Day Pass",
-                          "Virtual Office",
+                          "Private Office",
+                          " Dedicated Desk",
+                          " Flexi Desk",
+                          " Meeting Room",
+                          " Conference Room",
+                          " Day Pass",
+                          " Office",
                         ]}
                       />
                     </div>
