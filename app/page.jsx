@@ -7,6 +7,7 @@ import Services from "@/components/homes/home-1/Services";
 import { properties } from "@/data/properties";
 import PropertyTypes from "@/components/homes/home-1/PropertyTypes";
 import SeoLinks from "@/components/common/SeoLinks";
+import ReadMore from "@/components/common/ReadMore";
 
 
 export const metadata = {
@@ -28,6 +29,7 @@ export default function Home() {
       {/*       <Brands /> */}
       {/* <Blogs /> */}
       <SeoLinks/>
+      <ReadMore />
       <Footer1 />
     </>
   );

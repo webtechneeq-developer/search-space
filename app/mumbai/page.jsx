@@ -3,6 +3,8 @@ import Header1 from "@/components/headers/Header1";
 import Footer1 from "@/components/footer/Footer1";
 import CityPageLayout from "@/components/common/CityPageLayout";
 import { properties } from "@/data/properties";
+import ReadMore from "@/components/common/ReadMore";
+import SeoLinks from "@/components/common/SeoLinks";
 
 export default function MumbaiPage() {
   // Get all properties for Mumbai
@@ -19,6 +21,8 @@ export default function MumbaiPage() {
         localities={localities}
         cityName="Mumbai"
       />
+      <SeoLinks/>
+      <ReadMore />
       <Footer1 />
     </>
   );

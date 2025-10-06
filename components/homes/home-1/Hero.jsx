@@ -52,10 +52,10 @@ export default function Hero() {
             <div className="slider-content">
               <div className="heading">
                 <h1 className="fw-8 title animationtext clip">
-                  Find Your Ideal
+                  Find Your Ideal Coworking 
                   <br />
                   <TyperComponent
-                    strings={["Coworking Office", "Coworking Dedicated Desk","Coworking Flexi Desk","Coworking Meeting Room","Coworking Conference Room","Coworking Day Pass","Virtual Office"]}
+                    strings={["privete office", " Dedicated Desk"," Flexi Desk"," Meeting Room"," Conference Room"," Day Pass","Virtual Office"]}
                   />
                 </h1>
                 <p

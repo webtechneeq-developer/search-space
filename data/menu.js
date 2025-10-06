@@ -14,31 +14,31 @@ export const menuItems = [
     links: [
         {
         href: "/coworking-office",
-        label: "Coworking Office",
+        label: "privete office",
       },
       {
         href: "/coworking-dedicated-desk",
-        label: "Coworking Dedicated Desk",
+        label: " Dedicated Desk",
       },
       {
         href: "/coworking-flexi-desk",
-        label: "Coworking Flexi Desk",
+        label: " Flexi Desk",
       },
       {
         href: "/coworking-meeting-room",
-        label: "Coworking Meeting Room",
+        label: " Meeting Room",
       },
       {
         href: "/coworking-conference-room",
-        label: "Coworking Conference Room",
+        label: " Conference Room",
       }, 
       {
         href: "/coworking-day-pass",
-        label: "Coworking Day Pass",
+        label: " Day Pass",
       }, 
       {
         href: "/coworking-virtual-office",
-        label: "Coworking Virtual Office",
+        label: " Virtual Office",
       },  
     ],
     isCurrent: true,

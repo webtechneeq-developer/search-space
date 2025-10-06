@@ -556,3 +556,23 @@ p.sub-heading {
 .text-variant-2 {
     color: #5c6368;
 }
+.read-more button {
+    font-size: 16px;
+    line-height: 21.86px;
+    font-weight: 600;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;   
+    min-width: 162px;
+    min-height: 54px;
+    border-radius: 9999px;
+    margin-top: 10px;
+    color: #000000;
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+}

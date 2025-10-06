@@ -6,6 +6,8 @@ import Header1 from "@/components/headers/Header1";
 import Contact from "@/components/otherPages/Contact";
 import PageTitle3 from "@/components/otherPages/PageTitle3";
 import React from "react";
+import ReadMore from "@/components/common/ReadMore";
+
 
 export const metadata = {
   title: "Contact || Homelengo - Real Estate React Nextjs Template",
@@ -20,6 +22,7 @@ export default function page() {
       {/* <Faqs /> */}
       <Banner />
       <SeoLinks/>
+      <ReadMore />
       <Footer1 />
     </>
   );
