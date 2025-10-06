@@ -6,6 +6,8 @@ import Locations from "@/components/common/Locations";
 import Services from "@/components/homes/home-1/Services";
 import { properties } from "@/data/properties";
 import PropertyTypes from "@/components/homes/home-1/PropertyTypes";
+import SeoLinks from "@/components/common/SeoLinks";
+
 
 export const metadata = {
   title: "Search Spaces",
