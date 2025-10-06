@@ -25,6 +25,7 @@ export default function Home() {
       {/*       <Agents /> */}
       {/*       <Brands /> */}
       {/* <Blogs /> */}
+      <SeoLinks/>
       <Footer1 />
     </>
   );
