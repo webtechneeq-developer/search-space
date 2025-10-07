@@ -16,7 +16,7 @@ const Readmore = () => {
 
   return (
     <div style={{ maxWidth: "1280px", margin: "20px auto", lineHeight: "1.6" }}>
-      <h2 style={{ fontSize: "1.8rem", marginBottom: "15px" }}>About Search Spaces</h2>
+      <h2 style={{ fontSize: "1.7rem", marginBottom: "15px" }}>About Search Spaces</h2>
       <p>{paragraph1}</p>
 
       <div

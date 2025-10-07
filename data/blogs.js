@@ -387,33 +387,33 @@ export const blogPosts8 = [
     description:
       "Take a comprehensive look at noteworthy and exciting trends in the real estate industry that you should...",
   },
-  {
-    id: 35,
-    imgSrc: "/images/blog/blog-7.jpg",
-    date: "February 16, 2024",
-    author: { name: "Philip", category: "Furniture" },
-    title: "10 Steps to Prepare for a Successful Real Estate Purchase.",
-    description:
-      "A detailed guide on the essential steps to meticulously prepare for a real estate purchase, ensuring...",
-  },
-  {
-    id: 36,
-    imgSrc: "/images/blog/blog-8.jpg",
-    date: "February 18, 2024",
-    author: { name: "Soham", category: "Interior" },
-    title: "Transforming an Old House into a Modern Home.",
-    description:
-      "Highlighting modern architectural trends and how to update your old house to reflect a contemporary...",
-  },
-  {
-    id: 37,
-    imgSrc: "/images/blog/blog-9.jpg",
-    date: "February 22, 2024",
-    author: { name: "Gladys", category: "DreamHome" },
-    title: "Choosing a Reliable Real Estate Agent. What You Need to Know",
-    description:
-      "In-depth analysis of critical factors to consider when selecting a reliable and experienced real estate...",
-  },
+  // {
+  //   id: 35,
+  //   imgSrc: "/images/blog/blog-7.jpg",
+  //   date: "February 16, 2024",
+  //   author: { name: "Philip", category: "Furniture" },
+  //   title: "10 Steps to Prepare for a Successful Real Estate Purchase.",
+  //   description:
+  //     "A detailed guide on the essential steps to meticulously prepare for a real estate purchase, ensuring...",
+  // },
+  // {
+  //   id: 36,
+  //   imgSrc: "/images/blog/blog-8.jpg",
+  //   date: "February 18, 2024",
+  //   author: { name: "Soham", category: "Interior" },
+  //   title: "Transforming an Old House into a Modern Home.",
+  //   description:
+  //     "Highlighting modern architectural trends and how to update your old house to reflect a contemporary...",
+  // },
+  // {
+  //   id: 37,
+  //   imgSrc: "/images/blog/blog-9.jpg",
+  //   date: "February 22, 2024",
+  //   author: { name: "Gladys", category: "DreamHome" },
+  //   title: "Choosing a Reliable Real Estate Agent. What You Need to Know",
+  //   description:
+  //     "In-depth analysis of critical factors to consider when selecting a reliable and experienced real estate...",
+  // },
 ];
 
 export const recentPosts = [

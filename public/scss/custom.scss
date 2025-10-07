@@ -560,11 +560,12 @@ p.sub-heading {
     font-size: 16px;
     line-height: 21.86px;
     font-weight: 600;
-    display: inline-flex;
+    display: inline-flex
+;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    padding: 10px 20px;   
+    padding: 10px 20px;
     min-width: 162px;
     min-height: 54px;
     border-radius: 9999px;
@@ -575,7 +576,24 @@ p.sub-heading {
     text-decoration: none;
     transition: all 0.3s ease;
     background-color: #ffffff;
+    right: 41px;
+    position: relative;
 }
 .input-group-text {
     padding: 1.375rem .75rem;
+}
+section.flat-section.bg-primary-new.flat-testimonial.flex-item {
+    padding-top: 35px !important;
+    padding-bottom: 35px !important;
+}
+
+p.desc.text-variant-1 {
+    font-size: 16px;
+    line-height: 30px;
+}
+section.flat-section.pt-20.flat-banner {
+    padding-top: 100px;
+}
+section.flat-section.flat-recommended {
+    padding-bottom: 40px;
 }
