@@ -34,9 +34,11 @@ export const spaceData = [
   },
   {
     type: "coworking-conference-room",
-    mumbai: ["andheri", "kurla", "lower-parel", "malad"],
-    "navi-mumbai": ["airoli"],
-    pune: ["kharadi", "magarpatta-road"], // Add cities as they become available
+    cities: {
+      mumbai: ["andheri", "kurla", "lower-parel", "malad"],
+      "navi-mumbai": ["airoli"],
+      pune: ["kharadi", "magarpatta-road"],
+    },
   },
   {
     type: "coworking-day-pass",

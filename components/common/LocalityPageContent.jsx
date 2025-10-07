@@ -19,8 +19,7 @@ export default function LocalityPageContent({
   const [filters, setFilters] = useState({
     spaceType: "all",
     seats: "",
-    maxPrice: 50000,
-    lockInPeriod: "any",
+    maxPrice: 1000,
   });
 
   const [filteredProperties, setFilteredProperties] =

@@ -7,7 +7,10 @@ const spaceTypes = [
     "Private Office",
     "Dedicated Desk",
     "Flexi Desk",
+    "Day Pass",
     "Meeting Room",
+    "Conference Room",
+    "Virtual Office",
 ];
 
 export default function CityFilter({ filters, onFilterChange }) {
@@ -88,7 +91,7 @@ export default function CityFilter({ filters, onFilterChange }) {
                 {/* Price Range */}
                 <div className="col-6 mt-3">
                     <label htmlFor="maxPrice" className="form-label filter-range-label">
-                        Max Price per Seat:{" "}
+                        Price Range:{" "}
                         <span className="price-value">
                             ₹{Number(filters.maxPrice).toLocaleString()}
                         </span>

@@ -1,4 +1,3 @@
-// app/[type]/page.jsx
 import React from "react";
 import Header1 from "@/components/headers/Header1";
 import Footer1 from "@/components/footer/Footer1";
@@ -21,14 +20,14 @@ export default function SpaceTypePage({ params }) {
     return <div>Type not found</div>;
   }
 
-  // Check if there are any cities for this space type
-  if (Object.keys(space.cities).length === 0) {
+  // UPDATED: Check if 'space.cities' exists before getting its keys
+  if (!space.cities || Object.keys(space.cities).length === 0) {
     return (
       <>
         <Header1 />
         <div className="container text-center" style={{ padding: "100px 0" }}>
-          <h3>No Cities Available</h3>
-          <p className="lead text-muted my-4">
+          <h2>No Cities Available</h2>
+          <p className="lead text-muted">
             We are working on adding new locations for {capitalizeWords(type)}.
             Please check back soon!
           </p>
@@ -38,7 +37,6 @@ export default function SpaceTypePage({ params }) {
     );
   }
 
-  // If cities exist, proceed with the original logic
   const locations = Object.entries(space.cities).map(
     ([cityKey, subLocations]) => {
       const propertyCount = allProperties.filter(
@@ -65,4 +63,4 @@ export default function SpaceTypePage({ params }) {
       <Footer1 />
     </>
   );
-}
+} 

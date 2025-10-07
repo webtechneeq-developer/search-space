@@ -12,7 +12,7 @@ export default function CityPageLayout({
     locality: "all",
     spaceType: "all",
     seats: "",
-    maxPrice: 50000,
+    maxPrice: 5000,
     lockInPeriod: "any",
   });
 
