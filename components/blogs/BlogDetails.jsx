@@ -9,7 +9,7 @@ export default function BlogDetails({ blogItem }) {
     <section className="flat-section">
       <div className="container">
         <div className="row">
-          <div className="col-lg-8">
+          <div className="col-lg-12">
             <div className="flat-blog-detail">
               <div className="mb-30 pb-30 line-b">
                 <h3 className="title fw-8">{blogItem.title}</h3>
@@ -167,7 +167,7 @@ export default function BlogDetails({ blogItem }) {
                   earnings reports and government housing data releases.
                 </p>
               </div>
-              <div className="mt-16 d-flex justify-content-between flex-wrap gap-16">
+              {/* <div className="mt-16 d-flex justify-content-between flex-wrap gap-16">
                 <div className="d-flex flex-wrap align-items-center gap-12">
                   <span className="text-black fw-6">Tag:</span>
                   <ul className="d-flex flex-wrap gap-9">
@@ -210,8 +210,8 @@ export default function BlogDetails({ blogItem }) {
                     </li>
                   </ul>
                 </div>
-              </div>
-              <div className="wrap-review">
+              </div> */}
+              {/* <div className="wrap-review">
                 <div className="pb-12 line-b mb-0">
                   <h5 className="text-black-2">Comment (4)</h5>
                 </div>
@@ -230,12 +230,12 @@ export default function BlogDetails({ blogItem }) {
                     <CommentForm />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
-          <div className="col-lg-4">
+          {/* <div className="col-lg-4">
             <Sidebar />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
