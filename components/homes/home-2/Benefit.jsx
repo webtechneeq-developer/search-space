@@ -139,10 +139,10 @@ export default function Benefit() {
                     spaces amongst numerous choices in major cities across the
                     nation.
                   </p>
-                  <span className="btn-view style-1">
+                  {/* <span className="btn-view style-1">
                     <span className="text">Explore Now</span>
                     <span className="icon icon-arrow-right2" />
-                  </span>
+                  </span> */}
                 </div>
               </a>
               <a href="#" className="box-benefit hover-btn-view">
@@ -205,10 +205,10 @@ export default function Benefit() {
                     requirement by just a click or a small chat with our real
                     estate consultant.
                   </p>
-                  <span className="btn-view style-1">
+                  {/* <span className="btn-view style-1">
                     <span className="text">Explore Now</span>
                     <span className="icon icon-arrow-right2" />
-                  </span>
+                  </span> */}
                 </div>
               </a>
               <a href="#" className="box-benefit hover-btn-view">
@@ -274,10 +274,10 @@ export default function Benefit() {
                     spaces that are fully managed workspaces, that ensure
                     productive work in a collaborative environment.
                   </p>
-                  <span className="btn-view style-1">
+                  {/* <span className="btn-view style-1">
                     <span className="text">Explore Now</span>
                     <span className="icon icon-arrow-right2" />
-                  </span>
+                  </span> */}
                 </div>
               </a>
               <a href="#" className="box-benefit hover-btn-view">
@@ -338,10 +338,10 @@ export default function Benefit() {
                     We take care of all your requirements with no extra cost
                     i.e., professional service at zero brokerage.
                   </p>
-                  <span className="btn-view style-1">
+                  {/* <span className="btn-view style-1">
                     <span className="text">Explore Now</span>
                     <span className="icon icon-arrow-right2" />
-                  </span>
+                  </span> */}
                 </div>
               </a>
             </div>
