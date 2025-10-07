@@ -1,311 +1,114 @@
 "use client";
-import {
-  GoogleMap,
-  OverlayView,
-  useLoadScript,
-  InfoWindow,
-} from "@react-google-maps/api";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 const contactItems = [
   {
-    lat: 19.1143195,
-    long: 72.8601757,
-    title: "Office address",
+    title: "Estatex Ventures Pvt. Ltd.",
     imageSrc: "/images/banner/contact.jpg",
     info: [
       {
         iconClass: "icon icon-map-trifold",
-        text: "101 E 129th St, East Chicago, IN 46312, US",
+        text: `Estatex Ventures Pvt. Ltd.
+B-405, Rustomjee Central Park,
+Andheri – Kurla Road, Chakala,
+Andheri (E), Mumbai 400 059.`,
       },
       {
         iconClass: "icon icon-phone-line",
-        text: "1-333-345-6868",
+        text: "+91 9820279750",
       },
       {
         iconClass: "icon icon-mail-line",
-        text: "themesflat@gmail.com",
+        text: "info@searchspaces.in",
       },
     ],
   },
-  // Add more objects here for additional contact items
 ];
 
-const option = {
-  zoomControl: true,
-  disableDefaultUI: true,
-  scrollwheel: false,
-  styles: [
-    {
-      featureType: "all",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          weight: "2.00",
-        },
-      ],
-    },
-    {
-      featureType: "all",
-      elementType: "geometry.stroke",
-      stylers: [
-        {
-          color: "#9c9c9c",
-        },
-      ],
-    },
-    {
-      featureType: "all",
-      elementType: "labels.text",
-      stylers: [
-        {
-          visibility: "on",
-        },
-      ],
-    },
-    {
-      featureType: "landscape",
-      elementType: "all",
-      stylers: [
-        {
-          color: "#f2f2f2",
-        },
-      ],
-    },
-    {
-      featureType: "landscape",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#ffffff",
-        },
-      ],
-    },
-    {
-      featureType: "landscape.man_made",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#ffffff",
-        },
-      ],
-    },
-    {
-      featureType: "poi",
-      elementType: "all",
-      stylers: [
-        {
-          visibility: "off",
-        },
-      ],
-    },
-    {
-      featureType: "road",
-      elementType: "all",
-      stylers: [
-        {
-          saturation: -100,
-        },
-        {
-          lightness: 45,
-        },
-      ],
-    },
-    {
-      featureType: "road",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#eeeeee",
-        },
-      ],
-    },
-    {
-      featureType: "road",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          color: "#7b7b7b",
-        },
-      ],
-    },
-    {
-      featureType: "road",
-      elementType: "labels.text.stroke",
-      stylers: [
-        {
-          color: "#ffffff",
-        },
-      ],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "all",
-      stylers: [
-        {
-          visibility: "simplified",
-        },
-      ],
-    },
-    {
-      featureType: "road.arterial",
-      elementType: "labels.icon",
-      stylers: [
-        {
-          visibility: "off",
-        },
-      ],
-    },
-    {
-      featureType: "transit",
-      elementType: "all",
-      stylers: [
-        {
-          visibility: "off",
-        },
-      ],
-    },
-    {
-      featureType: "water",
-      elementType: "all",
-      stylers: [
-        {
-          color: "#46bcec",
-        },
-        {
-          visibility: "on",
-        },
-      ],
-    },
-    {
-      featureType: "water",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#c8d7d4",
-        },
-      ],
-    },
-    {
-      featureType: "water",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          color: "#070707",
-        },
-      ],
-    },
-    {
-      featureType: "water",
-      elementType: "labels.text.stroke",
-      stylers: [
-        {
-          color: "#ffffff",
-        },
-      ],
-    },
-  ],
-};
-const containerStyle = {
-  width: "100%",
-  height: "100%",
-};
 export default function ContactMap() {
-  const [getLocation, setLocation] = useState(null);
+  const [showInfo, setShowInfo] = useState(false);
 
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao",
-  });
-  const center = useMemo(
-    () => ({ lat: 19.1143195, lng: 72.8601757 }),
-    []
-  );
-
-  const CustomMarker = ({ elm }) => {
-    return (
-      <div className="marker-container" onClick={() => setLocation(elm)}>
-        <div className="marker-card">
-          <div className="front face">
-            <div />
-          </div>
-          <div className="back face">
-            <div />
-          </div>
-          <div className="marker-arrow" />
-        </div>
-      </div>
-    );
-  };
-
-  // close handler
-  const closeCardHandler = () => {
-    setLocation(null);
-  };
+  const toggleInfo = () => setShowInfo(!showInfo);
 
   return (
-    <>
-      {!isLoaded ? (
-        <p>Loading...</p>
-      ) : (
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={4.5}
-          options={option}
+    <div className="contact-map-wrapper" style={{ width: "100%", height: "500px", position: "relative" }}>
+      {/* Google Maps Iframe */}
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.8463338016363!2d72.85816662497847!3d19.114396082098104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9218da077e5%3A0x9f3270ceed365d45!2sSearch%20Spaces!5e0!3m2!1sen!2sin!4v1759812742830!5m2!1sen!2sin"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Estatex Ventures Location"
+      ></iframe>
+
+      {/* Overlay Info Card */}
+      {showInfo && (
+        <div
+          className="map-box"
+          style={{
+            position: "absolute",
+            top: "20px",
+            left: "20px",
+            zIndex: 10,
+            background: "#fff",
+            padding: "20px",
+            borderRadius: "8px",
+            boxShadow: "0 0 15px rgba(0,0,0,0.2)",
+          }}
         >
-          {contactItems.slice(0, 6).map((marker, i) => (
-            <OverlayView
-              key={i}
-              position={{
-                lat: marker.lat,
-                lng: marker.long,
-              }}
-              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-            >
-              <CustomMarker elm={marker} />
-            </OverlayView>
-          ))}
-          {getLocation !== null && (
-            <InfoWindow
-              position={{
-                lat: getLocation.lat,
-                lng: getLocation.long,
-              }}
-              onCloseClick={closeCardHandler}
-            >
-              <div className="map-box">
-                <div className="contact-map-item">
-                  <div className="inner-box">
-                    <div className="image-box">
-                      <img src="/images/banner/contact.jpg" alt="" />
-                    </div>
-                    <div className="content">
-                      <div className="title">Office address</div>
-                      <ul className="list-info">
-                        <li>
-                          <span className="icon icon-map-trifold" />
-                          Estatex Ventures Pvt. Ltd.
-                          B-405, Rustomjee Central Park, 
-                          Andheri – Kurla Road, Chakala, 
-                          Andheri (E), Mumbai 400 059.
-                        </li>
-                        <li>
-                          <span className="icon icon-phone-line" />
-                          <a href="tel:+91 9820279750">+91 9820279750</a>
-                        </li>
-                        <li>
-                          <span className="icon icon-mail-line" />
-                          <a href="mailto:info@searchspaces.in">info@searchspaces.in</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+          <div className="contact-map-item">
+            <div className="inner-box">
+              <div className="image-box">
+                <img src={contactItems[0].imageSrc} alt="" />
               </div>
-            </InfoWindow>
-          )}
-        </GoogleMap>
+              <div className="content">
+                <div className="title">{contactItems[0].title}</div>
+                <ul className="list-info">
+                  {contactItems[0].info.map((item, i) => (
+                    <li key={i}>
+                      <span className={item.iconClass} />
+                      {item.iconClass.includes("phone") ? (
+                        <a href={`tel:${item.text}`}>{item.text}</a>
+                      ) : item.iconClass.includes("mail") ? (
+                        <a href={`mailto:${item.text}`}>{item.text}</a>
+                      ) : (
+                        item.text
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <button onClick={toggleInfo} style={{ marginTop: "10px" }}>
+            Close
+          </button>
+        </div>
       )}
-    </>
+
+      {/* Button to toggle info */}
+      {/* {!showInfo && (
+        <button
+          onClick={toggleInfo}
+          style={{
+            position: "absolute",
+            top: "20px",
+            left: "20px",
+            zIndex: 10,
+            padding: "10px 15px",
+            background: "#007bff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          Show Info
+        </button>
+      )} */}
+    </div>
   );
 }

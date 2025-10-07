@@ -71,7 +71,7 @@ export default function AdvPropertyFilter({
 
       <div className="row g-3">
         {/* Locality Dropdown */}
-        <div className="col-md-6 col-lg-4">
+        <div className="col-md-6 col-lg-6">
           <label htmlFor="locality" className="form-label fw-bold">
             Locality
           </label>
@@ -97,7 +97,7 @@ export default function AdvPropertyFilter({
         </div>
 
         {/* Seats Input */}
-        <div className="col-md-6 col-lg-4">
+        <div className="col-md-6 col-lg-6">
           <label htmlFor="seats" className="form-label fw-bold">
             Number of Seats
           </label>
@@ -119,7 +119,7 @@ export default function AdvPropertyFilter({
         </div>
 
         {/* Lock-in Period Dropdown */}
-        <div className="col-md-6 col-lg-4">
+        {/* <div className="col-md-6 col-lg-4">
           <label htmlFor="lockInPeriod" className="form-label fw-bold">
             Max Lock-in
           </label>
@@ -141,7 +141,7 @@ export default function AdvPropertyFilter({
               <option value="12">12 Months</option>
             </select>
           </div>
-        </div>
+        </div> */}
 
         {/* Price Range Slider */}
         <div className="col-12 mt-3">
