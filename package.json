@@ -11,8 +11,13 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@react-google-maps/api": "^2.20.3",
+    "bcryptjs": "^3.0.2",
     "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.13.1",
     "chart.js": "^4.4.5",
+    "dotenv": "^17.2.3",
+    "jose": "^6.1.0",
+    "mysql2": "^3.15.1",
     "next": "14.2.15",
     "photoswipe": "^5.4.4",
     "rc-slider": "^11.1.7",
