@@ -5,11 +5,6 @@ export const menuItems = [
     isCurrent: true,
   },
   {
-    title: "About Us",
-    links: [{ href: "/about-us", label: "About Us", isCurrent: true }],
-    isCurrent: true,
-  },
-  {
     title: "Services",
     links: [
         {
@@ -43,17 +38,7 @@ export const menuItems = [
     ],
     isCurrent: true,
   },
-  {
-    title: "Contact Us",
-    links: [{ href: "/contact", label: "Contact Us", isCurrent: true }],
-    isCurrent: true,
-  },
-  {
-    title: "Blog",
-    links: [{ href: "/blog", label: "Blog", isCurrent: true }],
-    isCurrent: true,
-  },
-  {
+    {
     title: "Co-Working Places",
     links: [
       {
@@ -72,5 +57,20 @@ export const menuItems = [
         svgPath: "/images/icons/pune.svg", // Add this line
       },
     ],
+  },
+    {
+    title: "About Us",
+    links: [{ href: "/about-us", label: "About Us", isCurrent: true }],
+    isCurrent: true,
+  },
+  {
+    title: "Contact Us",
+    links: [{ href: "/contact", label: "Contact Us", isCurrent: true }],
+    isCurrent: true,
+  },
+  {
+    title: "Blog",
+    links: [{ href: "/blog", label: "Blog", isCurrent: true }],
+    isCurrent: true,
   },
 ];

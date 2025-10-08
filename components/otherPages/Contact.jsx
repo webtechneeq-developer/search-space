@@ -47,11 +47,7 @@ export default function Contact() {
                   Feel free to connect with us through our online channels for
                   updates, news, and more.
                 </p>
-                <form
-                  onSubmit={sendMail}
-                  ref={formRef}
-                  className="form-contact"
-                >
+                <form onSubmit={sendMail} ref={formRef} className="form-contact">
                   <div className="box grid-2">
                     <fieldset>
                       <label htmlFor="name">Full Name:</label>
@@ -67,7 +63,7 @@ export default function Contact() {
                     <fieldset>
                       <label htmlFor="email">Email Address:</label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
                         placeholder="Email"
                         name="email"
@@ -76,29 +72,57 @@ export default function Contact() {
                       />
                     </fieldset>
                   </div>
+
                   <div className="box grid-2">
                     <fieldset>
-                      <label htmlFor="phone">Phone Numbers:</label>
+                      <label htmlFor="phone">Phone Number:</label>
                       <input
                         type="text"
                         className="form-control style-1"
-                        placeholder="ex 012345678"
+                        placeholder="ex: 0123456789"
                         name="phone"
                         id="phone"
                         required
                       />
                     </fieldset>
                     <fieldset>
-                      <label htmlFor="subject">Subject:</label>
+                      <label htmlFor="officeType">Required Office Type:</label>
                       <input
                         type="text"
                         className="form-control style-1"
-                        placeholder="Enter Keyword"
-                        name="subject"
-                        id="subject"
+                        placeholder="e.g. Co-working, Private Office"
+                        name="officeType"
+                        id="officeType"
+                        required
                       />
                     </fieldset>
                   </div>
+
+                  <div className="box grid-2">
+                    <fieldset>
+                      <label htmlFor="seatCount">No. of Seats Required:</label>
+                      <input
+                        type="number"
+                        className="form-control style-1"
+                        placeholder="e.g. 5"
+                        name="seatCount"
+                        id="seatCount"
+                        required
+                      />
+                    </fieldset>
+                    <fieldset>
+                      <label htmlFor="locality">Preferred Locality:</label>
+                      <input
+                        type="text"
+                        className="form-control style-1"
+                        placeholder="e.g. Andheri, Bandra, Powai"
+                        name="locality"
+                        id="locality"
+                        required
+                      />
+                    </fieldset>
+                  </div>
+
                   <fieldset>
                     <label htmlFor="message">Your Message:</label>
                     <textarea
@@ -109,11 +133,11 @@ export default function Contact() {
                       placeholder="Message"
                       id="message"
                       required
-                      defaultValue={""}
                     />
                   </fieldset>
+
                   <div
-                    className={`tfSubscribeMsg  footer-sub-element ${
+                    className={`tfSubscribeMsg footer-sub-element ${
                       showMessage ? "active" : ""
                     }`}
                   >
@@ -125,6 +149,7 @@ export default function Contact() {
                       <p style={{ color: "red" }}>Something went wrong</p>
                     )}
                   </div>
+
                   <div className="send-wrap">
                     <button className="tf-btn primary size-1" type="submit">
                       Send Message
