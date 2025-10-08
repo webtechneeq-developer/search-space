@@ -10,8 +10,7 @@
     padding-right: 10px !important;
   }
 }
-.logo-1 {
-}
+
 .logo-2 {
   display: none !important;
 }
@@ -612,4 +611,20 @@ section.flat-section.flat-recommended {
 .card1-body {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+}
+
+// .wrap-banner bg-primary-new{
+//   background:url(src="public\images\banner\cta-button.webp") ;
+// }
+.wrap-banner.bg-primary-new {
+  background-image: url(/images/banner/cta-button1.webp);
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+.box-title h6 {
+  color: #ffff;
+}
+.wrap-banner .box-left {
+  padding: 60px 20px 60px 500px;
 }
