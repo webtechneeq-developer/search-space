@@ -3,6 +3,7 @@ import Header1 from "@/components/headers/Header1";
 import Blogs from "@/components/homes/home-1/Blogs";
 import Hero from "@/components/homes/home-1/Hero";
 import Locations from "@/components/common/Locations";
+import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
 import Services from "@/components/homes/home-1/Services";
 import { properties } from "@/data/properties";
 import PropertyTypes from "@/components/homes/home-1/PropertyTypes";
@@ -28,8 +29,14 @@ export default function Home() {
       {/*       <Agents /> */}
       {/*       <Brands /> */}
       {/* <Blogs /> */}
-      <SeoLinks/>
+      <SeoLinks />
       <ReadMore />
+      <WhatsAppFloatingButton
+        phone="+919820279750"
+        message="Hello! I have a question about your service."
+        size={60}
+        position="bottom-right"
+      />
       <Footer1 />
     </>
   );
