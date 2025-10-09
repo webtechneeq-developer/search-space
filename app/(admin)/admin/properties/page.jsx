@@ -7,22 +7,51 @@ export default function PropertiesPage() {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const fetchProperties = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("/api/properties");
+      if (!response.ok) throw new Error("Failed to fetch data");
+      const data = await response.json();
+      setProperties(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchProperties = async () => {
-      try {
-        const response = await fetch("/api/properties");
-        if (!response.ok) throw new Error("Failed to fetch data");
-        const data = await response.json();
-        setProperties(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchProperties();
   }, []);
+
+  const handleDelete = async (id) => {
+    // Show a confirmation dialog before deleting
+    if (window.confirm("Are you sure you want to delete this property?")) {
+      try {
+        const response = await fetch(`/api/properties/${id}`, {
+          method: "DELETE",
+        });
+        if (!response.ok) {
+          throw new Error("Failed to delete the property.");
+        }
+        // Refresh the properties list after successful deletion
+        fetchProperties();
+      } catch (err) {
+        alert(err.message);
+      }
+    }
+  };
+
+  // Filter properties based on the search term
+  const filteredProperties = properties.filter(
+    (p) =>
+      p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.subLocation.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (loading) {
     return (
@@ -63,6 +92,8 @@ export default function PropertiesPage() {
               type="text"
               className="form-control bg-light border-0"
               placeholder="Search by title, city, or locality..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </div>
@@ -83,7 +114,7 @@ export default function PropertiesPage() {
                 </tr>
               </thead>
               <tbody>
-                {properties.map((property) => (
+                {filteredProperties.map((property) => (
                   <tr key={property.id}>
                     <td>
                       <div className="fw-bold">{property.title}</div>
@@ -103,15 +134,19 @@ export default function PropertiesPage() {
                       )}
                     </td>
                     <td className="text-end">
-                      <button
+                      {/* CORRECTED: Changed <button> to <Link> for editing */}
+                      <Link
+                        href={`/admin/properties/edit/${property.id}`}
                         className="btn btn-sm btn-outline-primary me-2"
                         title="Edit Property"
                       >
                         <FaEdit />
-                      </button>
+                      </Link>
+                      {/* CORRECTED: Added onClick handler for deleting */}
                       <button
                         className="btn btn-sm btn-outline-danger"
                         title="Delete Property"
+                        onClick={() => handleDelete(property.id)}
                       >
                         <FaTrash />
                       </button>

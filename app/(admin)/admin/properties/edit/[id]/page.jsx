@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import {
   FaPlus,
@@ -8,36 +8,22 @@ import {
   FaBuilding,
   FaMapMarkerAlt,
   FaClock,
+  FaRupeeSign,
+  FaCheckSquare,
   FaImage,
   FaUpload,
   FaStar,
-  FaRupeeSign,
-  FaCheckSquare,
 } from "react-icons/fa";
 
-export default function AddPropertyPage() {
+export default function EditPropertyPage() {
   const router = useRouter();
-  const [property, setProperty] = useState({
-    title: "",
-    slug: "",
-    description: "",
-    city: "Mumbai",
-    subLocation: "",
-    workingHours: "Mon-Sat: 9AM - 9PM",
-    lockInPeriod: "1 Month",
-    securityDeposit: "1 Month",
-    advancePayment: "1 Month",
-    noticePeriod: "1 Month",
-    imgSrc: "",
-    map: "",
-    pricing: [{ type: "Private Office", price: "", unit: "/Month", seats: "" }],
-    features: [],
-    images: [], // e.g., [{ name: 'filename.jpg', isMain: true }]
-  });
+  const params = useParams();
+  const { id } = params || {};
 
-  const [loading, setLoading] = useState(false);
+  const [property, setProperty] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
-  const [uploading, setUploading] = useState(false); // State for upload progress
 
   const allPossibleFeatures = [
     "High Speed Wifi",
@@ -54,7 +40,6 @@ export default function AddPropertyPage() {
     "Lounge",
     "Projector",
   ];
-
   const pricingTypeOptions = [
     "Private Office",
     "Dedicated Desk",
@@ -65,6 +50,27 @@ export default function AddPropertyPage() {
     "Day Pass",
   ];
 
+  // Fetch existing property data on mount
+  useEffect(() => {
+    if (id) {
+      const fetchProperty = async () => {
+        setLoading(true);
+        try {
+          const res = await fetch(`/api/properties/${id}`);
+          if (!res.ok) throw new Error("Failed to fetch property data.");
+          const data = await res.json();
+          // Ensure images array exists
+          setProperty({ ...data, images: data.images || [] });
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchProperty();
+    }
+  }, [id]);
+
   const createSlug = (text) =>
     text
       ? text
@@ -73,15 +79,52 @@ export default function AddPropertyPage() {
           .replace(/^-+|-+$/g, "")
       : "";
 
+  // Auto-update slug when title changes
   useEffect(() => {
-    setProperty((prev) => ({ ...prev, slug: createSlug(prev.title) }));
-  }, [property.title]);
+    if (property && property.title) {
+      setProperty((prev) => ({ ...prev, slug: createSlug(prev.title) }));
+    }
+  }, [property?.title]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProperty((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handlePricingChange = (index, e) => {
+    const { name, value } = e.target;
+    const newPricing = [...(property.pricing || [])];
+    newPricing[index] = { ...newPricing[index], [name]: value };
+    setProperty((prev) => ({ ...prev, pricing: newPricing }));
+  };
+
+  const addPricingRow = () => {
+    setProperty((prev) => ({
+      ...prev,
+      pricing: [
+        ...(prev.pricing || []),
+        { type: "Dedicated Desk", price: "", unit: "/Month", seats: "" },
+      ],
+    }));
+  };
+
+  const removePricingRow = (index) => {
+    const newPricing = (property.pricing || []).filter((_, i) => i !== index);
+    setProperty((prev) => ({ ...prev, pricing: newPricing }));
+  };
+
+  const handleFeatureChange = (e) => {
+    const { value, checked } = e.target;
+    setProperty((prev) => {
+      const features = prev.features || [];
+      const newFeatures = checked
+        ? [...features, value]
+        : features.filter((f) => f !== value);
+      return { ...prev, features: newFeatures };
+    });
+  };
+
+  // --- IMAGE HANDLING FUNCTIONS ---
   const handleFileChange = async (e) => {
     const files = Array.from(e.target.files);
     if (files.length === 0) return;
@@ -124,15 +167,11 @@ export default function AddPropertyPage() {
       images: prev.images.map((img, index) => ({
         ...img,
         isMain: index === indexToSet,
+        is_main_image: index === indexToSet ? 1 : 0, // Also update the DB field if it exists
       })),
     }));
   };
-  const handlePricingChange = (index, e) => {
-    const { name, value } = e.target;
-    const newPricing = [...property.pricing];
-    newPricing[index][name] = value;
-    setProperty((prev) => ({ ...prev, pricing: newPricing }));
-  };
+
   const removeImage = (indexToRemove) => {
     setProperty((prev) => ({
       ...prev,
@@ -140,78 +179,75 @@ export default function AddPropertyPage() {
     }));
   };
 
-  const addPricingRow = () => {
-    setProperty((prev) => ({
-      ...prev,
-      pricing: [
-        ...prev.pricing,
-        { type: "Dedicated Desk", price: "", unit: "/Month", seats: "" },
-      ],
-    }));
-  };
-
-  const removePricingRow = (index) => {
-    const newPricing = property.pricing.filter((_, i) => i !== index);
-    setProperty((prev) => ({ ...prev, pricing: newPricing }));
-  };
-
-  const handleFeatureChange = (e) => {
-    const { value, checked } = e.target;
-    setProperty((prev) => {
-      const newFeatures = checked
-        ? [...prev.features, value]
-        : prev.features.filter((f) => f !== value);
-      return { ...prev, features: newFeatures };
-    });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("/api/properties", {
-        method: "POST",
+      if (
+        property.images.length > 0 &&
+        !property.images.some((img) => img.isMain || img.is_main_image === 1)
+      ) {
+        throw new Error("Please select a main image for the property.");
+      }
+
+      const response = await fetch(`/api/properties/${id}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(property),
       });
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to create property");
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "Failed to update property");
       }
       router.push("/admin/properties");
     } catch (err) {
-      setError(err.message);
+      setError(err.message || "An error occurred while saving.");
     } finally {
       setLoading(false);
     }
   };
 
+  if (loading)
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "80vh" }}
+      >
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  if (error) return <div className="alert alert-danger">Error: {error}</div>;
+  if (!property) return <div>Property not found.</div>;
+
   return (
     <div className="container py-4">
-      {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className="fw-bold mb-0">Add New Property</h2>
+        <h2 className="fw-bold mb-0">Edit Property</h2>
         <Link href="/admin/properties" className="btn btn-outline-secondary">
-          Cancel
+          Back to Properties
         </Link>
       </div>
 
       <form onSubmit={handleSubmit} className="needs-validation" noValidate>
-        {/* Core Information */}
+        {/* Core Information, Location, and Details Cards... */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaBuilding className="me-2 text-primary" />
-              Core Information
+              <FaBuilding className="me-2 text-primary" /> Core Information
             </h5>
           </div>
           <div className="card1-body p-4">
             <div className="row g-3">
               <div className="col-md-6">
-                <label className="form-label">Title</label>
+                <label htmlFor="title" className="form-label">
+                  Title
+                </label>
                 <input
                   type="text"
+                  id="title"
                   name="title"
                   className="form-control"
                   value={property.title}
@@ -220,9 +256,12 @@ export default function AddPropertyPage() {
                 />
               </div>
               <div className="col-md-6">
-                <label className="form-label">URL Slug (Auto)</label>
+                <label htmlFor="slug" className="form-label">
+                  URL Slug (Auto-generated)
+                </label>
                 <input
                   type="text"
+                  id="slug"
                   name="slug"
                   className="form-control bg-light"
                   value={property.slug}
@@ -230,8 +269,11 @@ export default function AddPropertyPage() {
                 />
               </div>
               <div className="col-12">
-                <label className="form-label">Description</label>
+                <label htmlFor="description" className="form-label">
+                  Description
+                </label>
                 <textarea
+                  id="description"
                   name="description"
                   className="form-control"
                   rows="4"
@@ -243,19 +285,20 @@ export default function AddPropertyPage() {
           </div>
         </div>
 
-        {/* Location */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaMapMarkerAlt className="me-2 text-primary" />
-              Location Details
+              <FaMapMarkerAlt className="me-2 text-primary" /> Location
             </h5>
           </div>
           <div className="card1-body p-4">
             <div className="row g-3">
               <div className="col-md-6">
-                <label className="form-label">City</label>
+                <label htmlFor="city" className="form-label">
+                  City
+                </label>
                 <select
+                  id="city"
                   name="city"
                   className="form-select"
                   value={property.city}
@@ -267,20 +310,27 @@ export default function AddPropertyPage() {
                 </select>
               </div>
               <div className="col-md-6">
-                <label className="form-label">Locality</label>
+                <label htmlFor="subLocation" className="form-label">
+                  Locality (lowercase)
+                </label>
                 <input
                   type="text"
+                  id="subLocation"
                   name="subLocation"
                   className="form-control"
-                  placeholder="e.g., andheri"
                   value={property.subLocation}
                   onChange={handleChange}
+                  placeholder="e.g., andheri"
+                  required
                 />
               </div>
               <div className="col-12">
-                <label className="form-label">Google Maps Embed URL</label>
+                <label htmlFor="map" className="form-label">
+                  Google Maps Embed URL
+                </label>
                 <input
                   type="text"
+                  id="map"
                   name="map"
                   className="form-control"
                   value={property.map}
@@ -291,20 +341,21 @@ export default function AddPropertyPage() {
           </div>
         </div>
 
-        {/* Property Details */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaClock className="me-2 text-primary" />
-              Property Details
+              <FaClock className="me-2 text-primary" /> Property Details
             </h5>
           </div>
           <div className="card1-body p-4">
             <div className="row g-3">
               <div className="col-md-6">
-                <label className="form-label">Working Hours</label>
+                <label htmlFor="workingHours" className="form-label">
+                  Working Hours
+                </label>
                 <input
                   type="text"
+                  id="workingHours"
                   name="workingHours"
                   className="form-control"
                   value={property.workingHours}
@@ -312,9 +363,12 @@ export default function AddPropertyPage() {
                 />
               </div>
               <div className="col-md-6">
-                <label className="form-label">Lock-in Period</label>
+                <label htmlFor="lockInPeriod" className="form-label">
+                  Lock-in Period
+                </label>
                 <input
                   type="text"
+                  id="lockInPeriod"
                   name="lockInPeriod"
                   className="form-control"
                   value={property.lockInPeriod}
@@ -322,9 +376,12 @@ export default function AddPropertyPage() {
                 />
               </div>
               <div className="col-md-4">
-                <label className="form-label">Security Deposit</label>
+                <label htmlFor="securityDeposit" className="form-label">
+                  Security Deposit
+                </label>
                 <input
                   type="text"
+                  id="securityDeposit"
                   name="securityDeposit"
                   className="form-control"
                   value={property.securityDeposit}
@@ -332,9 +389,12 @@ export default function AddPropertyPage() {
                 />
               </div>
               <div className="col-md-4">
-                <label className="form-label">Advance Payment</label>
+                <label htmlFor="advancePayment" className="form-label">
+                  Advance Payment
+                </label>
                 <input
                   type="text"
+                  id="advancePayment"
                   name="advancePayment"
                   className="form-control"
                   value={property.advancePayment}
@@ -342,9 +402,12 @@ export default function AddPropertyPage() {
                 />
               </div>
               <div className="col-md-4">
-                <label className="form-label">Notice Period</label>
+                <label htmlFor="noticePeriod" className="form-label">
+                  Notice Period
+                </label>
                 <input
                   type="text"
+                  id="noticePeriod"
                   name="noticePeriod"
                   className="form-control"
                   value={property.noticePeriod}
@@ -355,17 +418,17 @@ export default function AddPropertyPage() {
           </div>
         </div>
 
+        {/* MEDIA SECTION */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaImage className="me-2 text-primary" />
-              Media
+              <FaImage className="me-2 text-primary" /> Media
             </h5>
           </div>
           <div className="card1-body p-4">
             <div className="mb-3">
               <label htmlFor="imageUpload" className="form-label">
-                Upload Images
+                Upload New Images
               </label>
               <div className="input-group">
                 <input
@@ -389,28 +452,21 @@ export default function AddPropertyPage() {
                 </div>
               )}
             </div>
-
             <hr />
-
             <div className="mt-3">
               <label className="form-label">Uploaded Images</label>
-              {property.images.length === 0 ? (
-                <p className="text-muted small">
-                  No images uploaded yet. The first image you upload will be the
-                  main image.
-                </p>
-              ) : (
+              {property.images && property.images.length > 0 ? (
                 <div className="row g-2">
                   {property.images.map((image, index) => (
                     <div key={index} className="col-md-4">
-                      <div className="card position-relative">
+                      <div className="card1 position-relative">
                         <img
-                          src={`/uploads/${image.name}`}
+                          src={`/uploads/${image.image_name || image.name}`}
                           alt={`Uploaded ${index + 1}`}
                           className="card-img-top"
                           style={{ height: "120px", objectFit: "cover" }}
                         />
-                        {image.isMain && (
+                        {(image.is_main_image || image.isMain) && (
                           <FaStar
                             className="position-absolute top-0 start-0 m-2 text-warning"
                             size={20}
@@ -420,16 +476,16 @@ export default function AddPropertyPage() {
                         <div className="card-body p-2 d-flex justify-content-between">
                           <button
                             type="button"
-                            className="btn btn-sm btn-outline-success"
+                            className="btn btn-sm btn-success"
                             title="Set as main"
                             onClick={() => setAsMainImage(index)}
-                            disabled={image.isMain}
+                            disabled={image.is_main_image || image.isMain}
                           >
                             <FaStar />
                           </button>
                           <button
                             type="button"
-                            className="btn btn-sm btn-outline-danger"
+                            className="btn btn-sm btn-danger"
                             title="Remove"
                             onClick={() => removeImage(index)}
                           >
@@ -440,20 +496,24 @@ export default function AddPropertyPage() {
                     </div>
                   ))}
                 </div>
+              ) : (
+                <p className="text-muted small">
+                  No images have been uploaded for this property yet.
+                </p>
               )}
             </div>
           </div>
         </div>
+
         {/* Pricing Section */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaRupeeSign className="me-2 text-primary" />
-              Pricing Options
+              <FaRupeeSign className="me-2 text-primary" /> Pricing Options
             </h5>
           </div>
           <div className="card1-body p-4">
-            {property.pricing.map((p, index) => (
+            {(property.pricing || []).map((p, index) => (
               <div key={index} className="row g-2 align-items-center mb-2">
                 <div className="col-md-4">
                   <select
@@ -501,10 +561,10 @@ export default function AddPropertyPage() {
                     placeholder="Seats"
                   />
                 </div>
-                <div className="col-md-1 text-center">
+                <div className="col-md-1">
                   <button
                     type="button"
-                    className="btn btn-outline-danger"
+                    className="btn btn-outline-danger w-100"
                     onClick={() => removePricingRow(index)}
                   >
                     <FaTrash />
@@ -526,8 +586,8 @@ export default function AddPropertyPage() {
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaCheckSquare className="me-2 text-primary" />
-              Amenities / Features
+              <FaCheckSquare className="me-2 text-primary" /> Amenities /
+              Features
             </h5>
           </div>
           <div className="card1-body p-4">
@@ -538,10 +598,11 @@ export default function AddPropertyPage() {
                     <input
                       className="form-check-input"
                       type="checkbox"
+                      role="switch"
                       value={feature}
                       id={`feature-${feature}`}
                       onChange={handleFeatureChange}
-                      checked={property.features.includes(feature)}
+                      checked={(property.features || []).includes(feature)}
                     />
                     <label
                       className="form-check-label"
@@ -558,14 +619,13 @@ export default function AddPropertyPage() {
 
         {error && <div className="alert alert-danger">{error}</div>}
 
-        {/* Submit */}
         <div className="text-end mt-4">
           <button
             type="submit"
             className="btn btn-primary btn-lg px-5"
             disabled={loading}
           >
-            {loading ? "Saving..." : "Save Property"}
+            {loading ? "Saving..." : "Save Changes"}
           </button>
         </div>
       </form>

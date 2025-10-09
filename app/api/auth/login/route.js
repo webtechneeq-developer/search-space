@@ -21,16 +21,14 @@ export async function POST(request) {
       );
     }
 
-    // Create a JWT token
     const token = await new SignJWT({
       userId: user.id,
       username: user.username,
     })
       .setProtectedHeader({ alg: "HS256" })
-      .setExpirationTime("24h") // Token expires in 24 hours
+      .setExpirationTime("24h")
       .sign(SECRET_KEY);
 
-    // Set the token in a secure, httpOnly cookie
     cookies().set("session_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -40,6 +38,13 @@ export async function POST(request) {
 
     return NextResponse.json({ message: "Login successful" });
   } catch (error) {
-    return NextResponse.json({ message: "An error occurred" }, { status: 500 });
+    // --- THIS IS THE ADDED LINE ---
+    console.error("Login API Error:", error);
+    // ----------------------------
+
+    return NextResponse.json(
+      { message: "An error occurred on the server." },
+      { status: 500 }
+    );
   }
 }
