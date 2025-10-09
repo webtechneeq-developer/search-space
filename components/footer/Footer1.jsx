@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
+import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
 import { footerSections } from "@/data/footer";
 export default function Footer1() {
   const formRef = useRef();
@@ -199,12 +200,12 @@ export default function Footer1() {
                       src="/images/logo/Search-Spaces-Logo.png"
                     />
                   </Link>
-              </div>
-                  <p className="text-variant-2">
-                    India’s fastest growing real estate tech enabled office space
-                    search platform. We are an office space aggregator for
-                    searching and comparing office spaces.
-                  </p>
+                </div>
+                <p className="text-variant-2">
+                  India’s fastest growing real estate tech enabled office space
+                  search platform. We are an office space aggregator for
+                  searching and comparing office spaces.
+                </p>
                 <ul className="mt-12">
                   {/* <li className="mt-12 d-flex align-items-center gap-8">
                     <i className="icon icon-mapPinLine fs-20 text-variant-2" />
@@ -263,9 +264,8 @@ export default function Footer1() {
                     Your Weekly/Monthly Dose of Knowledge and Inspiration
                   </p>
                   <div
-                    className={`tfSubscribeMsg  footer-sub-element ${
-                      showMessage ? "active" : ""
-                    }`}
+                    className={`tfSubscribeMsg  footer-sub-element ${showMessage ? "active" : ""
+                      }`}
                   >
                     {success ? (
                       <p style={{ color: "rgb(52, 168, 83)" }}>
@@ -445,6 +445,12 @@ export default function Footer1() {
           </div>
         </div>
       </div>
+      <WhatsAppFloatingButton
+        phone="+919820279750"
+        message="Hello! I have a question about your service."
+        size={60}
+        position="bottom-right"
+      />
     </footer>
   );
 }

@@ -617,30 +617,31 @@ section.flat-section.flat-recommended {
 //   background:url(src="public\images\banner\cta-button.webp") ;
 // }
 
-.wrap-banner.bg-primary-new{
-    background-image: url(/images/banner/coworking-cta-img.webp);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.box-title h6 {
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    line-height: 35px;
-    font-size: 25px;
-}
-.box-left01 {
-    border-right: 1px solid rgb(255, 255, 255);
-}
-.wrap-banner .box-left {
-    padding: 60px 20px 60px 120px;
-}
-span.span-title {
-    font-size: 45px;
-    line-height: 50px;
-    // color: #1d5da0;
-}
+// .wrap-banner.bg-primary-new{
+//     background-image: url(/images/banner/coworking-cta-img.webp);
+//     background-size: cover;
+//     background-position: center;
+//     background-repeat: no-repeat;
+// }
+// .box-title h6 {
+//     color: #ffffff;
+//     display: flex;
+//     flex-direction: column;
+//     line-height: 35px;
+//     font-size: 25px;
+// }
+// .box-left01 {
+//     border-right: 1px solid rgb(255, 255, 255);
+// }
+// .wrap-banner .box-left {
+//     padding: 60px 20px 60px 120px;
+// }
+// span.span-title {
+//     font-size: 45px;
+//     line-height: 50px;
+//     // color: #1d5da0;
+// }
+
 
 
 @media (max-width: 576px) {
@@ -652,4 +653,11 @@ span.span-title {
   .progress-wrap {
     right: 70px;
   }
+}
+.cta-title1{
+  color: #1563df !important;
+}
+.box-title h6{
+  font-size: 40px;
+  line-height: 50px;
 }
