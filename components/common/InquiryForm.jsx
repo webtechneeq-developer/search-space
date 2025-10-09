@@ -67,7 +67,7 @@ export default function InquiryFloatingButton() {
         width: "60px",
         height: "60px",
         borderRadius: "50%",
-        backgroundColor: "#ff5722",
+        backgroundColor: "#1f5ea1",
         color: "#fff",
         fontWeight: "bold",
         fontSize: "12px",
