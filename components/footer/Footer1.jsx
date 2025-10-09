@@ -1,15 +1,21 @@
 "use client";
+import dynamic from "next/dynamic";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
-import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
+// import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
 import { footerSections } from "@/data/footer";
 import InquiryFloatingButton from "../common/InquiryForm";
 export default function Footer1() {
   const formRef = useRef();
   const [success, setSuccess] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
+
+  const WhatsAppFloatingButton = dynamic(
+    () => import("../common/WhatsAppFloatingButton"),
+    { ssr: false }
+  );
 
   const handleShowMessage = () => {
     setShowMessage(true);
