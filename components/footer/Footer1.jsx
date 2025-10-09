@@ -5,6 +5,7 @@ import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
 import { footerSections } from "@/data/footer";
+import InquiryFloatingButton from "../common/InquiryForm";
 export default function Footer1() {
   const formRef = useRef();
   const [success, setSuccess] = useState(true);
@@ -451,6 +452,7 @@ export default function Footer1() {
         size={60}
         position="bottom-right"
       />
+      <InquiryFloatingButton />
     </footer>
   );
 }

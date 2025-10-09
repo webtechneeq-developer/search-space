@@ -17,9 +17,9 @@ export default function Contact() {
   const sendMail = (e) => {
     e.preventDefault();
     emailjs
-      .sendForm("service_noj8796", "template_fs3xchn", formRef.current, {
-        publicKey: "iG4SCmR-YtJagQ4gV",
-      })
+      // .sendForm("service_forx6hc", "template_5wbugeo", formRef.current, {
+      //   publicKey: "rk4oDll0cKKZtagYK",
+      // })
       .then((res) => {
         if (res.status === 200) {
           setSuccess(true);
