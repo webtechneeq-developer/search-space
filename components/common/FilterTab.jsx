@@ -102,7 +102,7 @@ export default function FilterTab({
               <div className={`wd-find-select ${styleClass}`}>
                 <div className="inner-group">
                   <div className="form-group-1 search-form form-style">
-                    <label>Type</label>
+                    {/* <label>Type</label> */}
                     <Select
                       styles={customSelectStyles}
                       options={typeOptions}
@@ -113,7 +113,7 @@ export default function FilterTab({
                     />
                   </div>
                   <div className="form-group-2 form-style">
-                    <label>Location</label>
+                    {/* <label>Location</label> */}
                     <Select
                       styles={customSelectStyles}
                       options={locationOptions}
@@ -124,7 +124,7 @@ export default function FilterTab({
                     />
                   </div>
                   <div className="form-group-3 form-style">
-                    <label>Locality</label>
+                    {/* <label>Locality</label> */}
                     <Select
                       styles={customSelectStyles}
                       options={localityOptions}
