@@ -26,12 +26,12 @@ export default function InquiryFloatingButton() {
         e.preventDefault();
 
         try {
-            // const res = await emailjs.sendForm(
-            //     "service_forx6hc", // ⚙️ Your Service ID
-            //     "template_5wbugeo", // ⚙️ Your Template ID
-            //     formRef.current, // ✅ Use the ref here
-            //     "rk4oDll0cKKZtagYK" // ⚙️ Your Public Key
-            // );
+            const res = await emailjs.sendForm(
+                "service_forx6hc", // ⚙️ Your Service ID
+                "template_5wbugeo", // ⚙️ Your Template ID
+                formRef.current, // ✅ Use the ref here
+                "rk4oDll0cKKZtagYK" // ⚙️ Your Public Key
+            );
 
             if (res.status === 200) {
                 setSuccess(true);
@@ -91,11 +91,11 @@ export default function InquiryFloatingButton() {
     };
 
     const submitStyle = {
-        width: "100%",
+        width: "25%",
         padding: "12px",
         border: "none",
         borderRadius: "4px",
-        backgroundColor: "#ff5722",
+        backgroundColor: "#1563df",
         color: "#fff",
         fontWeight: "bold",
         cursor: "pointer",
@@ -113,7 +113,7 @@ export default function InquiryFloatingButton() {
                 }
                 onMouseLeave={(e) => (e.currentTarget.style.transform = "none")}
             >
-                Inquiry
+                Enquiry
             </button>
 
             {/* Popup Form */}
@@ -144,8 +144,8 @@ export default function InquiryFloatingButton() {
                             boxShadow: "0 6px 20px rgba(0,0,0,0.3)",
                         }}
                     >
-                        <h2 style={{ marginBottom: "15px" }}>Inquiry Now</h2>
-                        <form ref={formRef} onSubmit={sendMail}>
+                        <h2 style={{ marginBottom: "15px" }}>Enquiry Now</h2>
+                        <form className="enquiry-form" ref={formRef} onSubmit={sendMail}>
                             <input
                                 type="text"
                                 name="name"

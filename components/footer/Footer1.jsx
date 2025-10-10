@@ -6,7 +6,7 @@ import Image from "next/image";
 import emailjs from "@emailjs/browser";
 // import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
 import { footerSections } from "@/data/footer";
-import InquiryFloatingButton from "../common/InquiryForm";
+import InquiryFloatingButton from "../common/EnquiryForm";
 export default function Footer1() {
   const formRef = useRef();
   const [success, setSuccess] = useState(true);
@@ -368,22 +368,6 @@ export default function Footer1() {
                         </svg>
                       </a>
                     </li>
-                    {/* <li>
-                      <a href="#" className="box-icon w-40 social">
-                        <svg
-                          width={13}
-                          height={16}
-                          viewBox="0 0 13 16"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M6.53967 0C3.2506 0 0 2.19271 0 5.74145C0 7.99827 1.26947 9.28056 2.03884 9.28056C2.3562 9.28056 2.53893 8.39578 2.53893 8.14574C2.53893 7.8476 1.77918 7.21287 1.77918 5.97226C1.77918 3.39486 3.74108 1.5676 6.28001 1.5676C8.4631 1.5676 10.0788 2.80821 10.0788 5.08748C10.0788 6.78972 9.39597 9.98261 7.18402 9.98261C6.3858 9.98261 5.70298 9.40558 5.70298 8.57851C5.70298 7.36675 6.54929 6.19345 6.54929 4.94322C6.54929 2.82103 3.53912 3.20572 3.53912 5.7703C3.53912 6.30886 3.60644 6.90512 3.84686 7.3956C3.40448 9.2998 2.50046 12.1369 2.50046 14.0988C2.50046 14.7046 2.58702 15.3009 2.64472 15.9068C2.75371 16.0286 2.69922 16.0158 2.86591 15.9549C4.4816 13.7429 4.42389 13.3102 5.1548 10.4154C5.5491 11.1655 6.56852 11.5694 7.37636 11.5694C10.7808 11.5694 12.31 8.25152 12.31 5.26059C12.31 2.07731 9.55946 0 6.53967 0Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </a>
-                    </li> */}
                     <li>
                       <a href="https://www.instagram.com/searchspaces/" target="_blank" className="box-icon w-40 social">
                         <svg

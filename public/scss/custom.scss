@@ -642,19 +642,56 @@ section.flat-section.flat-recommended {
 //     // color: #1d5da0;
 // }
 
-@media (max-width: 576px) {
-  .heading h1 {
-    font-size: 30px;
-    font-weight: 600 !important;
-  }
-  .progress-wrap {
-    right: 70px;
-  }
-}
+// @media (max-width: 576px) {
+//   .heading h1 {
+//     font-size: 30px;
+//     font-weight: 600 !important;
+//   }
+//   .progress-wrap {
+//     right: 70px;
+//   }
+// }
 .cta-title1 {
   color: #1563df !important;
 }
 .box-title h6 {
   font-size: 40px;
   line-height: 50px;
+}
+.flat-contact .contact-content .form-contact .tf-btn {
+    margin-top: 8px;
+    width: 25%;
+}
+textarea.form-control {
+    width: 100%;
+}
+textarea, input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=search], input[type=tel], input[type=color] {
+    font-family: "Manrope", sans-serif;
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #e4e4e4;
+    box-shadow: none;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 15px 18px;
+    width: 100%;
+    background: #ffffff;
+    color: #161e2d;
+    font-weight: 400;
+}
+.form-control {
+    border: none;
+    border-bottom: 1px solid #e4e4e4;
+}
+form.enquiry-form input {
+    border: none !important;
+    border-bottom: 1px solid rgb(204, 204, 204) !important;
+}
+form.enquiry-form select {
+    border: none !important;
+    border-bottom: 1px solid rgb(204, 204, 204) !important;  
+}
+form.enquiry-form textarea {
+    border: none !important;
+    border-bottom: 1px solid rgb(204, 204, 204) !important;  
 }
