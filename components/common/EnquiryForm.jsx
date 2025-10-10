@@ -142,8 +142,26 @@ export default function InquiryFloatingButton() {
                             width: "90%",
                             maxWidth: "450px",
                             boxShadow: "0 6px 20px rgba(0,0,0,0.3)",
+                            position: "relative", // ✅ needed for close button positioning
                         }}
                     >
+                        {/* Close Button */}
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            style={{
+                                position: "absolute",
+                                top: "10px",
+                                right: "10px",
+                                background: "transparent",
+                                border: "none",
+                                fontSize: "50px",
+                                fontWeight: "400",
+                                cursor: "pointer",
+                            }}
+                        >
+                            &times;
+                        </button>
+
                         <h2 style={{ marginBottom: "15px" }}>Enquiry Now</h2>
                         <form className="enquiry-form" ref={formRef} onSubmit={sendMail}>
                             <input

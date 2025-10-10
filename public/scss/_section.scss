@@ -1201,9 +1201,9 @@
   &:hover {
     box-shadow: 0px 30px 60px 0px #0000001a;
     border-color: transparent;
-    .image {
-      transform: rotateY(360deg);
-    }
+    // .image {
+    //   transform: rotateY(360deg);
+    // }
     .tf-btn {
       background-color: $primary;
       color: $white;

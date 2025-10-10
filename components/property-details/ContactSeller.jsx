@@ -36,7 +36,7 @@ export default function ContactSeller() {
 
   return (
     <div className="contact-seller-form">
-      <h5 className="title fw-6 mb-3">Contact Seller</h5>
+      {/* <h5 className="title fw-6 mb-3">Contact Seller</h5> */}
 
       <form ref={formRef} onSubmit={sendMail} className="contact-form">
         <div className="ip-group">

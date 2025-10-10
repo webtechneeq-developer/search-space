@@ -68,14 +68,14 @@ export default function Benefit() {
                 Coworking Spaces in Mumbai - Search Spaces
               </div>
               <h3 className="title mt-4">Search Spaces</h3>
-              <p className="desc text-variant-1">
+              <p className="desc text-variant-1 text-variant-01">
                 We are India’s fastest growing real estate tech enabled
                 coworking office space search platform. We are a coworking
                 office space aggregator for searching and comparing coworking
                 office spaces.
               </p>
 
-              <p className="desc text-variant-1">
+              <p className="desc text-variant-1 text-variant-01">
                 We assist in co-working spaces in Mumbai, traditional offices,
                 private offices, training rooms and meeting rooms for lease,
                 shared office spaces, dedicated desk and rent across PAN India
@@ -98,9 +98,9 @@ export default function Benefit() {
                 <div className="icon-box">
                   <span className="icon">
                     <svg
-                      width={60}
-                      height={60}
-                      viewBox="0 0 60 60"
+                      width={50}
+                      height={50}
+                      viewBox="0 0 50 50"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -126,14 +126,14 @@ export default function Benefit() {
                       </g>
                       <defs>
                         <clipPath id="clip0_13434_4230">
-                          <rect width={60} height={60} fill="white" />
+                          <rect width={50} height={50} fill="white" />
                         </clipPath>
                       </defs>
                     </svg>
                   </span>
                 </div>
                 <div className="content">
-                  <h5 className="title">PAN INDIA PRESENCE</h5>
+                  <h5 className="title">Pen India Spesence</h5>
                   <p className="description">
                     We facilitate you to register a coworking space and office
                     spaces amongst numerous choices in major cities across the
@@ -149,9 +149,9 @@ export default function Benefit() {
                 <div className="icon-box">
                   <span className="icon">
                     <svg
-                      width={60}
-                      height={60}
-                      viewBox="0 0 60 60"
+                      width={50}
+                      height={50}
+                      viewBox="0 0 50 50"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -191,14 +191,14 @@ export default function Benefit() {
                       </g>
                       <defs>
                         <clipPath id="clip0_13434_4244">
-                          <rect width={60} height={60} fill="white" />
+                          <rect width={50} height={50} fill="white" />
                         </clipPath>
                       </defs>
                     </svg>
                   </span>
                 </div>
                 <div className="content">
-                  <h5 className="title">BESPOKE</h5>
+                  <h5 className="title">Bespoke</h5>
                   <p className="description">
                     You can get the most affordable coworking spaces near you
                     that suits your team’s needs and something that fulfils your
@@ -215,9 +215,9 @@ export default function Benefit() {
                 <div className="icon-box">
                   <span className="icon">
                     <svg
-                      width={60}
-                      height={60}
-                      viewBox="0 0 60 60"
+                      width={50}
+                      height={50}
+                      viewBox="0 0 50 50"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -261,14 +261,14 @@ export default function Benefit() {
                       </g>
                       <defs>
                         <clipPath id="clip0_13434_4259">
-                          <rect width={60} height={60} fill="white" />
+                          <rect width={50} height={50} fill="white" />
                         </clipPath>
                       </defs>
                     </svg>
                   </span>
                 </div>
                 <div className="content">
-                  <h5 className="title">VERIFIED SPACES</h5>
+                  <h5 className="title">Verified Spaces</h5>
                   <p className="description">
                     For your seamless company operations, we promise co-working
                     spaces that are fully managed workspaces, that ensure
@@ -284,9 +284,9 @@ export default function Benefit() {
                 <div className="icon-box">
                   <span className="icon">
                     <svg
-                      width={60}
-                      height={60}
-                      viewBox="0 0 60 60"
+                      width={50}
+                      height={50}
+                      viewBox="0 0 50 50"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -326,14 +326,14 @@ export default function Benefit() {
                       </g>
                       <defs>
                         <clipPath id="clip0_13434_4244">
-                          <rect width={60} height={60} fill="white" />
+                          <rect width={50} height={50} fill="white" />
                         </clipPath>
                       </defs>
                     </svg>
                   </span>
                 </div>
                 <div className="content">
-                  <h5 className="title">ZERO BROKERAGE</h5>
+                  <h5 className="title">Zero Brokerage</h5>
                   <p className="description">
                     We take care of all your requirements with no extra cost
                     i.e., professional service at zero brokerage.

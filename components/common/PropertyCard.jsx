@@ -164,7 +164,7 @@ const PropertyCard = ({ property }) => {
 
             <Link
               href={detailUrl}
-              className="btn btn-primary w-100 fw-semibold"
+              className="btn btn-primary w-50 fw-semibold"
             >
               View Details
             </Link>

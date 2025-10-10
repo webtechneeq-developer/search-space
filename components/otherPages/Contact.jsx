@@ -43,7 +43,7 @@ export default function Contact() {
             <div className="col-lg-8">
               <div className="contact-content">
                 <h4>Drop Us A Line</h4>
-                <p className="body-2 text-variant-1">
+                <p className="body-2 text-variant-1 mb-5">
                   Feel free to connect with us through our online channels for
                   updates, news, and more.
                 </p>

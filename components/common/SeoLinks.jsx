@@ -1,28 +1,26 @@
 "use client";
-import { testimonialData } from "@/data/testimonials";
-import React, { useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "next/image";
-import { Pagination } from "swiper/modules";
-import Link from "next/link";
 import { seoPages } from "@/data/seoPages";
+import React from "react";
+import Link from "next/link";
+
 export default function SeoLinks() {
   return (
-    <section className="flat-section bg-primary-new flat-testimonial flex-item">
+    <section className="flat-section flat-testimonial flex-item">
       <div>
-        {" "}
-        {/*className="box-title px-15 wow fadeInUp" */}
         <div
           className="text-center wow fadeInUpSmall"
           data-wow-delay=".2s"
           data-wow-duration="2000ms"
         >
-          <div className="d-flex gap-8">
+          <div
+            className="d-flex gap-8 flex-wrap justify-center"
+            style={{ maxWidth: "750px", margin: "0 auto" }}
+          >
             {seoPages.map((page) => (
               <Link
                 key={page.slug}
                 href={`/${page.slug}`}
-                className="desc text-variant-1"
+                className="desc .text-variant-011"
               >
                 || {page.title} ||
               </Link>
