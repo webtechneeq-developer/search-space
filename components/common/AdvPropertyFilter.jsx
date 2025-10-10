@@ -1,6 +1,12 @@
 "use client";
 import React from "react";
-import { FaUndo, FaMapMarkerAlt, FaUsers, FaLock } from "react-icons/fa";
+import {
+  FaUndo,
+  FaMapMarkerAlt,
+  FaUsers,
+  FaLock,
+  FaRupeeSign, // 1. Import the Rupee icon
+} from "react-icons/fa";
 
 // Data for our interactive pill buttons
 const spaceTypes = [
@@ -10,6 +16,19 @@ const spaceTypes = [
   "Meeting Room",
   "Virtual Office",
   "Day Pass",
+];
+
+// 2. Define the price ranges for the dropdown
+const priceRanges = [
+  { value: "0-5000", label: "₹0 - ₹5,000" },
+  { value: "5000-10000", label: "₹5,000 - ₹10,000" },
+  { value: "10000-15000", label: "₹10,000 - ₹15,000" },
+  { value: "15000-20000", label: "₹15,000 - ₹20,000" },
+  { value: "20000-25000", label: "₹20,000 - ₹25,000" },
+  { value: "25000-30000", label: "₹25,000 - ₹30,000" },
+  { value: "30000-35000", label: "₹30,000 - ₹35,000" },
+  { value: "35000-40000", label: "₹35,000 - ₹40,000" },
+  { value: "40000+", label: "₹40,000 +" },
 ];
 
 export default function AdvPropertyFilter({
@@ -31,7 +50,7 @@ export default function AdvPropertyFilter({
       locality: "all",
       spaceType: "all",
       seats: "",
-      maxPrice: 50000,
+      priceRange: "any", // 3. Update to reset priceRange
       lockInPeriod: "any",
     });
   };
@@ -71,7 +90,7 @@ export default function AdvPropertyFilter({
 
       <div className="row g-3">
         {/* Locality Dropdown */}
-        <div className="col-md-6 col-lg-6">
+        <div className="col-md-6 col-lg-4">
           <label htmlFor="locality" className="form-label fw-bold">
             Locality
           </label>
@@ -97,7 +116,7 @@ export default function AdvPropertyFilter({
         </div>
 
         {/* Seats Input */}
-        <div className="col-md-6 col-lg-6">
+        <div className="col-md-6 col-lg-4">
           <label htmlFor="seats" className="form-label fw-bold">
             Number of Seats
           </label>
@@ -118,50 +137,30 @@ export default function AdvPropertyFilter({
           </div>
         </div>
 
-        {/* Lock-in Period Dropdown */}
-        {/* <div className="col-md-6 col-lg-4">
-          <label htmlFor="lockInPeriod" className="form-label fw-bold">
-            Max Lock-in
+        {/* 4. Price Range Dropdown (Replaces Slider) */}
+        <div className="col-md-12 col-lg-4">
+          <label htmlFor="priceRange" className="form-label fw-bold">
+            Price per Seat
           </label>
           <div className="input-group styled-input-group">
             <span className="input-group-text">
-              <FaLock />
+              <FaRupeeSign />
             </span>
             <select
-              id="lockInPeriod"
-              name="lockInPeriod"
+              id="priceRange"
+              name="priceRange"
               className="form-select"
-              value={filters.lockInPeriod}
+              value={filters.priceRange}
               onChange={handleInputChange}
             >
-              <option value="any">Any Period</option>
-              <option value="1">1 Month</option>
-              <option value="3">3 Months</option>
-              <option value="6">6 Months</option>
-              <option value="12">12 Months</option>
+              <option value="any">Any Price</option>
+              {priceRanges.map((range) => (
+                <option key={range.value} value={range.value}>
+                  {range.label}
+                </option>
+              ))}
             </select>
           </div>
-        </div> */}
-
-        {/* Price Range Slider */}
-        <div className="col-12 mt-3">
-          <label htmlFor="maxPrice" className="form-label filter-range-label">
-            Max Price per Seat:{" "}
-            <span className="price-value">
-              ₹{Number(filters.maxPrice).toLocaleString()}
-            </span>
-          </label>
-          <input
-            type="range"
-            id="maxPrice"
-            name="maxPrice"
-            className="form-range"
-            min="5000"
-            max="50000"
-            step="1000"
-            value={filters.maxPrice}
-            onChange={handleInputChange}
-          />
         </div>
       </div>
     </div>

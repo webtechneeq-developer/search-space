@@ -16,35 +16,52 @@ export default function LocalityPageContent({
   initialProperties,
   localityName,
 }) {
+  // Logic Updated: Initial state now uses `priceRange`
   const [filters, setFilters] = useState({
     spaceType: "all",
     seats: "",
-    maxPrice: 1000,
+    priceRange: "any",
   });
 
   const [filteredProperties, setFilteredProperties] =
     useState(initialProperties);
 
   useEffect(() => {
-    // Start with the initial properties for this locality
+    // Logic Updated: Filtering logic is completely revised
     const newFilteredProperties = initialProperties.filter((property) => {
-      // Filter by Lock-in Period (Property-level filter)
-      if (filters.lockInPeriod !== "any") {
-        const propertyLockIn = parseInt(property.lockInPeriod) || 0;
-        if (propertyLockIn > parseInt(filters.lockInPeriod)) {
+      // Check if any pricing option within the property matches the filters
+      return property.pricing.some((option) => {
+        // Filter by Space Type
+        if (filters.spaceType !== "all" && option.type !== filters.spaceType) {
           return false;
         }
-      }
 
-      // Check if any pricing option within the property matches the other filters
-      return property.pricing.some((option) => {
-        if (filters.spaceType !== "all" && option.type !== filters.spaceType)
-          return false;
-        if (option.price > filters.maxPrice) return false;
-        if (filters.seats && (option.seats || 0) < parseInt(filters.seats))
-          return false;
+        // New price range filtering logic
+        if (filters.priceRange && filters.priceRange !== "any") {
+          const optionPrice = option.price;
+          if (filters.priceRange.includes("+")) {
+            // Handles "40000+"
+            const minPrice = parseInt(filters.priceRange.replace("+", ""), 10);
+            if (optionPrice < minPrice) {
+              return false;
+            }
+          } else {
+            // Handles ranges like "5000-10000"
+            const [minPrice, maxPrice] = filters.priceRange
+              .split("-")
+              .map(Number);
+            if (optionPrice < minPrice || optionPrice > maxPrice) {
+              return false;
+            }
+          }
+        }
 
-        // If all checks pass for this pricing option, the property is a match
+        // Filter by Seats
+        if (filters.seats && (option.seats || 0) < parseInt(filters.seats)) {
+          return false;
+        }
+
+        // If all checks pass, the property is a match
         return true;
       });
     });
@@ -61,6 +78,7 @@ export default function LocalityPageContent({
       {/* Render the filter component */}
       <CityFilter filters={filters} onFilterChange={setFilters} />
 
+      {/* Styling Preserved: This section is identical to your original code */}
       <div className="row">
         {filteredProperties.length > 0 ? (
           filteredProperties.map((property) => (

@@ -14,34 +14,22 @@ function capitalizeWords(str) {
 }
 
 export default function CityPageContent({ type, cityName, initialLocalities }) {
+  // 1. Updated initial filter state to match the new CityFilter component
   const [filters, setFilters] = useState({
     spaceType: "all",
     seats: "",
-    maxPrice: 50000,
-    lockInPeriod: "any",
+    priceRange: "any", // Changed from maxPrice to priceRange
   });
 
   const [filteredLocations, setFilteredLocations] = useState([]);
 
   useEffect(() => {
-    // Start with the full list of localities for this city
     const newFilteredLocalities = initialLocalities.filter((locality) => {
-      // Check if ANY property in this locality matches ALL the active filters
       return allProperties.some((property) => {
-        // 1. Property must be in the current locality
         if (property.subLocation.toLowerCase() !== locality.toLowerCase()) {
           return false;
         }
 
-        // 2. Filter by Lock-in Period (Property-level filter)
-        if (filters.lockInPeriod !== "any") {
-          const propertyLockIn = parseInt(property.lockInPeriod) || 0;
-          if (propertyLockIn > parseInt(filters.lockInPeriod)) {
-            return false;
-          }
-        }
-
-        // 3. Check if any pricing option within the property matches the remaining filters
         return property.pricing.some((option) => {
           // Filter by Space Type
           if (
@@ -50,22 +38,41 @@ export default function CityPageContent({ type, cityName, initialLocalities }) {
           ) {
             return false;
           }
-          // Filter by Price
-          if (option.price > filters.maxPrice) {
-            return false;
+
+          // 2. Replaced price slider logic with price range dropdown logic
+          if (filters.priceRange && filters.priceRange !== "any") {
+            const itemPrice = option.price;
+
+            if (filters.priceRange.includes("+")) {
+              // Handles "40000+"
+              const minPrice = parseInt(
+                filters.priceRange.replace("+", ""),
+                10
+              );
+              if (itemPrice < minPrice) {
+                return false;
+              }
+            } else {
+              // Handles ranges like "5000-10000"
+              const [minPrice, maxPrice] = filters.priceRange
+                .split("-")
+                .map(Number);
+              if (itemPrice < minPrice || itemPrice > maxPrice) {
+                return false;
+              }
+            }
           }
-          // Filter by Seats (only if a value is entered)
+
+          // Filter by Seats
           if (filters.seats && (option.seats || 0) < parseInt(filters.seats)) {
             return false;
           }
 
-          // If we get here, this pricing option is a match!
           return true;
         });
       });
     });
 
-    // Map the final list of localities to the format needed by LocationGrid
     const locationsForGrid = newFilteredLocalities.map((locality) => {
       const propertyCount = allProperties.filter(
         (p) => p.subLocation.toLowerCase() === locality.toLowerCase()
