@@ -4,6 +4,8 @@ import Footer1 from "@/components/footer/Footer1";
 import Header1 from "@/components/headers/Header1";
 import { allBlogs } from "@/data/blogs";
 import React from "react";
+import SeoLinks from "@/components/common/SeoLinks";
+import ReadMore from "@/components/common/ReadMore";
 
 export const metadata = {
   title: "Blog Details",
@@ -17,6 +19,8 @@ export default function page({ params }) {
       <Header1 />
       <PageTitle />
       <BlogDetails blogItem={blogItem} />
+      <SeoLinks/>
+      <ReadMore />
       <Footer1 />
     </>
   );

@@ -15,8 +15,8 @@ import ReadMore from "@/components/common/ReadMore";
 
 
 export const metadata = {
-  title: "About Us || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "About Us",
+  description: "",
 };
 export default function page() {
   return (
