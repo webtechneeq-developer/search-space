@@ -6,8 +6,8 @@ import PropertyDetails from "@/components/property-details/PropertyDetails";
 import React from "react";
 
 export const metadata = {
-  title: "Property Details 03 || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "Property Details 03",
+  description: "",
 };
 export default function page() {
   return (

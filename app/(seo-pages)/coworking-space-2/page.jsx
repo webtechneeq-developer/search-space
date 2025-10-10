@@ -6,8 +6,8 @@ import { Suspense } from "react";
 
 export const metadata = {
   title:
-    "Topmap Grid Property || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+    "Seo Page",
+  description: "",
 };
 export default function page() {
   const type = "coworking-space"; // Assuming this is the type you want to filter by

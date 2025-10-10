@@ -6,8 +6,8 @@ import { allBlogs } from "@/data/blogs";
 import React from "react";
 
 export const metadata = {
-  title: "Blog Details || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "Blog Details",
+  description: "",
 };
 export default function page({ params }) {
   const blogItem =

@@ -5,8 +5,8 @@ import PageTitle4 from "@/components/otherPages/PageTitle4";
 import React from "react";
 
 export const metadata = {
-  title: "Faq || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "Faq",
+  description: "",
 };
 export default function page() {
   return (

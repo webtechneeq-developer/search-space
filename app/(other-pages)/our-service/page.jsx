@@ -9,8 +9,8 @@ import Services from "@/components/otherPages/services/Services";
 import React from "react";
 
 export const metadata = {
-  title: "Our Services || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "Our Services",
+  description: "",
 };
 export default function page() {
   return (

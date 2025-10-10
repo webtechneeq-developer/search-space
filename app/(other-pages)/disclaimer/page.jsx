@@ -9,8 +9,8 @@ import isclaimer from "@/components/otherPages/Disclaimer";
 import Disclaimer from "@/components/otherPages/Disclaimer";
 
 export const metadata = {
-  title: "Pricing || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "Disclaimer",
+  description: "",
 };
 export default function page() {
   return (

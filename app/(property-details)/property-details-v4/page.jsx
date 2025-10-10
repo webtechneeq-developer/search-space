@@ -6,8 +6,8 @@ import Slider3 from "@/components/property-details/Slider3";
 import React from "react";
 
 export const metadata = {
-  title: "Property Details 04 || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "Property Details 04 ",
+  description: "",
 };
 export default function page() {
   return (

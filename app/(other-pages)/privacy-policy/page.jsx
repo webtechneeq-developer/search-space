@@ -5,8 +5,8 @@ import PrivacyPolicy from "@/components/otherPages/PrivacyPolicy";
 import React from "react";
 
 export const metadata = {
-  title: "Privacy Policy || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "Privacy Policy ",
+  description: "",
 };
 export default function page() {
   return (

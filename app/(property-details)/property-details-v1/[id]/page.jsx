@@ -7,8 +7,8 @@ import { allProperties } from "@/data/demoProporties";
 import React from "react";
 
 export const metadata = {
-  title: "Property Details 01 || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "Property Details",
+  description: "",
 };
 export default function page({ params }) {
   const propertyItem =

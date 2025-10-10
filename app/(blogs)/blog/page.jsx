@@ -8,8 +8,8 @@ import SeoLinks from "@/components/common/SeoLinks";
 import ReadMore from "@/components/common/ReadMore";
 
 export const metadata = {
-  title: "Blog || Homelengo - Real Estate React Nextjs Template",
-  description: "Homelengo - Real Estate React Nextjs Template",
+  title: "Blog",
+  description: "",
 };
 export default function page() {
   return (
