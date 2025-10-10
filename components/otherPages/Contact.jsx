@@ -54,7 +54,7 @@ export default function Contact() {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Your name"
+                        placeholder=" Name"
                         name="name"
                         id="name"
                         required
@@ -79,7 +79,7 @@ export default function Contact() {
                       <input
                         type="text"
                         className="form-control style-1"
-                        placeholder="ex: 0123456789"
+                        placeholder="Phone Number"
                         name="phone"
                         id="phone"
                         required
@@ -90,7 +90,7 @@ export default function Contact() {
                       <input
                         type="text"
                         className="form-control style-1"
-                        placeholder="e.g. Co-working, Private Office"
+                        placeholder="Office Type"
                         name="officeType"
                         id="officeType"
                         required
@@ -104,7 +104,7 @@ export default function Contact() {
                       <input
                         type="number"
                         className="form-control style-1"
-                        placeholder="e.g. 5"
+                        placeholder="No. Of Seat"
                         name="seatCount"
                         id="seatCount"
                         required
@@ -115,7 +115,7 @@ export default function Contact() {
                       <input
                         type="text"
                         className="form-control style-1"
-                        placeholder="e.g. Andheri, Bandra, Powai"
+                        placeholder="Locality"
                         name="locality"
                         id="locality"
                         required
@@ -291,7 +291,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      <section className="">
+      <section className="container rounded">
         <div
           id="map-contact"
           className="map-contact"

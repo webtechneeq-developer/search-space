@@ -22,7 +22,7 @@ export default function SeoLinks() {
                 href={`/${page.slug}`}
                 className="desc .text-variant-011"
               >
-                || {page.title} ||
+                 {page.title} |
               </Link>
             ))}
           </div>

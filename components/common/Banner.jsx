@@ -48,20 +48,20 @@ export default function Banner() {
               {/* <div className="text-subtitle text-primary">
                 Wish to be part of our team?
               </div> */}
-              <h6 className="mt-4 fw-8">
+              <h6 className="mt-4 fw-7">
                 <span className="cta-title1">Zero</span> Brokerage Fees
               </h6>
-              <h6 className="mt-4 fw-8">
+              <h6 className="mt-4 fw-7">
                 <span className="cta-title1">No</span> Hidden Cost
               </h6>
-              <h6 className="mt-4 fw-8">
+              <h6 className="mt-4 fw-7">
                 <span className="cta-title1">100%</span> Verified Listings
               </h6>
             </div>
             <Link
               href={`/contact`}
               className="tf-btn btn-view primary size-1 hover-btn-view">
-              Join Us Today <span className="icon icon-arrow-right2" />
+              Get In Touch <span className="icon icon-arrow-right2" />
             </Link>
           </div>
             </div>

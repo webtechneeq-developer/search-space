@@ -39,7 +39,7 @@ export default function Blogs2() {
           ))}
           <div className="col-12 text-center pt-26 line-t">
             <ul className="justify-content-center wd-navigation">
-              <Pagination2 />
+              {/* <Pagination2 /> */}
             </ul>
           </div>
         </div>

@@ -34,7 +34,7 @@ export default function PropertyContentDetails({ propertyItem }) {
           <div className="col-lg-4">
             <div className="single-sidebar fixed-sidebar">
               <div className="widget-box single-property-contact">
-                <h4 className="title-mb">Speak To Our Experts</h4>
+                <h4 className="title-mb">Speak To Our Expert</h4>
                 <ContactSeller />
               </div>
             </div>

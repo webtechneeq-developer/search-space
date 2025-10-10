@@ -670,6 +670,7 @@ textarea, input[type=text], input[type=password], input[type=datetime], input[ty
     border: none;
     outline: 0;
     border-bottom: 1px solid #e4e4e4;
+    border-radius: 0;
     box-shadow: none;
     font-size: 14px;
     line-height: 22px;
@@ -706,4 +707,10 @@ a.desc.\.text-variant-011 {
 .text-variant-01 {
     color: #5c6368;
     font-weight: 400;
+}
+#subscribe-form input {
+    border-radius: 0px;
+}
+textarea.form-control {
+  border-radius: 0;
 }
