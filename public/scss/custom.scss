@@ -260,7 +260,7 @@ p.desc.text-variant-1 {
   transform: translateY(-4px);
 }
 .card {
-  height: 500px !important;
+  height: 450px !important;
 }
 .card-body {
   text-align: left;
@@ -642,22 +642,19 @@ section.flat-section.flat-recommended {
 //     // color: #1d5da0;
 // }
 
-
-
 @media (max-width: 576px) {
-
   .heading h1 {
-      font-size: 30px;
-      font-weight: 600 !important;
+    font-size: 30px;
+    font-weight: 600 !important;
   }
   .progress-wrap {
     right: 70px;
   }
 }
-.cta-title1{
+.cta-title1 {
   color: #1563df !important;
 }
-.box-title h6{
+.box-title h6 {
   font-size: 40px;
   line-height: 50px;
 }

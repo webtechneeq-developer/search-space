@@ -136,7 +136,7 @@ const PropertyCard = ({ property }) => {
                 </div>
               </div>
             )}
-            {lockInPeriod !== null && (
+            {/* {lockInPeriod !== null && (
               <div className="card-details bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
                 <span className="card-hours text-muted">Lock in Period</span>
                 <div className="d-flex align-items-center">
@@ -147,7 +147,7 @@ const PropertyCard = ({ property }) => {
                   {lockInPeriod}
                 </div>
               </div>
-            )}
+            )} */}
 
             {startingPrice !== null && (
               <div className="card-details bg-light rounded p-2 mb-3 d-flex justify-content-between align-items-center">
