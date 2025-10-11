@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function SeoLinks() {
   return (
     <section className="flat-section flat-testimonial flex-item">
-      <div>
+      <div className="container">
         <div
           className="text-center wow fadeInUpSmall"
           data-wow-delay=".2s"
@@ -14,7 +14,7 @@ export default function SeoLinks() {
         >
           <div
             className="d-flex gap-8 flex-wrap justify-center"
-            style={{ maxWidth: "750px", margin: "0 auto" }}
+            style={{ maxWidth: "750px" }}
           >
             {seoPages.map((page) => (
               <Link

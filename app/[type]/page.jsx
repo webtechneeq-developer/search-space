@@ -81,6 +81,8 @@ export default async function SpaceTypePage({ params }) {
         title={`Available Cities for ${capitalizeWords(type)}`}
         locations={locations}
       />
+      <SeoLinks />
+      <ReadMore />
       <Footer1 />
     </>
   );
