@@ -1,44 +1,54 @@
 import React, { Suspense } from "react";
 import Header1 from "@/components/headers/Header1";
 import Footer1 from "@/components/footer/Footer1";
-import LocalityPageContent from "@/components/common/LocalityPageContent"; // Import the new content component
-import { allProperties } from "@/data/properties";
-import { spaceData } from "@/data/spaces";
+import LocalityPageContent from "@/components/common/LocalityPageContent";
+import { getProperties } from "@/lib/data"; // Use the dynamic data fetching function
 
+// This function tells Next.js which pages to pre-build based on live data
 export async function generateStaticParams() {
-  // Your generateStaticParams function remains the same
+  const allProperties = await getProperties();
   const params = [];
-  spaceData.forEach((space) => {
-    for (const city in space.cities) {
-      space.cities[city].forEach((locality) => {
+  const uniquePaths = new Set();
+
+  allProperties.forEach((property) => {
+    // Ensure all necessary slugs exist to create a valid path
+    if (property.typeSlug && property.citySlug && property.localitySlug) {
+      const path = `${property.typeSlug}/${property.citySlug}/${property.localitySlug}`;
+      if (!uniquePaths.has(path)) {
+        uniquePaths.add(path);
         params.push({
-          type: space.type,
-          city: `${city}`,
-          locality: `${locality}`,
+          type: property.typeSlug,
+          city: property.citySlug,
+          locality: property.localitySlug,
         });
-      });
+      }
     }
   });
+
   return params;
 }
 
-// This is now a Server Component
-export default function LocalityPage({ params }) {
-  const { locality } = params;
+// This Server Component fetches the initial data for the page
+export default async function LocalityPage({ params }) {
+  const { type, locality } = params;
 
-  // Do the initial data filtering on the server
+  // Fetch all properties from the database
+  const allProperties = await getProperties();
+
+  // Filter properties on the server to get only those for this specific locality
   const initialProperties = allProperties.filter(
-    (p) => p.subLocation.toLowerCase() === locality.toLowerCase()
+    (p) => p.localitySlug === locality
   );
 
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <Header1 />
-        {/* Pass the server-fetched data as a prop to the client component */}
+        {/* Pass the server-fetched data as props to the interactive client component */}
         <LocalityPageContent
           initialProperties={initialProperties}
           localityName={locality}
+          type={type} // This prop is essential for setting the filter's initial state
         />
         <Footer1 />
       </Suspense>
