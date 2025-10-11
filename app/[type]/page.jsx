@@ -4,6 +4,8 @@ import Footer1 from "@/components/footer/Footer1";
 import LocationGrid from "@/components/common/LocationGrid";
 import { spaceData } from "@/data/spaces";
 import { getProperties } from "@/lib/data"; // Use the dynamic data fetching function
+import SeoLinks from "@/components/common/SeoLinks";
+import Readmore from "@/components/common/ReadMore";
 
 // This function tells Next.js which pages to pre-build based on your data.
 export async function generateStaticParams() {
@@ -81,8 +83,9 @@ export default async function SpaceTypePage({ params }) {
         title={`Available Cities for ${capitalizeWords(type)}`}
         locations={locations}
       />
+      {/* <SeoLinks /> */}
       <SeoLinks />
-      <ReadMore />
+      <Readmore/>
       <Footer1 />
     </>
   );

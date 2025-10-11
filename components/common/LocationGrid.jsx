@@ -28,7 +28,7 @@ export default function LocationGrid({
           {locations.map((loc, index) => {
             const count = loc.propertyCount;
             // The image source is now passed directly as a prop
-            const imageSrc = loc.image || "/images/cities/default-city.webp"; // Use a fallback image
+            const imageSrc = loc.image || "/images/cities/new-mumbai-location.webp"; // Use a fallback image
 
             return (
               <div key={index} className="col-lg-4 col-md-6 mb-4">

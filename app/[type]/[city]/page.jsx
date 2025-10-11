@@ -56,7 +56,7 @@ export default async function CityPage({ params }) {
       (p) => p.localitySlug === locality
     );
     const image =
-      firstPropInLocality?.imgSrc || "/images/cities/default-city.webp";
+      firstPropInLocality?.imgSrc || "/images/cities/new-mumbai-location.webp";
 
     return {
       name: capitalizeWords(locality),

@@ -16,16 +16,14 @@ function capitalizeWords(str) {
 
 export default function Locations({ locations = [] }) {
   return (
-    <section className={parentClass}>
-      {/* <div className="box-title text-center wow fadeInUp">
-        <h3 className="mt-4 title">Find A Workspace In Your City</h3>
-      </div>  */}
+    <section className="flat-location px-10 container">
+
       <div className="box-title text-center wow fadeInUp">
-          <div className="text-subtitle text-primary">
-            Find what suits your work
-          </div>
-          <h3 className="mt-4 title">Find A Workspace In Your City</h3>
+        <div className="text-subtitle text-primary">
+          Find what suits your work
         </div>
+        <h3 className="mt-4 title">Find A Workspace In Your City</h3>
+      </div>
       <div className="wow fadeInUp" data-wow-delay=".2s">
         <Swiper
           className="swiper tf-sw-location"

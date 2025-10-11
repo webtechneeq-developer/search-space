@@ -30,7 +30,7 @@ export default async function PropertyDetailPage({ params }) {
 
   // Format the image paths correctly for the slider
   const propertyImages = (propertyItem.images || []).map(
-    (img) => `/uploads/${img.name || img.image_name}`
+    (img) => `/uploads/${img.name}`
   );
 
   return (
