@@ -4,6 +4,8 @@ import Footer1 from "@/components/footer/Footer1";
 import LocationGrid from "@/components/common/LocationGrid";
 import { spaceData } from "@/data/spaces";
 import { allProperties } from "@/data/properties";
+import SeoLinks from "@/components/common/SeoLinks";
+import ReadMore from "@/components/common/ReadMore";
 
 function capitalizeWords(str) {
   return str
@@ -60,6 +62,8 @@ export default function SpaceTypePage({ params }) {
         title={`Available Cities for ${capitalizeWords(type)}`}
         locations={locations}
       />
+      <SeoLinks />
+      <ReadMore />
       <Footer1 />
     </>
   );
