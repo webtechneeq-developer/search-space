@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import PropertyCard from "@/components/common/PropertyCard";
-import CityFilter from "@/components/common/CityFilter"; // We can reuse the same filter UI
+import CityFilter from "@/components/common/CityFilter";
 
 function capitalizeWords(str) {
   if (!str) return "";
@@ -12,60 +12,41 @@ function capitalizeWords(str) {
     .join(" ");
 }
 
+// This component receives the `type` prop from its parent but will not pre-filter
 export default function LocalityPageContent({
   initialProperties,
   localityName,
+  type, // Type is kept for context but not used for initial filtering
 }) {
-  // Logic Updated: Initial state now uses `priceRange`
   const [filters, setFilters] = useState({
+    // The filter now starts with 'all' to show all properties initially
     spaceType: "all",
     seats: "",
-    priceRange: "any",
+    maxPrice: 50000,
+    lockInPeriod: "any", // FIX: Added missing lockInPeriod to the initial state
   });
 
   const [filteredProperties, setFilteredProperties] =
     useState(initialProperties);
 
+  // This effect applies the filters whenever the user changes them
   useEffect(() => {
-    // Logic Updated: Filtering logic is completely revised
     const newFilteredProperties = initialProperties.filter((property) => {
-      // Check if any pricing option within the property matches the filters
+      if (filters.lockInPeriod !== "any") {
+        const propertyLockIn = parseInt(property.lockInPeriod) || 0;
+        if (propertyLockIn > parseInt(filters.lockInPeriod)) {
+          return false;
+        }
+      }
       return property.pricing.some((option) => {
-        // Filter by Space Type
-        if (filters.spaceType !== "all" && option.type !== filters.spaceType) {
+        if (filters.spaceType !== "all" && option.type !== filters.spaceType)
           return false;
-        }
-
-        // New price range filtering logic
-        if (filters.priceRange && filters.priceRange !== "any") {
-          const optionPrice = option.price;
-          if (filters.priceRange.includes("+")) {
-            // Handles "40000+"
-            const minPrice = parseInt(filters.priceRange.replace("+", ""), 10);
-            if (optionPrice < minPrice) {
-              return false;
-            }
-          } else {
-            // Handles ranges like "5000-10000"
-            const [minPrice, maxPrice] = filters.priceRange
-              .split("-")
-              .map(Number);
-            if (optionPrice < minPrice || optionPrice > maxPrice) {
-              return false;
-            }
-          }
-        }
-
-        // Filter by Seats
-        if (filters.seats && (option.seats || 0) < parseInt(filters.seats)) {
+        if (option.price > filters.maxPrice) return false;
+        if (filters.seats && (option.seats || 0) < parseInt(filters.seats))
           return false;
-        }
-
-        // If all checks pass, the property is a match
         return true;
       });
     });
-
     setFilteredProperties(newFilteredProperties);
   }, [filters, initialProperties]);
 
@@ -75,10 +56,8 @@ export default function LocalityPageContent({
         Workspaces in {capitalizeWords(localityName)}
       </h2>
 
-      {/* Render the filter component */}
       <CityFilter filters={filters} onFilterChange={setFilters} />
 
-      {/* Styling Preserved: This section is identical to your original code */}
       <div className="row">
         {filteredProperties.length > 0 ? (
           filteredProperties.map((property) => (
