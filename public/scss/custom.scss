@@ -83,11 +83,11 @@
 }
 .box-benefit {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
-a.box-benefit.hover-btn-view {
-  height: 358px;
-}
+// a.box-benefit.hover-btn-view {
+//   height: 358px;
+// }
 .flat-img-with-text-v2 {
   align-items: center;
 }
@@ -736,6 +736,15 @@ h4.mt-4.title{
   font-size: 16px;
   font-weight: 600;
 }
+.about-list li {
+    list-style: disc;
+    font-size: 16px;
+    font-weight: 600;
+}
+.about-list {
+    padding-left: 30px;
+    padding-top: 10px;
+}
 
 
 
@@ -788,9 +797,9 @@ h4.mt-4.title{
       padding-top: 50px;
       padding-bottom: 50px;
   }
-  a.box-benefit.hover-btn-view {
-      height: 215px;
-  }
+  // a.box-benefit.hover-btn-view {
+  //     height: 215px;
+  // }
   .box-title h6 {
       font-size: 25px;
       line-height: 35px;
