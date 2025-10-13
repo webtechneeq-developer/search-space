@@ -89,6 +89,7 @@ export default function Benefit() {
               style={{
                 display: "flex",
                 flexWrap: "wrap",
+                flexDirection: "column",
                 gap: "20px", // spacing between items
               }}
             >
