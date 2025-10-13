@@ -6,16 +6,16 @@ import { getProperties } from "@/lib/data"; // Use the dynamic data fetching fun
 import ReadMore from "@/components/common/ReadMore";
 import SeoLinks from "@/components/common/SeoLinks";
 
-// Convert the component to an async function to fetch data
+// Convert the component to an async function to fetch data on the server
 export default async function MumbaiPage() {
   // Fetch all properties from the database via the API
   const allProperties = await getProperties();
 
-  // Filter for Mumbai properties on the server
+  // Filter for Mumbai properties, making the comparison case-insensitive for robustness
   const initialProperties =
-    allProperties.filter((p) => p.city === "Mumbai") || [];
+    allProperties.filter((p) => p.city?.toLowerCase() === "mumbai") || [];
 
-  // Get a unique list of localities for the filter dropdown
+  // Get a unique list of all localities within the filtered Mumbai properties
   const localities = [...new Set(initialProperties.map((p) => p.subLocation))];
 
   return (
