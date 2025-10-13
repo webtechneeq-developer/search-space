@@ -14,7 +14,7 @@ export default function PropertyTypes() {
           <div className="text-subtitle text-primary">
             Find what suits your work
           </div>
-          <h3 className="mt-4 title">Types of Office Spaces</h3>
+          <h4 className="mt-4 title">Types of Office Spaces</h4>
         </div>
         <div className="row mt-5">
           {propertyTypes.map((type) => (

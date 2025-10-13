@@ -50,7 +50,7 @@ export default function Contact() {
                 <form onSubmit={sendMail} ref={formRef} className="form-contact">
                   <div className="box grid-2">
                     <fieldset>
-                      <label htmlFor="name">Full Name:</label>
+                      {/* <label htmlFor="name">Full Name:</label> */}
                       <input
                         type="text"
                         className="form-control"
@@ -61,7 +61,7 @@ export default function Contact() {
                       />
                     </fieldset>
                     <fieldset>
-                      <label htmlFor="email">Email Address:</label>
+                      {/* <label htmlFor="email">Email Address:</label> */}
                       <input
                         type="email"
                         className="form-control"
@@ -75,7 +75,7 @@ export default function Contact() {
 
                   <div className="box grid-2">
                     <fieldset>
-                      <label htmlFor="phone">Phone Number:</label>
+                      {/* <label htmlFor="phone">Phone Number:</label> */}
                       <input
                         type="text"
                         className="form-control style-1"
@@ -86,11 +86,11 @@ export default function Contact() {
                       />
                     </fieldset>
                     <fieldset>
-                      <label htmlFor="officeType">Required Office Type:</label>
+                      {/* <label htmlFor="officeType">Required Office Type:</label> */}
                       <input
                         type="text"
                         className="form-control style-1"
-                        placeholder="Office Type"
+                        placeholder="Required Office Type"
                         name="officeType"
                         id="officeType"
                         required
@@ -100,7 +100,7 @@ export default function Contact() {
 
                   <div className="box grid-2">
                     <fieldset>
-                      <label htmlFor="seatCount">No. of Seats Required:</label>
+                      {/* <label htmlFor="seatCount">No. of Seats Required:</label> */}
                       <input
                         type="number"
                         className="form-control style-1"
@@ -111,7 +111,7 @@ export default function Contact() {
                       />
                     </fieldset>
                     <fieldset>
-                      <label htmlFor="locality">Preferred Locality:</label>
+                      {/* <label htmlFor="locality">Preferred Locality:</label> */}
                       <input
                         type="text"
                         className="form-control style-1"
@@ -124,7 +124,7 @@ export default function Contact() {
                   </div>
 
                   <fieldset>
-                    <label htmlFor="message">Your Message:</label>
+                    {/* <label htmlFor="message">Your Message:</label> */}
                     <textarea
                       name="message"
                       className="form-control"

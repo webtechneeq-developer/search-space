@@ -88,12 +88,12 @@ export default function Benefit() {
               className="flat-service wow fadeInUp"
               data-wow-delay=".2s"
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
-                gap: "20px", // adjust as needed
-                alignItems: "stretch",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "20px", // spacing between items
               }}
             >
+            <div style={{ flex: "1 1 calc(50% - 20px)" }}>
               <a href="#" className="box-benefit hover-btn-view">
                 <div className="icon-box">
                   <span className="icon">
@@ -145,6 +145,8 @@ export default function Benefit() {
                   </span> */}
                 </div>
               </a>
+            </div>
+            <div style={{ flex: "1 1 calc(50% - 20px)" }}>
               <a href="#" className="box-benefit hover-btn-view">
                 <div className="icon-box">
                   <span className="icon">
@@ -211,6 +213,8 @@ export default function Benefit() {
                   </span> */}
                 </div>
               </a>
+            </div>
+            <div style={{ flex: "1 1 calc(50% - 20px)" }}>
               <a href="#" className="box-benefit hover-btn-view">
                 <div className="icon-box">
                   <span className="icon">
@@ -280,6 +284,8 @@ export default function Benefit() {
                   </span> */}
                 </div>
               </a>
+            </div>
+            <div style={{ flex: "1 1 calc(50% - 20px)" }}>
               <a href="#" className="box-benefit hover-btn-view">
                 <div className="icon-box">
                   <span className="icon">
@@ -344,6 +350,7 @@ export default function Benefit() {
                   </span> */}
                 </div>
               </a>
+            </div>
             </div>
           </div>
         </div>

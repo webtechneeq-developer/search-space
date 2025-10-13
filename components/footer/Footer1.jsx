@@ -91,9 +91,10 @@ export default function Footer1() {
                   </Link>
                 </div>
                 <p className="text-variant-2">
-                  India’s fastest growing real estate tech enabled office space
-                  search platform. We are an office space aggregator for
-                  searching and comparing office spaces.
+                  Search Spaces is the fastest-growing flexible workspace
+                  marketplace in Mumbai, Navi Mumbai & Pune. We are a coworking
+                  office space aggregator for searching and comparing coworking
+                  office spaces.
                 </p>
                 <ul className="mt-12">
                   {/* <li className="mt-12 d-flex align-items-center gap-8">
@@ -115,7 +116,14 @@ export default function Footer1() {
                   </li>
                   <li className="mt-12 d-flex align-items-center gap-8">
                     <i className="icon icon-mail fs-20 text-variant-2" />
-                    <p className="text-white"><a href="mailto:info@searchspaces.in" className="caption-1">info@searchspaces.in</a></p>
+                    <p className="text-white">
+                      <a
+                        href="mailto:info@searchspaces.in"
+                        className="caption-1"
+                      >
+                        info@searchspaces.in
+                      </a>
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -153,8 +161,9 @@ export default function Footer1() {
                     Your Weekly/Monthly Dose of Knowledge and Inspiration
                   </p>
                   <div
-                    className={`tfSubscribeMsg  footer-sub-element ${showMessage ? "active" : ""
-                      }`}
+                    className={`tfSubscribeMsg  footer-sub-element ${
+                      showMessage ? "active" : ""
+                    }`}
                   >
                     {success ? (
                       <p style={{ color: "rgb(52, 168, 83)" }}>
@@ -202,7 +211,11 @@ export default function Footer1() {
                   <span>Follow Us:</span>
                   <ul className="list-social d-flex align-items-center">
                     <li>
-                      <a href="https://www.facebook.com/searchspaces" target="_blank" className="box-icon w-40 social">
+                      <a
+                        href="https://www.facebook.com/searchspaces"
+                        target="_blank"
+                        className="box-icon w-40 social"
+                      >
                         <svg
                           className="icon"
                           width={9}
@@ -219,7 +232,11 @@ export default function Footer1() {
                       </a>
                     </li>
                     <li>
-                      <a href="linkedin.com/company/searchspaces/" target="_blank" className="box-icon w-40 social">
+                      <a
+                        href="linkedin.com/company/searchspaces/"
+                        target="_blank"
+                        className="box-icon w-40 social"
+                      >
                         <svg
                           width={16}
                           height={16}
@@ -235,7 +252,11 @@ export default function Footer1() {
                       </a>
                     </li>
                     <li>
-                      <a href="https://x.com/Search_spaces" target="_blank" className="box-icon w-40 social">
+                      <a
+                        href="https://x.com/Search_spaces"
+                        target="_blank"
+                        className="box-icon w-40 social"
+                      >
                         <svg
                           width={14}
                           height={14}
@@ -251,7 +272,11 @@ export default function Footer1() {
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/searchspaces/" target="_blank" className="box-icon w-40 social">
+                      <a
+                        href="https://www.instagram.com/searchspaces/"
+                        target="_blank"
+                        className="box-icon w-40 social"
+                      >
                         <svg
                           width={14}
                           height={14}

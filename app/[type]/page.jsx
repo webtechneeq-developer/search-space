@@ -80,12 +80,12 @@ export default async function SpaceTypePage({ params }) {
     <>
       <Header1 />
       <LocationGrid
-        title={`Available Cities for ${capitalizeWords(type)}`}
+        title={`Find Best ${capitalizeWords(type)}`}
         locations={locations}
       />
       {/* <SeoLinks /> */}
       <SeoLinks />
-      <Readmore/>
+      <Readmore />
       <Footer1 />
     </>
   );

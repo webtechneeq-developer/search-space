@@ -8,7 +8,7 @@ export default function Services() {
       <div className="container">
         <div className="box-title text-center wow fadeInUp">
           <div className="text-subtitle text-primary">Our Services</div>
-          <h3 className="mt-4 title">What We Do?</h3>
+          <h4 className="mt-4 title">What We Do?</h4>
         </div>
         <div
           className="tf-grid-layout md-col-3 wow fadeInUp"

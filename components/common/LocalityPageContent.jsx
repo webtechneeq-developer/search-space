@@ -52,9 +52,10 @@ export default function LocalityPageContent({
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4 text-capitalize">
-        Workspaces in {capitalizeWords(localityName)}
+      <h2 className="text-center mb-4">
+        Best {capitalizeWords(type)} in {capitalizeWords(localityName)}
       </h2>
+
 
       <CityFilter filters={filters} onFilterChange={setFilters} />
 

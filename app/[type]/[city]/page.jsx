@@ -70,9 +70,7 @@ export default async function CityPage({ params }) {
     <>
       <Header1 />
       <LocationGrid
-        title={`Localities in ${capitalizeWords(cityKey)} for ${capitalizeWords(
-          type
-        )}`}
+        title={`Best ${capitalizeWords(type)} in ${capitalizeWords(cityKey)}`}
         locations={locations}
       />
       <Footer1 />

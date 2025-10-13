@@ -18,11 +18,11 @@ export default function Locations({ locations = [] }) {
   return (
     <section className="flat-location px-10 container">
 
-      <div className="box-title text-center wow fadeInUp">
+      <div className="box-title1 text-center wow fadeInUp">
         <div className="text-subtitle text-primary">
           Find what suits your work
         </div>
-        <h3 className="mt-4 title">Find A Workspace In Your City</h3>
+        <h4 className="mt-4 title">Find best Co-Working Space at affordable price across <span> Mumbai, Navi Mumbai & Pune.</span></h4>
       </div>
       <div className="wow fadeInUp" data-wow-delay=".2s">
         <Swiper
