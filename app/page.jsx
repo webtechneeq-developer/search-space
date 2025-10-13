@@ -6,18 +6,12 @@ import Services from "@/components/homes/home-1/Services";
 import PropertyTypes from "@/components/homes/home-1/PropertyTypes";
 import SeoLinks from "@/components/common/SeoLinks";
 import ReadMore from "@/components/common/ReadMore";
-import { getProperties } from "@/lib/data";
+// Import both data fetching functions
+import { getProperties, getLocations } from "@/lib/data";
 
 export const metadata = {
   title: "Search Spaces",
   description: "Search Spaces",
-};
-
-// Image mapping for cities
-const cityImages = {
-  mumbai: "/images/cities/new-mumbai-location.webp",
-  "navi-mumbai": "/images/cities/navi-mumbai-img2.webp",
-  pune: "/images/cities/pune-img1.webp",
 };
 
 // Helper function to create a URL-friendly slug from a city name
@@ -27,11 +21,12 @@ const createCitySlug = (cityName) => {
 };
 
 export default async function Home() {
+  // 1. Fetch all necessary data from the database
   const allProperties = await getProperties();
+  const allLocations = await getLocations();
 
-  // Group properties by city to count them
+  // 2. Group properties by city to get the counts
   const propertiesByCity = allProperties.reduce((acc, property) => {
-    // Generate the slug from the 'city' field provided by the database
     const citySlug = createCitySlug(property.city);
     if (citySlug) {
       if (!acc[citySlug]) {
@@ -42,20 +37,31 @@ export default async function Home() {
     return acc;
   }, {});
 
-  // Format the data for the Locations component
-  const locationsData = Object.keys(propertiesByCity).map((citySlug) => ({
-    name: citySlug,
-    url: `/${citySlug}`,
-    propertyCount: propertiesByCity[citySlug].length,
-    image: cityImages[citySlug] || "/images/cities/default-city.webp", // Fallback image
-  }));
+  // 3. Format the data for the Locations component, now including the dynamic image
+  const locationsData = Object.keys(propertiesByCity).map((citySlug) => {
+    // Find the corresponding city in the locations data to get its image
+    const locationInfo = allLocations.find(
+      (loc) => loc.slug === citySlug && loc.type === "city"
+    );
+
+    const imageUrl = locationInfo?.image_name
+      ? `/uploads/cities/${locationInfo.image_name}`
+      : "/images/cities/default-city.webp"; // Fallback image
+
+    return {
+      name: citySlug,
+      url: `/${citySlug}`,
+      propertyCount: propertiesByCity[citySlug].length,
+      image: imageUrl, // Use the image from the database
+    };
+  });
 
   return (
     <>
       <Header1 />
       <Hero />
       <PropertyTypes />
-      {/* Pass the dynamically generated locationsData to the component */}
+      {/* Pass the fully dynamic locationsData to the component */}
       <Locations locations={locationsData} />
       <Services />
       <SeoLinks />
