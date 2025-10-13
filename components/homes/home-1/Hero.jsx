@@ -62,9 +62,9 @@ export default function Hero() {
                   className="subtitle body-2 wow fadeInUp"
                   data-wow-delay=".2s"
                 >
-                  India’s fastest growing real estate tech enabled coworking office{" "}
+                  Find best Co-Working Space at affordable price across  {" "}
                   <br />
-                   space search platform.
+                   Mumbai, Navi Mumbai & Pune.
                 </p>
               </div>
 
