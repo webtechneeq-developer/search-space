@@ -2,13 +2,13 @@ import React from "react";
 import Header1 from "@/components/headers/Header1";
 import Footer1 from "@/components/footer/Footer1";
 import LocationGrid from "@/components/common/LocationGrid";
-import { spaceData } from "@/data/spaces";
-import { getProperties } from "@/lib/data"; // Use the dynamic data fetching function
+import { getProperties, getDynamicSpaceData, getLocations } from "@/lib/data"; // Use all data fetching functions
 import SeoLinks from "@/components/common/SeoLinks";
 import Readmore from "@/components/common/ReadMore";
 
 // This function tells Next.js which pages to pre-build based on your data.
 export async function generateStaticParams() {
+  const spaceData = await getDynamicSpaceData();
   // It will create a page for each space type defined in your spaceData.
   return spaceData.map((space) => ({
     type: space.type,
@@ -28,19 +28,17 @@ function capitalizeWords(str) {
 export default async function SpaceTypePage({ params }) {
   const { type } = params;
 
-  // Fetch all properties from your database
-  const allProperties = await getProperties();
+  // Fetch all necessary data from the database in parallel
+  const [allProperties, allLocations, spaceData] = await Promise.all([
+    getProperties(),
+    getLocations(),
+    getDynamicSpaceData(),
+  ]);
 
-  // Find the structural information for the current space type from your static data
+  // Find the structural information for the current space type from your dynamic data
   const space = spaceData.find((s) => s.type === type);
 
-  if (!space) {
-    // This should ideally not be reached if generateStaticParams is correct
-    return <div>Type not found</div>;
-  }
-
-  // Handle cases where a space type is defined but has no cities assigned yet
-  if (!space.cities || Object.keys(space.cities).length === 0) {
+  if (!space || !space.cities || Object.keys(space.cities).length === 0) {
     return (
       <>
         <Header1 />
@@ -61,17 +59,24 @@ export default async function SpaceTypePage({ params }) {
     ([cityKey, subLocations]) => {
       // For each city, count how many properties from the database match it
       const propertyCount = allProperties.filter(
-        (property) =>
-          // Match the city (e.g., "Navi Mumbai" becomes "navi-mumbai" to match the key)
-          property.city.toLowerCase().replace(/ /g, "-") === cityKey &&
-          // Ensure the property's sublocation is valid for this space type and city
-          subLocations.includes(property.subLocation.toLowerCase())
+        (property) => property.citySlug === cityKey
       ).length;
+
+      // Find the specific city in the locations table to get its image
+      const locationInfo = allLocations.find(
+        (loc) => loc.slug === cityKey && loc.type === "city"
+      );
+
+      // Construct the image URL from the database record
+      const image = locationInfo?.image_name
+        ? `/uploads/cities/${locationInfo.image_name}`
+        : "/images/cities/default-city.webp"; // Fallback image
 
       return {
         name: capitalizeWords(cityKey),
         url: `/${type}/${cityKey}`, // The URL to the next page in the hierarchy
         propertyCount,
+        image, // Pass the dynamically fetched image to the LocationGrid
       };
     }
   );
@@ -83,7 +88,6 @@ export default async function SpaceTypePage({ params }) {
         title={`Find Best ${capitalizeWords(type)}`}
         locations={locations}
       />
-      {/* <SeoLinks /> */}
       <SeoLinks />
       <Readmore />
       <Footer1 />

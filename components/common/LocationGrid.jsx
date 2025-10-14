@@ -14,7 +14,7 @@ function capitalizeWords(str) {
 
 export default function LocationGrid({
   title,
-  locations,
+  locations = [],
   noLocationMessage = "No locations found.",
 }) {
   return (
@@ -23,12 +23,11 @@ export default function LocationGrid({
         <h3 className="mt-4 title new-title">{title}</h3>
       </div>
 
-      {locations.length > 0 ? (
+      {locations && locations.length > 0 ? (
         <div className="row mt-4 wow fadeInUp" data-wow-delay=".2s">
           {locations.map((loc, index) => {
             const count = loc.propertyCount;
-            // The image source is now passed directly as a prop
-            const imageSrc = loc.image || "/images/cities/new-mumbai-location.webp"; // Use a fallback image
+            const imageSrc = loc.image || "/images/cities/default-city.webp"; // Use a fallback image
 
             return (
               <div key={index} className="col-lg-4 col-md-6 mb-4">
