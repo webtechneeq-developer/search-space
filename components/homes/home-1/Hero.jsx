@@ -55,7 +55,7 @@ export default function Hero() {
                   Find Your Ideal Coworking 
                   <br />
                   <TyperComponent
-                    strings={["privete office", " Dedicated Desk"," Flexi Desk"," Meeting Room"," Conference Room"," Day Pass","Virtual Office"]}
+                    strings={["Private Cabin", " Dedicated Desk"," Flexi Desk"," Meeting Room"," Conference Room"," Day Pass","Virtual Office"]}
                   />
                 </h1>
                 <p

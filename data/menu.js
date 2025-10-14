@@ -9,7 +9,7 @@ export const menuItems = [
     links: [
         {
         href: "/coworking-office",
-        label: "private office",
+        label: "Private Cabin",
       },
       {
         href: "/coworking-dedicated-desk",

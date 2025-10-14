@@ -15,7 +15,7 @@ export default function FilterTab({
   const [localityOptions, setLocalityOptions] = useState([]);
 
   const typeOptions = [
-    { value: "coworking-office", label: "Private Office" },
+    { value: "coworking-office", label: "Private Cabin" },
     { value: "coworking-dedicated-desk", label: "Dedicated Desk" },
     { value: "coworking-flexi-desk", label: "Flexi Desk" },
     { value: "coworking-meeting-room", label: "Meeting Room" },
