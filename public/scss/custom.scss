@@ -758,8 +758,22 @@ h4.mt-4.title{
     padding: 0 15px;
   }
   .readmore01 p {
-    text-align: justify;
-}
+      text-align: justify;
+  }
+  .box-title h6 {
+      font-size: 30px;
+      line-height: 40px;
+  }
+  .wrap-banner .box-right img {
+      margin-top: -60px;
+  }
+  .map-contact {
+      height: 515px !important;
+  }
+  .flat-section.flat-testimonial.flex-item {
+      padding-top: 0;
+      padding-bottom: 5px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -807,6 +821,19 @@ h4.mt-4.title{
   .wrap-banner.bg-primary-new.flat-title-page1 {
     display: flex;
     flex-direction: column-reverse;
+  }
+  .tf-btn{
+    padding: 12px 12px;
+    min-width: 145px;
+  }
+  // section.flat-section.pt-20.flat-banner {
+  //     padding-top: 0px !important;
+  // }
+  .map-contact {
+      height: 550px !important;
+  }
+  section.flat-section.flat-testimonial.flex-item{
+    padding-top: 0px !important;
   }
 }
 
