@@ -44,10 +44,10 @@ export default function LoginPage() {
           <div
             className="h-100 d-flex flex-column justify-content-center p-5 text-white"
             style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+              // backgroundImage:
+              //   "url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071')",
+              // backgroundSize: "cover",
+              // backgroundPosition: "center",
             }}
           >
             {/* <div
@@ -56,13 +56,13 @@ export default function LoginPage() {
             ></div> */}
             <div className="position-relative">
               <h1 className="display-4 fw-bold">Search Spaces</h1>
-              <p className="lead">Content Management System</p>
+              <p className="lead text-black">Content Management System</p>
             </div>
           </div>
         </div>
 
         {/* Form Column */}
-        <div className="col-lg-5 d-flex flex-column align-items-center justify-content-center bg-light">
+        <div className="col-lg-5 d-flex flex-column align-items-center justify-content-center ">
           <div
             className="card border-0 shadow-lg"
             style={{ width: "25rem", borderRadius: "1rem" }}

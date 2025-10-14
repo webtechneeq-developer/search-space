@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaPlus, FaEdit, FaTrash, FaSearch } from "react-icons/fa";
+import Header from "@/components/admin/Header";
+import Sidebar from "@/components/admin/Sidebar";
+import Footer from "@/components/admin/Footer";
 
 export default function PropertiesPage() {
   const [properties, setProperties] = useState([]);
@@ -28,16 +31,12 @@ export default function PropertiesPage() {
   }, []);
 
   const handleDelete = async (id) => {
-    // Show a confirmation dialog before deleting
     if (window.confirm("Are you sure you want to delete this property?")) {
       try {
         const response = await fetch(`/api/properties/${id}`, {
           method: "DELETE",
         });
-        if (!response.ok) {
-          throw new Error("Failed to delete the property.");
-        }
-        // Refresh the properties list after successful deletion
+        if (!response.ok) throw new Error("Failed to delete the property.");
         fetchProperties();
       } catch (err) {
         alert(err.message);
@@ -45,7 +44,6 @@ export default function PropertiesPage() {
     }
   };
 
-  // Filter properties based on the search term
   const filteredProperties = properties.filter(
     (p) =>
       p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -67,97 +65,125 @@ export default function PropertiesPage() {
   }
 
   if (error) {
-    return <div className="alert alert-danger">Error: {error}</div>;
+    return <div className="alert alert-danger m-4">Error: {error}</div>;
   }
 
   return (
-    <div>
-      <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-        <h1 className="h2 fw-bold mb-0">Manage Properties</h1>
-        <Link
-          href="/admin/properties/add"
-          className="btn btn-primary d-flex align-items-center"
+    <div className="d-flex flex-column min-vh-100 bg-light">
+      {/* Header */}
+      <Header />
+
+      <div className="d-flex flex-grow-1">
+        {/* Sidebar - fixed */}
+        <aside
+          className="position-fixed top-0 start-0 vh-100 bg-white border-end"
+          style={{ width: "250px", zIndex: 1000 }}
         >
-          <FaPlus className="me-2" /> Add New Property
-        </Link>
+          <Sidebar />
+        </aside>
+
+        {/* Main Content */}
+        <main
+          className="flex-grow-1 p-4"
+          style={{ marginLeft: "250px" }} // Leave space for fixed sidebar
+        >
+          {/* Page Heading */}
+          <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+            <h1 className="h2 fw-bold mb-0">Manage Properties</h1>
+            <Link
+              href="/admin/properties/add"
+              className="btn btn-primary d-flex align-items-center"
+            >
+              <FaPlus className="me-2" /> Add New Property
+            </Link>
+          </div>
+
+          {/* Card Container */}
+          <div className="card shadow-sm border-0 rounded-4">
+            {/* Card Header / Search */}
+            <div className="card-header bg-white border-0 py-3">
+              <div className="input-group">
+                <span className="input-group-text bg-light border-0">
+                  <FaSearch />
+                </span>
+                <input
+                  type="text"
+                  className="form-control bg-light border-0"
+                  placeholder="Search by title, city, or locality..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* Card Body / Table */}
+            <div className="card-body p-0">
+              <div className="table-responsive">
+                <table className="table table-hover align-middle mb-0">
+                  <thead className="table-light">
+                    <tr>
+                      <th style={{ minWidth: "250px" }}>Title</th>
+                      <th>City</th>
+                      <th>Locality</th>
+                      <th>Status</th>
+                      <th className="text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredProperties.length === 0 && (
+                      <tr>
+                        <td colSpan={5} className="text-center text-muted py-4">
+                          No properties found.
+                        </td>
+                      </tr>
+                    )}
+                    {filteredProperties.map((property) => (
+                      <tr key={property.id}>
+                        <td>
+                          <div className="fw-bold">{property.title}</div>
+                          <div className="small text-muted">ID: {property.id}</div>
+                        </td>
+                        <td>{property.city}</td>
+                        <td className="text-capitalize">{property.subLocation}</td>
+                        <td>
+                          {property.status === 1 ? (
+                            <span className="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill">
+                              <i className="bi bi-check-circle-fill me-1"></i>Active
+                            </span>
+                          ) : (
+                            <span className="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill">
+                              <i className="bi bi-x-circle-fill me-1"></i>Inactive
+                            </span>
+                          )}
+                        </td>
+                        <td className="text-end">
+                          <Link
+                            href={`/admin/properties/edit/${property.id}`}
+                            className="btn btn-sm btn-outline-primary me-2"
+                            title="Edit Property"
+                          >
+                            <FaEdit />
+                          </Link>
+                          <button
+                            className="btn btn-sm btn-outline-danger"
+                            title="Delete Property"
+                            onClick={() => handleDelete(property.id)}
+                          >
+                            <FaTrash />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
 
-      <div className="card border-0 shadow-sm" style={{ borderRadius: "1rem" }}>
-        <div className="card-header bg-white border-0 pt-4 pb-0">
-          <div className="input-group">
-            <span className="input-group-text bg-light border-0">
-              <FaSearch />
-            </span>
-            <input
-              type="text"
-              className="form-control bg-light border-0"
-              placeholder="Search by title, city, or locality..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="card-body">
-          <div className="table-responsive">
-            <table className="table table-hover align-middle">
-              <thead className="table-light">
-                <tr>
-                  <th scope="col" style={{ minWidth: "300px" }}>
-                    Title
-                  </th>
-                  <th scope="col">City</th>
-                  <th scope="col">Locality</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" className="text-end">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredProperties.map((property) => (
-                  <tr key={property.id}>
-                    <td>
-                      <div className="fw-bold">{property.title}</div>
-                      <div className="small text-muted">ID: {property.id}</div>
-                    </td>
-                    <td>{property.city}</td>
-                    <td className="text-capitalize">{property.subLocation}</td>
-                    <td>
-                      {property.status === 1 ? (
-                        <span className="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill">
-                          <i className="bi bi-check-circle-fill me-1"></i>Active
-                        </span>
-                      ) : (
-                        <span className="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill">
-                          <i className="bi bi-x-circle-fill me-1"></i>Inactive
-                        </span>
-                      )}
-                    </td>
-                    <td className="text-end">
-                      {/* CORRECTED: Changed <button> to <Link> for editing */}
-                      <Link
-                        href={`/admin/properties/edit/${property.id}`}
-                        className="btn btn-sm btn-outline-primary me-2"
-                        title="Edit Property"
-                      >
-                        <FaEdit />
-                      </Link>
-                      {/* CORRECTED: Added onClick handler for deleting */}
-                      <button
-                        className="btn btn-sm btn-outline-danger"
-                        title="Delete Property"
-                        onClick={() => handleDelete(property.id)}
-                      >
-                        <FaTrash />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
