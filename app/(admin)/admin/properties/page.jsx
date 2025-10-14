@@ -12,6 +12,7 @@ export default function PropertiesPage() {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Fetch properties
   const fetchProperties = async () => {
     try {
       setLoading(true);
@@ -30,6 +31,7 @@ export default function PropertiesPage() {
     fetchProperties();
   }, []);
 
+  // Delete property
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this property?")) {
       try {
@@ -44,6 +46,7 @@ export default function PropertiesPage() {
     }
   };
 
+  // Filtered results
   const filteredProperties = properties.filter(
     (p) =>
       p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -51,6 +54,7 @@ export default function PropertiesPage() {
       p.subLocation.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Loading state
   if (loading) {
     return (
       <div
@@ -64,17 +68,19 @@ export default function PropertiesPage() {
     );
   }
 
+  // Error state
   if (error) {
     return <div className="alert alert-danger m-4">Error: {error}</div>;
   }
 
+  // Main UI
   return (
     <div className="d-flex flex-column min-vh-100 bg-light">
       {/* Header */}
       <Header />
 
       <div className="d-flex flex-grow-1">
-        {/* Sidebar - fixed */}
+        {/* Sidebar (fixed) */}
         <aside
           className="position-fixed top-0 start-0 vh-100 bg-white border-end"
           style={{ width: "250px", zIndex: 1000 }}
@@ -82,12 +88,12 @@ export default function PropertiesPage() {
           <Sidebar />
         </aside>
 
-        {/* Main Content */}
+        {/* Main content */}
         <main
           className="flex-grow-1 p-4"
-          style={{ marginLeft: "250px" }} // Leave space for fixed sidebar
+          style={{ marginLeft: "285px" }} // Leave space for fixed sidebar
         >
-          {/* Page Heading */}
+          {/* Page header */}
           <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
             <h1 className="h2 fw-bold mb-0">Manage Properties</h1>
             <Link
@@ -98,9 +104,9 @@ export default function PropertiesPage() {
             </Link>
           </div>
 
-          {/* Card Container */}
+          {/* Card container */}
           <div className="card shadow-sm border-0 rounded-4">
-            {/* Card Header / Search */}
+            {/* Search header */}
             <div className="card-header bg-white border-0 py-3">
               <div className="input-group">
                 <span className="input-group-text bg-light border-0">
@@ -116,7 +122,7 @@ export default function PropertiesPage() {
               </div>
             </div>
 
-            {/* Card Body / Table */}
+            {/* Table */}
             <div className="card-body p-0">
               <div className="table-responsive">
                 <table className="table table-hover align-middle mb-0">
@@ -130,50 +136,60 @@ export default function PropertiesPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredProperties.length === 0 && (
+                    {filteredProperties.length === 0 ? (
                       <tr>
-                        <td colSpan={5} className="text-center text-muted py-4">
+                        <td
+                          colSpan={5}
+                          className="text-center text-muted py-4"
+                        >
                           No properties found.
                         </td>
                       </tr>
+                    ) : (
+                      filteredProperties.map((property) => (
+                        <tr key={property.id}>
+                          <td>
+                            <div className="fw-bold">{property.title}</div>
+                            <div className="small text-muted">
+                              ID: {property.id}
+                            </div>
+                          </td>
+                          <td>{property.city}</td>
+                          <td className="text-capitalize">
+                            {property.subLocation}
+                          </td>
+                          <td>
+                            {property.status === 1 ? (
+                              <span className="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill">
+                                <i className="bi bi-check-circle-fill me-1"></i>
+                                Active
+                              </span>
+                            ) : (
+                              <span className="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill">
+                                <i className="bi bi-x-circle-fill me-1"></i>
+                                Inactive
+                              </span>
+                            )}
+                          </td>
+                          <td className="text-end">
+                            <Link
+                              href={`/admin/properties/edit/${property.id}`}
+                              className="btn btn-sm btn-outline-primary me-2"
+                              title="Edit Property"
+                            >
+                              <FaEdit />
+                            </Link>
+                            <button
+                              className="btn btn-sm btn-outline-danger"
+                              title="Delete Property"
+                              onClick={() => handleDelete(property.id)}
+                            >
+                              <FaTrash />
+                            </button>
+                          </td>
+                        </tr>
+                      ))
                     )}
-                    {filteredProperties.map((property) => (
-                      <tr key={property.id}>
-                        <td>
-                          <div className="fw-bold">{property.title}</div>
-                          <div className="small text-muted">ID: {property.id}</div>
-                        </td>
-                        <td>{property.city}</td>
-                        <td className="text-capitalize">{property.subLocation}</td>
-                        <td>
-                          {property.status === 1 ? (
-                            <span className="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill">
-                              <i className="bi bi-check-circle-fill me-1"></i>Active
-                            </span>
-                          ) : (
-                            <span className="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill">
-                              <i className="bi bi-x-circle-fill me-1"></i>Inactive
-                            </span>
-                          )}
-                        </td>
-                        <td className="text-end">
-                          <Link
-                            href={`/admin/properties/edit/${property.id}`}
-                            className="btn btn-sm btn-outline-primary me-2"
-                            title="Edit Property"
-                          >
-                            <FaEdit />
-                          </Link>
-                          <button
-                            className="btn btn-sm btn-outline-danger"
-                            title="Delete Property"
-                            onClick={() => handleDelete(property.id)}
-                          >
-                            <FaTrash />
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
                   </tbody>
                 </table>
               </div>
