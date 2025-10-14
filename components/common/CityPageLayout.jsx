@@ -12,7 +12,7 @@ export default function CityPageLayout({
     locality: "all",
     spaceType: "all",
     seats: "",
-    maxPrice: 5000,
+    maxPrice: 50000,
     lockInPeriod: "any",
   });
 
@@ -21,7 +21,9 @@ export default function CityPageLayout({
 
   useEffect(() => {
     let newFiltered = initialProperties.filter((property) => {
-      // Locality Filter
+      // --- CORRECTED FILTERING LOGIC ---
+
+      // 1. Filter by Locality
       if (
         filters.locality !== "all" &&
         property.subLocation.toLowerCase() !== filters.locality.toLowerCase()
@@ -29,21 +31,38 @@ export default function CityPageLayout({
         return false;
       }
 
-      // Lock-in Period Filter
+      // 2. Filter by Lock-in Period
       if (filters.lockInPeriod !== "any") {
         const propertyLockIn = parseInt(property.lockInPeriod) || 0;
         if (propertyLockIn > parseInt(filters.lockInPeriod)) return false;
       }
 
-      // Check pricing options for space type, price, and seats
-      return property.pricing.some((option) => {
-        if (filters.spaceType !== "all" && option.type !== filters.spaceType)
+      // 3. Check if any pricing-related filters are active
+      const isPricingFilterActive =
+        filters.spaceType !== "all" ||
+        filters.seats !== "" ||
+        filters.maxPrice < 50000;
+
+      // Only check the pricing array if a relevant filter is being used.
+      if (isPricingFilterActive) {
+        // If a property has no pricing, it cannot match these filters.
+        if (!property.pricing || property.pricing.length === 0) {
           return false;
-        if (option.price > filters.maxPrice) return false;
-        if (filters.seats && (option.seats || 0) < parseInt(filters.seats))
-          return false;
-        return true;
-      });
+        }
+
+        // Check if at least one pricing option matches all active pricing filters.
+        return property.pricing.some((option) => {
+          if (filters.spaceType !== "all" && option.type !== filters.spaceType)
+            return false;
+          if (option.price > filters.maxPrice) return false;
+          if (filters.seats && (option.seats || 0) < parseInt(filters.seats))
+            return false;
+          return true;
+        });
+      }
+
+      // 4. If no pricing filters are active, and it passed other filters, show the property.
+      return true;
     });
 
     setFilteredProperties(newFiltered);
