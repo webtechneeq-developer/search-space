@@ -21,6 +21,8 @@ export default function EditPropertyPage() {
   const { id } = params || {};
 
   const [property, setProperty] = useState(null);
+  const [locationImageFile, setLocationImageFile] = useState(null);
+  const [currentLocationImage, setCurrentLocationImage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
@@ -50,7 +52,6 @@ export default function EditPropertyPage() {
     "Day Pass",
   ];
 
-  // Fetch existing property data on mount
   useEffect(() => {
     if (id) {
       const fetchProperty = async () => {
@@ -59,8 +60,8 @@ export default function EditPropertyPage() {
           const res = await fetch(`/api/properties/${id}`);
           if (!res.ok) throw new Error("Failed to fetch property data.");
           const data = await res.json();
-          // Ensure images array exists
           setProperty({ ...data, images: data.images || [] });
+          setCurrentLocationImage(data.locationImage);
         } catch (err) {
           setError(err.message);
         } finally {
@@ -79,7 +80,6 @@ export default function EditPropertyPage() {
           .replace(/^-+|-+$/g, "")
       : "";
 
-  // Auto-update slug when title changes
   useEffect(() => {
     if (property && property.title) {
       setProperty((prev) => ({ ...prev, slug: createSlug(prev.title) }));
@@ -91,6 +91,44 @@ export default function EditPropertyPage() {
     setProperty((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleFileChange = async (e) => {
+    const files = Array.from(e.target.files);
+    if (files.length === 0) return;
+    setUploading(true);
+    const uploadedImages = [];
+    for (const file of files) {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("location", property.subLocation || "property");
+      try {
+        const response = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+        if (!response.ok) throw new Error(`Upload failed for ${file.name}`);
+        const result = await response.json();
+        uploadedImages.push({ name: result.filename, isMain: false });
+      } catch (err) {
+        setError(err.message);
+      }
+    }
+    setProperty((prev) => ({
+      ...prev,
+      images: [...prev.images, ...uploadedImages],
+    }));
+    setUploading(false);
+  };
+
+  const setAsMainImage = (indexToSet) => {
+    setProperty((prev) => ({
+      ...prev,
+      images: prev.images.map((img, index) => ({
+        ...img,
+        isMain: index === indexToSet,
+      })),
+    }));
+  };
+
   const handlePricingChange = (index, e) => {
     const { name, value } = e.target;
     const newPricing = [...(property.pricing || [])];
@@ -98,7 +136,12 @@ export default function EditPropertyPage() {
     setProperty((prev) => ({ ...prev, pricing: newPricing }));
   };
 
-  const addPricingRow = () => {
+  const removeImage = (indexToRemove) =>
+    setProperty((prev) => ({
+      ...prev,
+      images: prev.images.filter((_, index) => index !== indexToRemove),
+    }));
+  const addPricingRow = () =>
     setProperty((prev) => ({
       ...prev,
       pricing: [
@@ -106,13 +149,11 @@ export default function EditPropertyPage() {
         { type: "Dedicated Desk", price: "", unit: "/Month", seats: "" },
       ],
     }));
-  };
-
-  const removePricingRow = (index) => {
-    const newPricing = (property.pricing || []).filter((_, i) => i !== index);
-    setProperty((prev) => ({ ...prev, pricing: newPricing }));
-  };
-
+  const removePricingRow = (index) =>
+    setProperty((prev) => ({
+      ...prev,
+      pricing: (prev.pricing || []).filter((_, i) => i !== index),
+    }));
   const handleFeatureChange = (e) => {
     const { value, checked } = e.target;
     setProperty((prev) => {
@@ -124,69 +165,28 @@ export default function EditPropertyPage() {
     });
   };
 
-  // --- IMAGE HANDLING FUNCTIONS ---
-  const handleFileChange = async (e) => {
-    const files = Array.from(e.target.files);
-    if (files.length === 0) return;
-
-    setUploading(true);
-    const uploadedImageNames = [];
-
-    for (const file of files) {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("location", property.subLocation || "property");
-
-      try {
-        const response = await fetch("/api/upload", {
-          method: "POST",
-          body: formData,
-        });
-        if (!response.ok) throw new Error(`Upload failed for ${file.name}`);
-        const result = await response.json();
-        uploadedImageNames.push(result.filename);
-      } catch (err) {
-        setError(err.message);
-      }
-    }
-
-    setProperty((prev) => {
-      const newImages = uploadedImageNames.map((name, index) => ({
-        name: name,
-        isMain: prev.images.every((img) => !img.isMain) && index === 0,
-      }));
-      return { ...prev, images: [...prev.images, ...newImages] };
-    });
-
-    setUploading(false);
-  };
-
-  const setAsMainImage = (indexToSet) => {
-    setProperty((prev) => ({
-      ...prev,
-      images: prev.images.map((img, index) => ({
-        ...img,
-        isMain: index === indexToSet,
-        is_main_image: index === indexToSet ? 1 : 0, // Also update the DB field if it exists
-      })),
-    }));
-  };
-
-  const removeImage = (indexToRemove) => {
-    setProperty((prev) => ({
-      ...prev,
-      images: prev.images.filter((_, index) => index !== indexToRemove),
-    }));
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     try {
+      let finalPropertyData = { ...property };
+      if (locationImageFile) {
+        const formData = new FormData();
+        formData.append("file", locationImageFile);
+        formData.append("location", "location");
+        const uploadRes = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+        if (!uploadRes.ok) throw new Error("Location image upload failed.");
+        const uploadData = await uploadRes.json();
+        finalPropertyData.locationImageName = uploadData.filename;
+      }
+
       if (
-        property.images.length > 0 &&
-        !property.images.some((img) => img.isMain || img.is_main_image === 1)
+        finalPropertyData.images.length > 0 &&
+        !finalPropertyData.images.some((img) => img.isMain || img.is_main_image)
       ) {
         throw new Error("Please select a main image for the property.");
       }
@@ -194,8 +194,9 @@ export default function EditPropertyPage() {
       const response = await fetch(`/api/properties/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(property),
+        body: JSON.stringify(finalPropertyData),
       });
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.message || "Failed to update property");
@@ -232,7 +233,7 @@ export default function EditPropertyPage() {
       </div>
 
       <form onSubmit={handleSubmit} className="needs-validation" noValidate>
-        {/* Core Information, Location, and Details Cards... */}
+        {/* Core Information */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
@@ -285,6 +286,7 @@ export default function EditPropertyPage() {
           </div>
         </div>
 
+        {/* Location */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
@@ -297,17 +299,15 @@ export default function EditPropertyPage() {
                 <label htmlFor="city" className="form-label">
                   City
                 </label>
-                <select
+                <input
+                  type="text"
                   id="city"
                   name="city"
-                  className="form-select"
+                  className="form-control"
                   value={property.city}
                   onChange={handleChange}
-                >
-                  <option value="Mumbai">Mumbai</option>
-                  <option value="Navi Mumbai">Navi Mumbai</option>
-                  <option value="Pune">Pune</option>
-                </select>
+                  required
+                />
               </div>
               <div className="col-md-6">
                 <label htmlFor="subLocation" className="form-label">
@@ -337,10 +337,36 @@ export default function EditPropertyPage() {
                   onChange={handleChange}
                 />
               </div>
+              <div className="col-12">
+                <label htmlFor="locationImage" className="form-label">
+                  Location Image
+                </label>
+                {currentLocationImage && !locationImageFile && (
+                  <div className="mb-2">
+                    <img
+                      src={`/uploads/${currentLocationImage}`}
+                      alt="Current location"
+                      className="img-thumbnail"
+                      style={{ maxWidth: "150px" }}
+                    />
+                  </div>
+                )}
+                <input
+                  type="file"
+                  id="locationImage"
+                  className="form-control"
+                  onChange={(e) => setLocationImageFile(e.target.files[0])}
+                />
+                <div className="form-text">
+                  Upload a new image to replace the current one for this
+                  locality.
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Property Details */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
@@ -418,7 +444,7 @@ export default function EditPropertyPage() {
           </div>
         </div>
 
-        {/* MEDIA SECTION */}
+        {/* Media Section */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
@@ -459,14 +485,14 @@ export default function EditPropertyPage() {
                 <div className="row g-2">
                   {property.images.map((image, index) => (
                     <div key={index} className="col-md-4">
-                      <div className="card1 position-relative">
+                      <div className="card position-relative">
                         <img
-                          src={`/uploads/${image.image_name || image.name}`}
+                          src={`/uploads/${image.name}`}
                           alt={`Uploaded ${index + 1}`}
                           className="card-img-top"
                           style={{ height: "120px", objectFit: "cover" }}
                         />
-                        {(image.is_main_image || image.isMain) && (
+                        {image.isMain && (
                           <FaStar
                             className="position-absolute top-0 start-0 m-2 text-warning"
                             size={20}
@@ -476,16 +502,16 @@ export default function EditPropertyPage() {
                         <div className="card-body p-2 d-flex justify-content-between">
                           <button
                             type="button"
-                            className="btn btn-sm btn-success"
+                            className="btn btn-sm btn-outline-success"
                             title="Set as main"
                             onClick={() => setAsMainImage(index)}
-                            disabled={image.is_main_image || image.isMain}
+                            disabled={image.isMain}
                           >
                             <FaStar />
                           </button>
                           <button
                             type="button"
-                            className="btn btn-sm btn-danger"
+                            className="btn btn-sm btn-outline-danger"
                             title="Remove"
                             onClick={() => removeImage(index)}
                           >
@@ -618,7 +644,6 @@ export default function EditPropertyPage() {
         </div>
 
         {error && <div className="alert alert-danger">{error}</div>}
-
         <div className="text-end mt-4">
           <button
             type="submit"

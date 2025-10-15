@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
-import path from "path";
+import { join } from "path";
 
 export async function POST(request) {
   try {
@@ -9,35 +9,29 @@ export async function POST(request) {
     const location = data.get("location") || "general";
 
     if (!file) {
-      return NextResponse.json(
-        { message: "No file uploaded." },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "No file found." }, { status: 400 });
     }
 
-    // Sanitize and create a unique filename
-    const sanitizedLocation = location.toLowerCase().replace(/[^a-z0-9]/g, "-");
-    const filename = `${sanitizedLocation}-${Date.now()}${path.extname(
-      file.name
-    )}`;
+    // Sanitize location name for use in filename
+    const safeLocation = location.toLowerCase().replace(/[^a-z0-9]/g, "-");
 
-    // Convert file to buffer
+    // Generate a unique filename: location-timestamp-originalfilename
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
+    const originalFilename = file.name.replace(/[^a-zA-Z0-9.]/g, "_");
+    const filename = `${safeLocation}-${uniqueSuffix}-${originalFilename}`;
+
+    // Convert file data to a buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
     // Define the path to save the file
-    const uploadPath = path.join(process.cwd(), "public/uploads", filename);
+    // It will be saved in the `public/uploads` directory
+    const filePath = join(process.cwd(), "public", "uploads", filename);
 
-    // Write the file to the server
-    await writeFile(uploadPath, buffer);
+    // Write the file to the server's filesystem
+    await writeFile(filePath, buffer);
 
-    console.log(`File uploaded successfully: ${filename}`);
-
-    // Return the new filename to the client
-    return NextResponse.json({
-      message: "File uploaded successfully",
-      filename: filename,
-    });
+    return NextResponse.json({ success: true, filename: filename });
   } catch (error) {
     console.error("Upload API Error:", error);
     return NextResponse.json(

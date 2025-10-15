@@ -81,7 +81,7 @@ export default async function CityPage({ params }) {
 
     // Construct the image URL from the database record
     const image = localityInfo?.image_name
-      ? `/uploads/cities/${localityInfo.image_name}`
+      ? `/uploads/${localityInfo.image_name}`
       : "/images/cities/default-city.webp"; // Fallback image
 
     return {

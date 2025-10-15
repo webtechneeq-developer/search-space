@@ -28,16 +28,16 @@ export default function AddPropertyPage() {
     securityDeposit: "1 Month",
     advancePayment: "1 Month",
     noticePeriod: "1 Month",
-    imgSrc: "",
     map: "",
     pricing: [{ type: "Private Office", price: "", unit: "/Month", seats: "" }],
     features: [],
-    images: [], // e.g., [{ name: 'filename.jpg', isMain: true }]
+    images: [], // Holds info about uploaded property images
   });
 
+  const [locationImageFile, setLocationImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [uploading, setUploading] = useState(false); // State for upload progress
+  const [uploading, setUploading] = useState(false);
 
   const allPossibleFeatures = [
     "High Speed Wifi",
@@ -54,7 +54,6 @@ export default function AddPropertyPage() {
     "Lounge",
     "Projector",
   ];
-
   const pricingTypeOptions = [
     "Private Office",
     "Dedicated Desk",
@@ -85,15 +84,13 @@ export default function AddPropertyPage() {
   const handleFileChange = async (e) => {
     const files = Array.from(e.target.files);
     if (files.length === 0) return;
-
     setUploading(true);
+    setError("");
     const uploadedImageNames = [];
-
     for (const file of files) {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("location", property.subLocation || "property");
-
       try {
         const response = await fetch("/api/upload", {
           method: "POST",
@@ -104,9 +101,9 @@ export default function AddPropertyPage() {
         uploadedImageNames.push(result.filename);
       } catch (err) {
         setError(err.message);
+        break;
       }
     }
-
     setProperty((prev) => {
       const newImages = uploadedImageNames.map((name, index) => ({
         name: name,
@@ -114,11 +111,10 @@ export default function AddPropertyPage() {
       }));
       return { ...prev, images: [...prev.images, ...newImages] };
     });
-
     setUploading(false);
   };
 
-  const setAsMainImage = (indexToSet) => {
+  const setAsMainImage = (indexToSet) =>
     setProperty((prev) => ({
       ...prev,
       images: prev.images.map((img, index) => ({
@@ -126,21 +122,18 @@ export default function AddPropertyPage() {
         isMain: index === indexToSet,
       })),
     }));
-  };
   const handlePricingChange = (index, e) => {
     const { name, value } = e.target;
     const newPricing = [...property.pricing];
     newPricing[index][name] = value;
     setProperty((prev) => ({ ...prev, pricing: newPricing }));
   };
-  const removeImage = (indexToRemove) => {
+  const removeImage = (indexToRemove) =>
     setProperty((prev) => ({
       ...prev,
       images: prev.images.filter((_, index) => index !== indexToRemove),
     }));
-  };
-
-  const addPricingRow = () => {
+  const addPricingRow = () =>
     setProperty((prev) => ({
       ...prev,
       pricing: [
@@ -148,21 +141,19 @@ export default function AddPropertyPage() {
         { type: "Dedicated Desk", price: "", unit: "/Month", seats: "" },
       ],
     }));
-  };
-
-  const removePricingRow = (index) => {
-    const newPricing = property.pricing.filter((_, i) => i !== index);
-    setProperty((prev) => ({ ...prev, pricing: newPricing }));
-  };
-
+  const removePricingRow = (index) =>
+    setProperty((prev) => ({
+      ...prev,
+      pricing: property.pricing.filter((_, i) => i !== index),
+    }));
   const handleFeatureChange = (e) => {
     const { value, checked } = e.target;
-    setProperty((prev) => {
-      const newFeatures = checked
+    setProperty((prev) => ({
+      ...prev,
+      features: checked
         ? [...prev.features, value]
-        : prev.features.filter((f) => f !== value);
-      return { ...prev, features: newFeatures };
-    });
+        : prev.features.filter((f) => f !== value),
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -170,10 +161,29 @@ export default function AddPropertyPage() {
     setLoading(true);
     setError("");
     try {
+      let finalPropertyData = { ...property };
+      if (locationImageFile) {
+        const formData = new FormData();
+        formData.append("file", locationImageFile);
+        formData.append("location", property.subLocation || property.city);
+        const uploadRes = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+        if (!uploadRes.ok) throw new Error("Location image upload failed.");
+        const uploadData = await uploadRes.json();
+        finalPropertyData.locationImageName = uploadData.filename;
+      }
+      if (
+        finalPropertyData.images.length > 0 &&
+        !finalPropertyData.images.some((img) => img.isMain)
+      ) {
+        throw new Error("Please select a main image for the property.");
+      }
       const response = await fetch("/api/properties", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(property),
+        body: JSON.stringify(finalPropertyData),
       });
       if (!response.ok) {
         const errorData = await response.json();
@@ -189,7 +199,6 @@ export default function AddPropertyPage() {
 
   return (
     <div className="container py-4">
-      {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2 className="fw-bold mb-0">Add New Property</h2>
         <Link href="/admin/properties" className="btn btn-outline-secondary">
@@ -198,12 +207,10 @@ export default function AddPropertyPage() {
       </div>
 
       <form onSubmit={handleSubmit} className="needs-validation" noValidate>
-        {/* Core Information */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaBuilding className="me-2 text-primary" />
-              Core Information
+              <FaBuilding className="me-2 text-primary" /> Core Information
             </h5>
           </div>
           <div className="card1-body p-4">
@@ -243,19 +250,16 @@ export default function AddPropertyPage() {
           </div>
         </div>
 
-        {/* Location */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaMapMarkerAlt className="me-2 text-primary" />
-              Location Details
+              <FaMapMarkerAlt className="me-2 text-primary" /> Location Details
             </h5>
           </div>
           <div className="card1-body p-4">
             <div className="row g-3">
               <div className="col-md-6">
                 <label className="form-label">City</label>
-                {/* THIS IS THE UPDATED FIELD */}
                 <input
                   type="text"
                   name="city"
@@ -287,16 +291,29 @@ export default function AddPropertyPage() {
                   onChange={handleChange}
                 />
               </div>
+              <div className="col-12">
+                <label htmlFor="locationImage" className="form-label">
+                  Location Image (for city/locality cards)
+                </label>
+                <input
+                  type="file"
+                  id="locationImage"
+                  className="form-control"
+                  onChange={(e) => setLocationImageFile(e.target.files[0])}
+                />
+                <div className="form-text">
+                  Only upload an image here if this is a NEW city or locality.
+                  This will set its display image across the site.
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Property Details */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaClock className="me-2 text-primary" />
-              Property Details
+              <FaClock className="me-2 text-primary" /> Property Details
             </h5>
           </div>
           <div className="card1-body p-4">
@@ -358,14 +375,13 @@ export default function AddPropertyPage() {
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaImage className="me-2 text-primary" />
-              Media
+              <FaImage className="me-2 text-primary" /> Media
             </h5>
           </div>
           <div className="card1-body p-4">
             <div className="mb-3">
               <label htmlFor="imageUpload" className="form-label">
-                Upload Images
+                Upload Property Images
               </label>
               <div className="input-group">
                 <input
@@ -389,9 +405,7 @@ export default function AddPropertyPage() {
                 </div>
               )}
             </div>
-
             <hr />
-
             <div className="mt-3">
               <label className="form-label">Uploaded Images</label>
               {property.images.length === 0 ? (
@@ -444,12 +458,11 @@ export default function AddPropertyPage() {
             </div>
           </div>
         </div>
-        {/* Pricing Section */}
+
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaRupeeSign className="me-2 text-primary" />
-              Pricing Options
+              <FaRupeeSign className="me-2 text-primary" /> Pricing Options
             </h5>
           </div>
           <div className="card1-body p-4">
@@ -522,12 +535,11 @@ export default function AddPropertyPage() {
           </div>
         </div>
 
-        {/* Features Section */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
-              <FaCheckSquare className="me-2 text-primary" />
-              Amenities / Features
+              <FaCheckSquare className="me-2 text-primary" /> Amenities /
+              Features
             </h5>
           </div>
           <div className="card1-body p-4">
@@ -558,7 +570,6 @@ export default function AddPropertyPage() {
 
         {error && <div className="alert alert-danger">{error}</div>}
 
-        {/* Submit */}
         <div className="text-end mt-4">
           <button
             type="submit"
