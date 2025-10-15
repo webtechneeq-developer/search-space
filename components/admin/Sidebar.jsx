@@ -12,6 +12,7 @@ export default function Sidebar() {
       style={{
         width: "280px",
         height: "auto !important",
+        background: "linear-gradient(to right, #004e92, #000428)",
       }}
     >
       <Link
@@ -38,7 +39,7 @@ export default function Sidebar() {
             href="/admin/properties"
             className={`nav-link text-white ${
               pathname.startsWith("/admin/properties") ? "active" : ""
-            }`}
+            }`} 
           >
             <FaThList className="me-2" />
             Properties

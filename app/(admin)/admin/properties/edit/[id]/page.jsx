@@ -485,12 +485,12 @@ export default function EditPropertyPage() {
                 <div className="row g-2">
                   {property.images.map((image, index) => (
                     <div key={index} className="col-md-4">
-                      <div className="card position-relative">
+                      <div className=" position-relative">
                         <img
                           src={`/uploads/${image.name}`}
                           alt={`Uploaded ${index + 1}`}
                           className="card-img-top"
-                          style={{ height: "120px", objectFit: "cover" }}
+                          style={{ height: "auto", objectFit: "cover" }}
                         />
                         {image.isMain && (
                           <FaStar
