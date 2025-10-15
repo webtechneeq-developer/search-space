@@ -9,7 +9,7 @@ const createSlug = (text) =>
         .replace(/^-+|-+$/g, "")
     : null;
 
-// GET a single property by ID
+// GET a single property by ID (no changes needed here, but included for completeness)
 export async function GET(request, { params }) {
   const { id } = params;
   try {
@@ -34,15 +34,9 @@ export async function GET(request, { params }) {
       [id]
     );
     const [featuresResult] = await pool.query(
-      `
-            SELECT f.name FROM features f
-            JOIN property_features pf ON f.id = pf.feature_id
-            WHERE pf.property_id = ?
-        `,
+      `SELECT f.name FROM features f JOIN property_features pf ON f.id = pf.feature_id WHERE pf.property_id = ?`,
       [id]
     );
-
-    // NEW: Fetch the location image
     const [locationImageResult] = await pool.query(
       'SELECT image_name FROM locations WHERE slug = ? AND type = "locality"',
       [createSlug(property.subLocation)]
@@ -104,7 +98,57 @@ export async function PUT(request, { params }) {
       ]
     );
 
-    // ... (The rest of the logic for updating images, pricing, and features remains the same)
+    // 3. Clear and re-insert all related data for simplicity and accuracy
+    await connection.execute(
+      "DELETE FROM property_images WHERE property_id = ?",
+      [id]
+    );
+    if (property.images && property.images.length > 0) {
+      for (const image of property.images) {
+        await connection.execute(
+          "INSERT INTO property_images (property_id, image_name, is_main_image) VALUES (?, ?, ?)",
+          [id, image.name, image.isMain || false]
+        );
+      }
+    }
+
+    await connection.execute(
+      "DELETE FROM pricing_options WHERE property_id = ?",
+      [id]
+    );
+    if (property.pricing && property.pricing.length > 0) {
+      for (const option of property.pricing) {
+        await connection.execute(
+          "INSERT INTO pricing_options (property_id, type, price, unit, seats) VALUES (?, ?, ?, ?, ?)",
+          [id, option.type, option.price, option.unit, option.seats || null]
+        );
+      }
+    }
+
+    await connection.execute(
+      "DELETE FROM property_features WHERE property_id = ?",
+      [id]
+    );
+    if (property.features && property.features.length > 0) {
+      for (const featureName of property.features) {
+        let [featureRows] = await connection.execute(
+          "SELECT id FROM features WHERE name = ?",
+          [featureName]
+        );
+        let featureId = featureRows[0]?.id;
+        if (!featureId) {
+          const [newFeature] = await connection.execute(
+            "INSERT INTO features (name) VALUES (?)",
+            [featureName]
+          );
+          featureId = newFeature.insertId;
+        }
+        await connection.execute(
+          "INSERT INTO property_features (property_id, feature_id) VALUES (?, ?)",
+          [id, featureId]
+        );
+      }
+    }
 
     await connection.commit();
     return NextResponse.json({ message: "Property updated successfully" });
@@ -119,8 +163,6 @@ export async function PUT(request, { params }) {
     if (connection) connection.release();
   }
 }
-
-// ... (DELETE function remains the same)
 
 // DELETE (soft delete) a property by ID
 export async function DELETE(request, { params }) {

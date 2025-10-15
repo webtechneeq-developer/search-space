@@ -141,6 +141,7 @@ export default function EditPropertyPage() {
       ...prev,
       images: prev.images.filter((_, index) => index !== indexToRemove),
     }));
+
   const addPricingRow = () =>
     setProperty((prev) => ({
       ...prev,
@@ -149,11 +150,13 @@ export default function EditPropertyPage() {
         { type: "Dedicated Desk", price: "", unit: "/Month", seats: "" },
       ],
     }));
+
   const removePricingRow = (index) =>
     setProperty((prev) => ({
       ...prev,
       pricing: (prev.pricing || []).filter((_, i) => i !== index),
     }));
+
   const handleFeatureChange = (e) => {
     const { value, checked } = e.target;
     setProperty((prev) => {
@@ -642,7 +645,6 @@ export default function EditPropertyPage() {
             </div>
           </div>
         </div>
-
         {error && <div className="alert alert-danger">{error}</div>}
         <div className="text-end mt-4">
           <button
