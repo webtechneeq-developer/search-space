@@ -91,15 +91,15 @@ export default function PropertiesPage() {
         {/* Main content */}
         <main
           className="flex-grow-1 p-4"
-          style={{ marginLeft: "285px", marginTop: "100px" }} // Leave space for fixed sidebar
+          style={{ marginLeft: "285px" }} // Leave space for fixed sidebar
         >
           {/* Page header */}
 
           {/* Card container */}
 
           {/* Table */}
-          <div className="card-body p-0">
-            <div className="card shadow-sm border-0 rounded-4">
+          <div className="p-0">
+            <div className="  border-0 rounded-4">
               {/* Search header */}
               <div className="card-header bg-white border-0 py-3">
                 <div className="input-group">
