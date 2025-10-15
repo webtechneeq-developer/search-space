@@ -69,7 +69,7 @@ export default async function SpaceTypePage({ params }) {
 
       // Construct the image URL from the database record
       const image = locationInfo?.image_name
-        ? `/uploads/cities/${locationInfo.image_name}`
+        ? `/uploads/${locationInfo.image_name}`
         : "/images/cities/default-city.webp"; // Fallback image
 
       return {

@@ -45,6 +45,17 @@ export default function Sidebar() {
             Properties
           </Link>
         </li>
+        <li>
+          <Link
+            href="/admin/footer"
+            className={`nav-link text-white ${
+              pathname.startsWith("/admin/properties") ? "active" : ""
+            }`}
+          >
+            <FaThList className="me-2" />
+            Footer
+          </Link>
+        </li>
       </ul>
       <hr />
     </div>
