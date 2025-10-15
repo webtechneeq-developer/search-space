@@ -444,7 +444,7 @@ export default function EditPropertyPage() {
           </div>
         </div>
 
-        {/* Media Section */}
+        {/* MEDIA SECTION */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
