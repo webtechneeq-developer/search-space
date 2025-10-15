@@ -65,6 +65,9 @@ export default function CityPageLayout({
       return true;
     });
 
+    // THIS IS THE NEW CODE: Sort the filtered properties alphabetically by title
+    newFiltered.sort((a, b) => a.title.localeCompare(b.title));
+
     setFilteredProperties(newFiltered);
   }, [filters, initialProperties]);
 

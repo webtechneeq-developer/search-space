@@ -91,39 +91,39 @@ export default function PropertiesPage() {
         {/* Main content */}
         <main
           className="flex-grow-1 p-4"
-          style={{ marginLeft: "285px" }} // Leave space for fixed sidebar
+          style={{ marginLeft: "285px", marginTop: "100px" }} // Leave space for fixed sidebar
         >
           {/* Page header */}
-          <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-            <h1 className="h2 fw-bold mb-0">Manage Properties</h1>
-            <Link
-              href="/admin/properties/add"
-              className="btn btn-primary d-flex align-items-center"
-            >
-              <FaPlus className="me-2" /> Add New Property
-            </Link>
-          </div>
 
           {/* Card container */}
-          <div className="card shadow-sm border-0 rounded-4">
-            {/* Search header */}
-            <div className="card-header bg-white border-0 py-3">
-              <div className="input-group">
-                <span className="input-group-text bg-light border-0">
-                  <FaSearch />
-                </span>
-                <input
-                  type="text"
-                  className="form-control bg-light border-0"
-                  placeholder="Search by title, city, or locality..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-            </div>
 
-            {/* Table */}
-            <div className="card-body p-0">
+          {/* Table */}
+          <div className="card-body p-0">
+            <div className="card shadow-sm border-0 rounded-4">
+              {/* Search header */}
+              <div className="card-header bg-white border-0 py-3">
+                <div className="input-group">
+                  <span className="input-group-text bg-light border-0">
+                    <FaSearch />
+                  </span>
+                  <input
+                    type="text"
+                    className="form-control bg-light border-0"
+                    placeholder="Search by title, city, or locality..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                <h1 className="h2 fw-bold mb-0">Manage Properties</h1>
+                <Link
+                  href="/admin/properties/add"
+                  className="btn btn-primary d-flex align-items-center"
+                >
+                  <FaPlus className="me-2" /> Add New Property
+                </Link>
+              </div>
               <div className="table-responsive">
                 <table className="table table-hover align-middle mb-0">
                   <thead className="table-light">
@@ -138,10 +138,7 @@ export default function PropertiesPage() {
                   <tbody>
                     {filteredProperties.length === 0 ? (
                       <tr>
-                        <td
-                          colSpan={5}
-                          className="text-center text-muted py-4"
-                        >
+                        <td colSpan={5} className="text-center text-muted py-4">
                           No properties found.
                         </td>
                       </tr>

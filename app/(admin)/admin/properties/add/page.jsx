@@ -255,16 +255,16 @@ export default function AddPropertyPage() {
             <div className="row g-3">
               <div className="col-md-6">
                 <label className="form-label">City</label>
-                <select
+                {/* THIS IS THE UPDATED FIELD */}
+                <input
+                  type="text"
                   name="city"
-                  className="form-select"
+                  className="form-control"
+                  placeholder="e.g., Mumbai"
                   value={property.city}
                   onChange={handleChange}
-                >
-                  <option value="Mumbai">Mumbai</option>
-                  <option value="Navi Mumbai">Navi Mumbai</option>
-                  <option value="Pune">Pune</option>
-                </select>
+                  required
+                />
               </div>
               <div className="col-md-6">
                 <label className="form-label">Locality</label>
