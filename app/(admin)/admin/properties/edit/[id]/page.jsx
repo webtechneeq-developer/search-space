@@ -141,6 +141,7 @@ export default function EditPropertyPage() {
       ...prev,
       images: prev.images.filter((_, index) => index !== indexToRemove),
     }));
+
   const addPricingRow = () =>
     setProperty((prev) => ({
       ...prev,
@@ -149,11 +150,13 @@ export default function EditPropertyPage() {
         { type: "Dedicated Desk", price: "", unit: "/Month", seats: "" },
       ],
     }));
+
   const removePricingRow = (index) =>
     setProperty((prev) => ({
       ...prev,
       pricing: (prev.pricing || []).filter((_, i) => i !== index),
     }));
+
   const handleFeatureChange = (e) => {
     const { value, checked } = e.target;
     setProperty((prev) => {
@@ -444,7 +447,7 @@ export default function EditPropertyPage() {
           </div>
         </div>
 
-        {/* Media Section */}
+        {/* MEDIA SECTION */}
         <div className="card1 shadow-sm mb-4">
           <div className="card1-header bg-light py-3 px-4 border-bottom">
             <h5 className="mb-0">
@@ -485,12 +488,12 @@ export default function EditPropertyPage() {
                 <div className="row g-2">
                   {property.images.map((image, index) => (
                     <div key={index} className="col-md-4">
-                      <div className=" position-relative">
+                      <div className="card position-relative">
                         <img
                           src={`/uploads/${image.name}`}
                           alt={`Uploaded ${index + 1}`}
                           className="card-img-top"
-                          style={{ height: "auto", objectFit: "cover" }}
+                          style={{ height: "120px", objectFit: "cover" }}
                         />
                         {image.isMain && (
                           <FaStar
@@ -642,7 +645,6 @@ export default function EditPropertyPage() {
             </div>
           </div>
         </div>
-
         {error && <div className="alert alert-danger">{error}</div>}
         <div className="text-end mt-4">
           <button

@@ -9,7 +9,7 @@ const createSlug = (text) =>
         .replace(/^-+|-+$/g, "")
     : null;
 
-// GET a single property by ID
+// GET a single property by ID (no changes needed here, but included for completeness)
 export async function GET(request, { params }) {
   const { id } = params;
   try {
@@ -25,35 +25,30 @@ export async function GET(request, { params }) {
     }
     const property = properties[0];
 
-    // Fetch related data in parallel
-    const [pricing, images, featuresResult, locationImageResult] =
-      await Promise.all([
-        pool.query("SELECT * FROM pricing_options WHERE property_id = ?", [id]),
-        pool.query(
-          "SELECT image_name, is_main_image FROM property_images WHERE property_id = ?",
-          [id]
-        ),
-        pool.query(
-          `
-                SELECT f.name FROM features f
-                JOIN property_features pf ON f.id = pf.feature_id
-                WHERE pf.property_id = ?
-            `,
-          [id]
-        ),
-        pool.query(
-          'SELECT image_name FROM locations WHERE slug = ? AND type = "locality"',
-          [createSlug(property.subLocation)]
-        ),
-      ]);
+    const [pricing] = await pool.query(
+      "SELECT * FROM pricing_options WHERE property_id = ?",
+      [id]
+    );
+    const [images] = await pool.query(
+      "SELECT image_name, is_main_image FROM property_images WHERE property_id = ?",
+      [id]
+    );
+    const [featuresResult] = await pool.query(
+      `SELECT f.name FROM features f JOIN property_features pf ON f.id = pf.feature_id WHERE pf.property_id = ?`,
+      [id]
+    );
+    const [locationImageResult] = await pool.query(
+      'SELECT image_name FROM locations WHERE slug = ? AND type = "locality"',
+      [createSlug(property.subLocation)]
+    );
 
-    property.pricing = pricing[0];
-    property.images = images[0].map((img) => ({
+    property.pricing = pricing;
+    property.images = images.map((img) => ({
       name: img.image_name,
       isMain: !!img.is_main_image,
     }));
-    property.features = featuresResult[0].map((f) => f.name);
-    property.locationImage = locationImageResult[0][0]?.image_name || null;
+    property.features = featuresResult.map((f) => f.name);
+    property.locationImage = locationImageResult[0]?.image_name || null;
 
     return NextResponse.json(property);
   } catch (error) {
@@ -74,7 +69,7 @@ export async function PUT(request, { params }) {
     connection = await pool.getConnection();
     await connection.beginTransaction();
 
-    // If a new location image was uploaded, update the locations table
+    // 1. If a new location image was uploaded, update the locations table
     if (locationImageName) {
       const localitySlug = createSlug(property.subLocation);
       await connection.execute(
@@ -83,7 +78,7 @@ export async function PUT(request, { params }) {
       );
     }
 
-    // Update the main `properties` table
+    // 2. Update the main `properties` table
     await connection.execute(
       `UPDATE properties SET title=?, slug=?, description=?, city=?, subLocation=?, workingHours=?, 
              lockInPeriod=?, securityDeposit=?, advancePayment=?, noticePeriod=?, map=? WHERE id=?`,
@@ -103,7 +98,7 @@ export async function PUT(request, { params }) {
       ]
     );
 
-    // Clear and re-insert related data
+    // 3. Clear and re-insert all related data for simplicity and accuracy
     await connection.execute(
       "DELETE FROM property_images WHERE property_id = ?",
       [id]
@@ -116,6 +111,7 @@ export async function PUT(request, { params }) {
         );
       }
     }
+
     await connection.execute(
       "DELETE FROM pricing_options WHERE property_id = ?",
       [id]
@@ -128,6 +124,7 @@ export async function PUT(request, { params }) {
         );
       }
     }
+
     await connection.execute(
       "DELETE FROM property_features WHERE property_id = ?",
       [id]
