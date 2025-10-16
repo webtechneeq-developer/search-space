@@ -4,7 +4,7 @@ import { FaUndo, FaUsers, FaRupeeSign } from "react-icons/fa"; // 1. Import Rupe
 
 // Data for our interactive pill buttons
 const spaceTypes = [
-  "Private Office",
+  "Private Cabin",
   "Dedicated Desk",
   "Flexi Desk",
   "Day Pass",

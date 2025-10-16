@@ -10,7 +10,7 @@ import {
 
 // Data for our interactive pill buttons
 const spaceTypes = [
-  "Private Office",
+  "Private Cabin",
   "Dedicated Desk",
   "Flexi Desk",
   "Meeting Room",

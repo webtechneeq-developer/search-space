@@ -9,7 +9,7 @@ export const propertyTypes = [
   // },
   {
     id: 2,
-    name: "Co-Working Office",
+    name: "Private Cabin",
     slug: "coworking-office",
     img: "/images/property/andheri/andheri-001.webp",
   },

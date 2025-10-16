@@ -7,7 +7,7 @@ export const menuItems = [
   {
     title: "Services",
     links: [
-        {
+      {
         href: "/coworking-office",
         label: "Private Cabin",
       },
@@ -26,20 +26,20 @@ export const menuItems = [
       {
         href: "/coworking-conference-room",
         label: " Conference Room",
-      }, 
+      },
       {
         href: "/coworking-day-pass",
         label: " Day Pass",
-      }, 
+      },
       {
         href: "/coworking-virtual-office",
         label: " Virtual Office",
-      },  
+      },
     ],
     isCurrent: true,
   },
-    {
-    title: "Co-Working Places",
+  {
+    title: "Co-Working Cities",
     links: [
       {
         href: "/mumbai",
@@ -58,7 +58,7 @@ export const menuItems = [
       },
     ],
   },
-    {
+  {
     title: "About Us",
     links: [{ href: "/about-us", label: "About Us", isCurrent: true }],
     isCurrent: true,
