@@ -49,7 +49,7 @@ export default function Sidebar() {
           <Link
             href="/admin/footer"
             className={`nav-link text-white ${
-              pathname.startsWith("/admin/properties") ? "active" : ""
+              pathname.startsWith("/admin/footer") ? "active" : ""
             }`}
           >
             <FaThList className="me-2" />

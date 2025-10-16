@@ -6,6 +6,8 @@ import Image from "next/image";
 import emailjs from "@emailjs/browser";
 // import { footerSections } from "@/data/footer";
 import InquiryFloatingButton from "../common/EnquiryForm";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
 
 export default function Footer1() {
   const formRef = useRef();
@@ -270,7 +272,7 @@ export default function Footer1() {
                           target="_blank"
                           className="box-icon w-40 social"
                         >
-                          <i className="icon icon-twitter" />
+                            <FaXTwitter className="text-white text-2xl" />    
                         </a>
                       </li>
                     )}
@@ -281,7 +283,7 @@ export default function Footer1() {
                           target="_blank"
                           className="box-icon w-40 social"
                         >
-                          <i className="icon icon-instagram" />
+                          <FaInstagram className="text-white text-2xl" />
                         </a>
                       </li>
                     )}

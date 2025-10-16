@@ -126,7 +126,7 @@ export default function FooterCMS() {
         {/* Sidebar (fixed) */}
         <aside
           className="position-fixed top-0 start-0 vh-100 bg-white border-end"
-          style={{ width: "250px", zIndex: 1000 }}
+          style={{ width: "250px", zIndex: 99999 }}
         >
           <Sidebar />
         </aside>

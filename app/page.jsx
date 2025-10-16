@@ -45,7 +45,7 @@ export default async function Home() {
     );
 
     const imageUrl = locationInfo?.image_name
-      ? `/uploads/cities/${locationInfo.image_name}`
+      ? `/uploads/${locationInfo.image_name}`
       : "/images/cities/default-city.webp"; // Fallback image
 
     return {

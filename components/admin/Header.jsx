@@ -23,7 +23,7 @@ export default function Header() {
   };
 
   return (
-    <header className="navbar navbar-expand-lg navbar-light  shadow-sm sticky-top">
+    <header className="navbar navbar-expand-lg navbar-light  shadow-sm sticky-top bg-white">
       <div className="container-fluid">
         <div className="ms-auto">
           {isLoggedIn ? (

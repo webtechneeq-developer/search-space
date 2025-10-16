@@ -75,7 +75,7 @@ export default function PropertiesPage() {
 
   // Main UI
   return (
-    <div className="d-flex flex-column min-vh-100 bg-light">
+    <div className="d-flex flex-column min-vh-100 ">
       {/* Header */}
       <Header />
 
@@ -83,7 +83,7 @@ export default function PropertiesPage() {
         {/* Sidebar (fixed) */}
         <aside
           className="position-fixed top-0 start-0 vh-100 bg-white border-end"
-          style={{ width: "250px", zIndex: 1000 }}
+          style={{ width: "250px", zIndex: 9999 }}
         >
           <Sidebar />
         </aside>
