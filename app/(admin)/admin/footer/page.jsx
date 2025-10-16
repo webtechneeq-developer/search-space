@@ -123,10 +123,16 @@ export default function FooterCMS() {
     <div className="d-flex flex-column min-vh-100">
       <Header />
       <div className="d-flex flex-grow-1">
-        <Sidebar />
+        {/* Sidebar (fixed) */}
+        <aside
+          className="position-fixed top-0 start-0 vh-100 bg-white border-end"
+          style={{ width: "250px", zIndex: 1000 }}
+        >
+          <Sidebar />
+        </aside>
         <main
-          className="flex-grow-1 p-4 bg-light"
-          style={{ minHeight: "100vh" }}
+          className="flex-grow-1 p-4"
+          style={{ marginLeft: "285px" }} // Leave space for fixed sidebar
         >
           <div className="container-fluid">
             <h2 className="mb-4 fw-bold text-primary">Footer CMS</h2>
