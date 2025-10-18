@@ -1,32 +1,39 @@
 import { NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
+import { writeFile, mkdir } from "fs/promises";
 import { join } from "path";
 
 export async function POST(request) {
   try {
     const data = await request.formData();
     const file = data.get("file");
-    const location = data.get("location") || "general";
 
     if (!file) {
       return NextResponse.json({ message: "No file found." }, { status: 400 });
     }
 
-    // Sanitize location name for use in filename
-    const safeLocation = location.toLowerCase().replace(/[^a-z0-9]/g, "-");
-
-    // Generate a unique filename: location-timestamp-originalfilename
-    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-    const originalFilename = file.name.replace(/[^a-zA-Z0-9.]/g, "_");
-    const filename = `${safeLocation}-${uniqueSuffix}-${originalFilename}`;
+    // --- USE ORIGINAL FILENAME ---
+    // The filename is now taken directly from the uploaded file.
+    const filename = file.name;
 
     // Convert file data to a buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Define the path to save the file
-    // It will be saved in the `public/uploads` directory
-    const filePath = join(process.cwd(), "public", "uploads", filename);
+    // Define the destination directory and the full file path
+    const uploadDir = join(process.cwd(), "public", "uploads");
+    const filePath = join(uploadDir, filename);
+
+    // --- SELF-HEALING FOLDER CREATION ---
+    // Check if the 'uploads' directory exists, and create it if it doesn't.
+    // This makes the API more robust and prevents silent failures.
+    try {
+      await mkdir(uploadDir, { recursive: true });
+    } catch (error) {
+      // Ignore error if directory already exists
+      if (error.code !== "EEXIST") {
+        throw error; // Throw other errors
+      }
+    }
 
     // Write the file to the server's filesystem
     await writeFile(filePath, buffer);
@@ -34,6 +41,12 @@ export async function POST(request) {
     return NextResponse.json({ success: true, filename: filename });
   } catch (error) {
     console.error("Upload API Error:", error);
+    if (error.code === "EACCES") {
+      return NextResponse.json(
+        { message: "Permission denied to write file on server." },
+        { status: 500 }
+      );
+    }
     return NextResponse.json(
       { message: "File upload failed." },
       { status: 500 }

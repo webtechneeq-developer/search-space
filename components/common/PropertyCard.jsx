@@ -22,7 +22,7 @@ const PropertyCard = ({ property }) => {
   const images =
     property.singlePageImgSrc?.length > 0
       ? property.singlePageImgSrc
-      : [property.imgSrc || "/uploads/andheri-1760003243223.webp"]; // Default placeholder if all else fails
+      : [property.imgSrc || "/uploads/andheri-1760179098030.webp"]; // Default placeholder if all else fails
 
   // Formats numbers into Indian currency style
   const formatCurrency = (value) =>
